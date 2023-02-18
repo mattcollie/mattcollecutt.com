@@ -1,4 +1,5 @@
 <script>
+    import { page } from "$lib/store.js";
     export let href;
     export let target = "_self";
     let text;
@@ -22,6 +23,6 @@
     }
 </style>
 
-<a class="text-black dark:text-white" href={href} target={target} data-text={text? text.textContent : ""}>
+<a class="text-black dark:text-white" class:font-bold={$page === href} href={href} target={target} data-text={text? text.textContent : ""}>
     <span bind:this={text}><slot/></span>
 </a>
