@@ -24,4 +24,4 @@
     }
 </script>
 
-<img on:click={toggle} src={$darkTheme ? Moon : Sun} alt="Current theme icon">
+<img {...$$props} on:click={toggle} src={$darkTheme ? Sun : Moon} alt="Current theme icon">
