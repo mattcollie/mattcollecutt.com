@@ -4,10 +4,10 @@
 </script>
 
 <svelte:head>
-    <title>about</title>
+    <title>About</title>
 </svelte:head>
 
-<h1>about</h1>
+<h1>About</h1>
 
 <div class="pt-12 flex flex-col gap-4">
     <slot/>

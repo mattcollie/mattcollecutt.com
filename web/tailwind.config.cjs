@@ -10,6 +10,10 @@ module.exports = {
         serif: [
           "garamond",
           ...defaultTheme.fontFamily.serif
+        ],
+        mono: [
+          "consolas",
+          ...defaultTheme.fontFamily.mono
         ]
       }
     },
