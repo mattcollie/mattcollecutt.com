@@ -1,3 +1,5 @@
+.idea
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -127,3 +129,14 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+.DS_Store
+node_modules
+/web/build
+/web/.svelte-kit
+/web/package
+.env.*
+!.env.example
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
