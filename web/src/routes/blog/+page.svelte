@@ -12,7 +12,7 @@
 
 <h1>Blog</h1>
 
-<div class="flex flex-col gap-4 pt-12">
+<div class="flex flex-col gap-4 pt-10">
     {#if posts.length > 0}
         {#each posts as {title, name, date}}
             <div>
