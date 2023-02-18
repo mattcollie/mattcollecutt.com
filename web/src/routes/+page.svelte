@@ -4,6 +4,9 @@
     $page = "/";
 </script>
 
+<svelte:head>
+    <title>Matt Collecutt</title>
+</svelte:head>
 
 <h1>Matt Collecutt</h1>
 

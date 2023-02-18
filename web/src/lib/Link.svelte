@@ -8,7 +8,7 @@
 <style>
     a {
         @apply
-            text-2xl
+            text-xl lg:text-2xl
             tracking-wider
             hover:font-bold
     }

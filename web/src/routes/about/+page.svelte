@@ -4,6 +4,10 @@
     $page = "/about";
 </script>
 
+<svelte:head>
+    <title>about</title>
+</svelte:head>
+
 <h1>about</h1>
 
 <div class="pt-12 flex flex-col gap-4">
@@ -11,7 +15,7 @@
 
     <p>
         I’m currently {age} years old, working full time as a Software Developer at
-        <a class="font-bold" href="http://mustard.co.nz" target="_blank">Mustard Technology Limited</a>.
+        <a class="font-bold" rel="noreferrer" href="http://mustard.co.nz" target="_blank">Mustard Technology Limited</a>.
         I’m very passionate about my job and always look for ways to further my knowledge
         and grow as a person personally and professionally.
     </p>
