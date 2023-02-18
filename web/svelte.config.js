@@ -9,7 +9,8 @@ const config = {
 			pages: 'build',
 			assets: 'build',
 			fallback: 'index.html'
-		})
+		}),
+		prerender: {entries: ['/blog/[slug]', '/', '/about', '/blog']}
 	},
 	extensions: ['.svelte', '.md'],
 	preprocess: [

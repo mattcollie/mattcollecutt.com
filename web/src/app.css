@@ -16,8 +16,14 @@ h1 {
     ;
 }
 
+h2 {
+    @apply
+        text-2xl lg:text-3xl
+        font-serif
+}
+
 p {
     @apply
-        text-xl lg:text-2xl
+        text-lg lg:text-2xl
         font-serif
 }
