@@ -17,10 +17,6 @@
     }
 </style>
 
-{#if false}
-    <svg></svg>
-{/if}
-
 <a href={href} target="_blank" rel="noreferrer">
     <slot />
     {name}
