@@ -1,4 +1,7 @@
 <script>
+    import GithubLink from "$lib/socials/GithubLink.svelte";
+    import LinkedinLink from "$lib/socials/LinkedinLink.svelte";
+
     const age = Math.abs(new Date(Date.now() - new Date(1996, 6, 24).getTime()).getUTCFullYear() - 1970);
 </script>
 
@@ -22,3 +25,8 @@
     It’s also a good place to collate and share any ideas that I have. It’s been on my life of
     things to do for a very long time and now is a good of time as any.
 </p>
+
+<div class="flex flex-row gap-12">
+    <GithubLink />
+    <LinkedinLink />
+</div>
