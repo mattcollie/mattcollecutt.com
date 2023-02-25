@@ -7,17 +7,18 @@
     a {
         @apply
             flex flex-row gap-4
-            border border-2 rounded-lg border-black p-2 text-xl font-bold align-middle
-            dark:border-white
+            border border-2 rounded-lg p-2 text-xl font-bold align-middle
+            hover:border-grey hover:text-grey
     }
 
     svg {
         @apply
-            border-black dark:border-white m-auto;
+            border-black dark:border-white m-auto
+            hover:border-grey
     }
 </style>
 
-<a href={href} target="_blank" rel="noreferrer">
+<a class="border-black dark:border-white" href={href} target="_blank" rel="noreferrer">
     <slot />
     {name}
     <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
