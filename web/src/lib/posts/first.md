@@ -1,7 +1,7 @@
 ---
 name: first
 title: first blog post
-date: "2023-18-02"
+date: "2023-02-18"
 ---
 
 My first blog post, it's been a long time coming. I've wanted to start a 
