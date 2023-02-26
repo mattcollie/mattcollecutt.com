@@ -6,8 +6,8 @@ import {mdsvex} from "mdsvex";
 const config = {
 	kit: {
 		adapter: adapter({
-			pages: 'build',
-			assets: 'build',
+			pages: '../build',
+			assets: '../build',
 			fallback: 'index.html'
 		}),
 		prerender: {entries: ['/blog/[slug]', '/', '/about', '/blog']}
