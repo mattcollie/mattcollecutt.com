@@ -11,6 +11,7 @@
             <Link href="/">home</Link>
             <Link href="/about">about</Link>
             <Link href="/blog">blog</Link>
+            <Link href="/gallery">gallery</Link>
         </nav>
 
         <div class="h-full flex flex-col">
