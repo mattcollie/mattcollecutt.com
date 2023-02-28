@@ -1,5 +1,5 @@
 export async function load({ params }) {
-    const galleryModules = import.meta.glob('../../lib/galleries/*/*.JPG');
+    const galleryModules = import.meta.glob('../../lib/galleries/*/*.webp');
     const galleries = {};
     for(const p in galleryModules) {
         const [name, date] = p.slice(20, p.lastIndexOf('/')).split('.');

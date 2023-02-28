@@ -1,5 +1,6 @@
 <script>
     import { page } from "$lib/store";
+    import Link from "$lib/Link.svelte";
     $page = "/gallery";
     export let data;
     const {galleries} = data;
@@ -17,14 +18,16 @@
 <div class="flex flex-row gap-4 pt-12">
     {#if galleryOrder.length > 0}
         {#each galleryOrder as key}
-            <div class="relative flex flex-col gap-4">
-                <div class="relative photo-container m-auto">
-                    {#each galleries[key].photos.slice(0, 3).reverse() as photo}
-                        <img src={photo} alt={photo} />
-                    {/each}
+            <Link href={'/gallery/'+key.replaceAll(' ', '_')}>
+                <div class="relative flex flex-col gap-4">
+                    <div class="relative photo-container m-auto">
+                        {#each galleries[key].photos.slice(0, 3).reverse() as photo}
+                            <img src={photo} alt={photo} />
+                        {/each}
+                    </div>
+                    <p class="text-md text-black dark:text-white">{key}</p>
                 </div>
-                <p class="text-md text-black dark:text-white">{key}</p>
-            </div>
+            </Link>
         {/each}
     {:else}
         <p class="text-grey">Sorry, Can't find any photo galleries at the moment!</p>
