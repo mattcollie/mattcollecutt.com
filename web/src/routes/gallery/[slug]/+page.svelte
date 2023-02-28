@@ -3,10 +3,8 @@
     import { page } from "$lib/store";
     $page = "/gallery";
     export let data;
-
     let current = 0;
-    $: currentPhoto = data.photos[current].replace('../../../', '../src/');
-    console.log(data);
+    $: currentPhoto = data.photos[current].toString();
 
     const increment = function(n) {
         if(current + n < 0) {
@@ -34,7 +32,7 @@
             <div class="photo-container relative">
                 {#each data.photos as photo, i}
                     {#if current === i}
-                        <img class="absolute h-full left-[12.5%] object-cover transition fade delay-150" transition:fade src={data.photos[i].replace('../../../', '../src/')} alt={data.photos[i].replace('../../../', '../src/')} />
+                        <img class="absolute h-full left-[12.5%] object-cover transition fade delay-150" transition:fade src={data.photos[i]} alt={data.photos[i]} />
                     {/if}
                 {/each}
             </div>

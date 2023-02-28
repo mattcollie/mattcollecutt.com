@@ -10,7 +10,7 @@ export async function load({ params }) {
             };
         }
 
-        galleries[name].photos.push(p.replace('../../', 'src/'));
+        galleries[name].photos.push(await galleryModules[p]());
     }
 
     return {galleries: galleries};

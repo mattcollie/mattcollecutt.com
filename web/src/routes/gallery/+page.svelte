@@ -5,8 +5,6 @@
     export let data;
     const {galleries} = data;
     const galleryOrder = Object.keys(galleries).sort((a, b) => new Date(galleries[b].date) - new Date(galleries[a].date));
-
-    console.log(galleries, galleryOrder);
 </script>
 
 <svelte:head>
@@ -22,7 +20,7 @@
                 <div class="relative flex flex-col gap-4">
                     <div class="relative photo-container m-auto">
                         {#each galleries[key].photos.slice(0, 3).reverse() as photo}
-                            <img src={photo} alt={photo} />
+                            <img src={photo.default} alt={photo.default} />
                         {/each}
                     </div>
                     <p class="text-md text-black dark:text-white">{key}</p>
