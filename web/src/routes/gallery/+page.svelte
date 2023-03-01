@@ -13,7 +13,7 @@
 
 <h1>Gallery</h1>
 
-<div class="flex flex-row gap-4 pt-12">
+<div class="flex flex-col lg:flex-row gap-4 pt-12">
     {#if galleryOrder.length > 0}
         {#each galleryOrder as key}
             <Link href={'/gallery/'+key.replaceAll(' ', '_')}>
@@ -23,7 +23,7 @@
                             <img src={photo.default} alt={photo.default} />
                         {/each}
                     </div>
-                    <p class="text-md text-black dark:text-white">{key}</p>
+                    <p class="text-md text-black dark:text-white text-center">{key}</p>
                 </div>
             </Link>
         {/each}
