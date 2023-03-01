@@ -1,69 +1,83 @@
 <script>
+    import {Swipeable} from 'thumb-ui'
     import { fade } from 'svelte/transition'
     import { page } from "$lib/store";
     $page = "/gallery";
     export let data;
-    let current = 0;
-    $: currentPhoto = data.photos[current].toString();
 
-    const increment = function(n) {
-        if(current + n < 0) {
-            current = 0;
-        }
-        else if(current + n < data.photos.length) {
-            current += n;
-        }
-    }
+    let loginProgress, introProgress;
 </script>
 
 <svelte:head>
     <title>{data.name}</title>
 </svelte:head>
 
-<div class="absolute h-screen w-screen top-0 left-0 bg-white dark:bg-black">
-    <div class="relative h-screen w-screen flex flex-row justify-around lg:px-8">
-        <div class="my-auto">
-            <svg on:click={() => increment(-1)} class:disabled-button={current === 0} class:active-button={current >= 0} width="41" height="77" viewBox="0 0 41 77" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M39.7072 0.707092L0.707155 39.7071M0.707153 38.2929L38.7072 76.2929" stroke="currentColor" stroke-width="2"/>
-            </svg>
-        </div>
-        <div class="flex flex-col m-auto justify-around text-center justify-items-center gap-8">
-            <p>{currentPhoto.slice(currentPhoto.lastIndexOf('/')+1)}</p>
-            <div class="photo-container relative">
-                {#each data.photos as photo, i}
-                    {#if current === i}
-                        <img class="absolute h-full lg:left-[12.5%] object-cover transition fade delay-150" transition:fade src={data.photos[i]} alt={data.photos[i]} />
-                    {/if}
+<div id="wrapper">
+    <a class="absolute scale-50 cursor-pointer z-50 hover:scale-[0.60] transition top-5 left-5" href="/gallery">
+        <svg width="59" height="60" viewBox="0 0 59 60" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.35352 1.64645L57.9221 58.215M1.35352 58.9221L57.9221 2.35356" stroke="currentColor" stroke-width="3"/>
+        </svg>
+    </a>
+    <div class="slides fullpage" style="transform: scale({1 - $loginProgress*0.3})">
+        <Swipeable numScreens={data.photos.length} let:current bind:progress={introProgress}>
+            {#each data.photos as photo, i}
+                <section class="absolute left-0 right-0 top-0 bottom-0 lg:mx-auto w-[100vw] h-full lg:w-[95vw] p-2 lg:p-10" class:current={current === i}>
+                    <div class="h-full flex flex-col justify-around lg:justify-between py-[8vh]" style="opacity: {1 - Math.abs($introProgress - i)}">
+                        <p>{photo.slice(photo.lastIndexOf('/')+1)}</p>
+                        <img class="h-[80vh] lg:h-[70vh] lg:w-[90vw] object-cover lg:object-contain" src={photo} alt={photo}/>
+                    </div>
+                </section>
+            {/each}
+
+            <div class="dots">
+                {#each data.photos as p, i}
+                    <div class="dot" in:fade class:active={current === i}></div>
                 {/each}
             </div>
-            <a href="/gallery" class="text-grey text-xl hover:font-bold cursor-pointer">close</a>
-        </div>
-        <div class="my-auto">
-            <svg on:click={() => increment(1)} class:disabled-button={current === data.photos.length-1} class:active-button={current !== data.photos.length-1} width="41" height="78" viewBox="0 0 41 78" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1 0.878662L40 39.8787M40 38.4644L2 76.4644" stroke="currentColor" stroke-width="2"/>
-            </svg>
-        </div>
+        </Swipeable>
     </div>
 </div>
 
 <style>
-    .photo-container {
-        @apply
-            min-w-[80vw] min-h-[50vh] lg:min-w-[65vw] lg:min-h-[65vh]
+    .fullpage {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+    .slides {
+        text-align: center;
+    }
+    .current {
+        transform: scale(1);
     }
 
-    .active-button {
-        @apply
-            cursor-pointer hover:transition lg:hover:scale-[1.05] hover:delay-100 hover:ease-in-out
-    }
+    .dots {
+        position: absolute;
+        bottom: 5%;
+        left: 50%;
+        transform: translateX(-50%);
+        line-height: 0;
 
-    .disabled-button {
         @apply
-            text-grey cursor-not-allowed hover:transition-none lg:hover:scale-100
+            flex flex-row gap-2
     }
-
-    svg {
+    .dot {
         @apply
-            scale-[0.2] lg:scale-100
+            w-2 h-2 bg-black dark:bg-white rounded-xl
+    }
+    .dot.active {
+        @apply
+            bg-white dark:bg-white border-black border-[1px]
+    }
+    #wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        margin: 0;
+
+        @apply
+            bg-white dark:bg-black
     }
 </style>

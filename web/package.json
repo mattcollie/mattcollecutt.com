@@ -24,6 +24,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"svelte-preprocess": "^5.0.1"
+		"svelte-preprocess": "^5.0.1",
+		"thumb-ui": "^0.0.17"
 	}
 }
