@@ -48,11 +48,8 @@
 
 <style>
     .photo-container {
-        min-width: 65vw;
-        min-height: 65vh;
-
         @apply
-            min-w-[80vw] min-h-[50vh]
+            min-w-[80vw] min-h-[50vh] lg:min-w-[65vw] lg:min-h-[65vh]
     }
 
     .active-button {
