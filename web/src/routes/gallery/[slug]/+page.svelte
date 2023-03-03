@@ -5,7 +5,7 @@
     $page = "/gallery";
     export let data;
 
-    let loginProgress, introProgress;
+    let current, loginProgress, introProgress;
 </script>
 
 <style>
@@ -44,7 +44,7 @@
         </svg>
     </a>
     <div class="slides fullpage" style="transform: scale({1 - $loginProgress*0.3})">
-        <Swipeable numScreens={data.photos.length} let:current bind:progress={introProgress}>
+        <Swipeable numScreens={data.photos.length} bind:current bind:progress={introProgress}>
             {#each data.photos as photo, i}
                 <section class="absolute left-0 right-0 top-0 bottom-0 lg:mx-auto w-[100vw] h-full lg:w-[95vw] p-2 lg:p-10" class:current={current === i}>
                     <div class="h-full flex flex-col justify-around lg:justify-between py-[8vh]" style="opacity: {1 - Math.abs($introProgress - i)}">
@@ -55,7 +55,7 @@
             {/each}
             <div class="dots flex flex-row gap-2">
                 {#each data.photos as p, i}
-                    <div class="w-3 h-3 bg-grey rounded-xl {current === i ? 'border-black dark:border-white border-2' : ''}" in:fade></div>
+                    <div class="w-3 h-3 bg-grey rounded-xl {current === i ? 'border-black dark:border-white border-2' : ''}" in:fade on:click={() => {current = i; $introProgress = i}}></div>
                 {/each}
             </div>
         </Swipeable>
