@@ -44,7 +44,7 @@
 
     svg.active {
         @apply
-            lg:hover:scale-105 cursor-pointer text-black dark:text-white
+            lg:hover:scale-105 cursor-pointer
     }
 
     svg.not-active {
@@ -65,7 +65,7 @@
     </a>
     <div class="slides fullpage" style="transform: scale({1 - $loginProgress*0.3})">
         <Swipeable numScreens={data.photos.length} bind:current bind:progress={introProgress}>
-            <svg class="absolute hidden lg:block text-black dark:text-white top-[50vh] left-[5vw]"
+            <svg class="absolute hidden lg:block text-black dark:text-white top-[50vh] left-5"
                  class:not-active={current === 0}
                  class:active={current > 0}
                  on:click={() => next(-1)}
@@ -85,7 +85,7 @@
                     <div class="w-3 h-3 bg-grey rounded-xl {current === i ? 'border-black dark:border-white border-2' : ''}" in:fade on:click={() => {current = i; $introProgress = i}}></div>
                 {/each}
             </div>
-            <svg class="absolute hidden lg:block top-[50vh] right-[5vw]"
+            <svg class="absolute hidden lg:block text-black dark:text-white top-[50vh] right-5"
                  class:not-active={current === data.photos.length -1}
                  class:active={current < data.photos.length -1}
                  on:click={() => next(1)}
