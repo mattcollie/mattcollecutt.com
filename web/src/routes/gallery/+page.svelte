@@ -19,9 +19,7 @@
             <Link href={'/gallery/'+key.replaceAll(' ', '_')}>
                 <div class="relative flex flex-col gap-4">
                     <div class="relative photo-container m-auto">
-                        {#each galleries[key].photos.slice(0, 3).reverse() as photo}
-                            <img src={photo.default} alt={photo.default} />
-                        {/each}
+                        <img src={galleries[key].photos[0].default} alt={galleries[key].photos[0].default} />
                     </div>
                     <p class="text-md text-black dark:text-white text-center">{key}</p>
                 </div>
