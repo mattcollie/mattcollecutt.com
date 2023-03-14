@@ -13,6 +13,8 @@
 
 <svelte:head>
     <script
+            rel="prefetch"
+            defer
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-NHJJ1HY5YK">
     </script>
