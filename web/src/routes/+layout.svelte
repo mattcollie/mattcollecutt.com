@@ -1,8 +1,12 @@
 <script>
     import "/src/app.css";
+
+    import Analytics from "$lib/Analytics.svelte";
     import ThemeToggle from "$lib/ThemeToggle.svelte";
     import Link from "$lib/Link.svelte";
 </script>
+
+<Analytics/>
 
 <div class="min-h-full flex flex-col items-start pb-4">
     <ThemeToggle class="h-8 cursor-pointer mt-4 ml-4 lg:mt-8 lg:ml-8" />
