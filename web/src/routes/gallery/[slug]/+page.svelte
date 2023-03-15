@@ -63,7 +63,7 @@
             <path d="M1.35352 1.64645L57.9221 58.215M1.35352 58.9221L57.9221 2.35356" stroke="currentColor" stroke-width="3"/>
         </svg>
     </a>
-    <div class="slides fullpage" style="transform: scale({1 - $loginProgress*0.3})">
+    <div class="slides fullpage" style={`transform: scale(${1 - $loginProgress*0.3})`}>
         <Swipeable numScreens={data.photos.length} bind:current bind:progress={introProgress}>
             <svg class="absolute hidden lg:block text-black dark:text-white top-[50vh] left-5"
                  class:not-active={current === 0}
@@ -76,7 +76,7 @@
                 <section class="absolute left-0 right-0 top-0 bottom-0 lg:mx-auto w-[100vw] h-full lg:w-[95vw] p-2 lg:p-10" class:current={current === i}>
                     <div class="h-full flex flex-col justify-around lg:justify-between py-[8vh]" style="opacity: {1 - Math.abs($introProgress - i)}">
                         <p>{photo.slice(photo.lastIndexOf('/')+1)}</p>
-                        <img class="h-[80vh] lg:h-[70vh] lg:w-[90vw] object-cover lg:object-contain" src={photo} alt={photo}/>
+                        <img rel="prefetch" class="h-[80vh] lg:h-[70vh] lg:w-[90vw] object-cover lg:object-contain" src={photo} alt={photo}/>
                     </div>
                 </section>
             {/each}
