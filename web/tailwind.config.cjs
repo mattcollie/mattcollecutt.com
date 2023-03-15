@@ -8,7 +8,6 @@ module.exports = {
     extend: {
       fontFamily: {
         serif: [
-          "savoy",
           ...defaultTheme.fontFamily.serif
         ],
         mono: [
