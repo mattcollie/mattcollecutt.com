@@ -24,4 +24,8 @@
     }
 </script>
 
-<img {...$$props} on:click={toggle} src={$darkTheme ? Sun : Moon} alt="Current theme icon">
+{#if $darkTheme}
+    <img rel="prefetch" {...$$props} on:click={toggle} src={Sun} alt="Dark theme Icon">
+{:else}
+    <img rel="prefetch" {...$$props} on:click={toggle} src={Moon} alt="Light theme Icon">
+{/if}
