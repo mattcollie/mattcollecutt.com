@@ -2,7 +2,7 @@
     import { page } from "$lib/store";
     import Link from "$lib/Link.svelte";
     $page = "/gallery";
-    export let data;
+    export let data = {galleries: {}};
     const {galleries} = data;
     const galleryOrder = Object.keys(galleries).sort((a, b) => new Date(galleries[b].date) - new Date(galleries[a].date));
 </script>
@@ -19,7 +19,7 @@
             <Link href={'/gallery/'+key.replaceAll(' ', '_')}>
                 <div class="relative flex flex-col gap-2">
                     <div class="relative photo-container m-auto">
-                        <img src={galleries[key].photos[0].default} alt={galleries[key].photos[0].default} />
+                        <img rel="prefetch" src={galleries[key].photos[0].default} alt={galleries[key].photos[0].default} />
                     </div>
                     <p class="text-md text-black dark:text-white text-center">{key}</p>
                 </div>
