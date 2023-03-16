@@ -1,6 +1,7 @@
 <script>
-    import { page } from "$lib/store";
-    import Link from "$lib/Link.svelte";
+    import {page} from "$lib/store";
+    import Link from "$lib/components/Link.svelte";
+
     $page = "/blog";
     export let data;
     const {posts} = data;

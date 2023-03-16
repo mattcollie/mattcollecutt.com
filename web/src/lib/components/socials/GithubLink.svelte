@@ -1,5 +1,5 @@
 <script>
-    import SocialLink from "$lib/socials/SocialLink.svelte";
+    import SocialLink from "$lib/components/socials/SocialLink.svelte";
 </script>
 
 <SocialLink name="Github" href="https://github.com/mattcollie">

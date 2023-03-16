@@ -1,6 +1,6 @@
 <script>
-    import GithubLink from "$lib/socials/GithubLink.svelte";
-    import LinkedinLink from "$lib/socials/LinkedinLink.svelte";
+    import GithubLink from "$lib/components/socials/GithubLink.svelte";
+    import LinkedinLink from "$lib/components/socials/LinkedinLink.svelte";
 
     const age = Math.abs(new Date(Date.now() - new Date(1996, 6, 24).getTime()).getUTCFullYear() - 1970);
 </script>

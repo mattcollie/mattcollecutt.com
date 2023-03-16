@@ -1,5 +1,5 @@
 <script>
-    import { page } from '$app/stores'
+    import {page} from '$app/stores'
 
     $: {
         if (typeof gtag !== 'undefined') {

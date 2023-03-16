@@ -1,5 +1,5 @@
 <script>
-    import {darkTheme} from "$lib/store.js";
+    import {darkTheme} from "$lib/store";
     import {onMount} from "svelte";
     import Moon from "$lib/assets/moon.svg";
     import Sun from "$lib/assets/sun.svg";

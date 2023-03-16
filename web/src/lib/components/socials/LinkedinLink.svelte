@@ -1,5 +1,5 @@
 <script>
-    import SocialLink from "$lib/socials/SocialLink.svelte";
+    import SocialLink from "$lib/components/socials/SocialLink.svelte";
 </script>
 
 <SocialLink name="Linkedin" href="https://www.linkedin.com/in/matt-collecutt/">

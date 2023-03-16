@@ -1,9 +1,9 @@
 <script>
     import "/src/app.css";
 
-    import Analytics from "$lib/Analytics.svelte";
-    import ThemeToggle from "$lib/ThemeToggle.svelte";
-    import Link from "$lib/Link.svelte";
+    import Analytics from "$lib/components/Analytics.svelte";
+    import ThemeToggle from "$lib/components/ThemeToggle.svelte";
+    import Link from "$lib/components/Link.svelte";
 </script>
 
 <Analytics/>

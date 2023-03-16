@@ -1,5 +1,6 @@
 <script>
-    import { page } from "$lib/store.js";
+    import {page} from "$lib/store";
+
     export let href;
     export let target = "_self";
     let text;
