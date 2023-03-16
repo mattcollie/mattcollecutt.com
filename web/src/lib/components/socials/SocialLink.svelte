@@ -6,9 +6,9 @@
 <style>
     a {
         @apply
-            flex flex-row gap-4
-            border border-2 rounded-lg p-2 text-xl font-bold align-middle
-            hover:border-grey hover:text-grey
+        flex flex-row gap-4
+        border border-2 rounded-lg p-2 align-middle
+        hover:border-grey hover:text-grey
     }
 </style>
 
