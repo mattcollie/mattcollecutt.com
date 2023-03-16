@@ -11,19 +11,24 @@ html, body {
 
 h1 {
     @apply
-        text-3xl lg:text-5xl
-        font-serif
+    text-3xl lg:text-5xl
+    font-serif lowercase
     ;
 }
 
 h2 {
     @apply
-        text-2xl lg:text-3xl
-        font-serif
+    text-2xl lg:text-3xl
+    font-serif lowercase
 }
 
 p {
     @apply
-        text-lg lg:text-2xl
-        font-serif
+    text-lg lg:text-lg
+    font-serif
+}
+
+button {
+    @apply
+    bg-transparent
 }

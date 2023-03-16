@@ -1,6 +1,5 @@
 <script>
     import {page} from "$lib/store";
-    import Link from "$lib/components/Link.svelte";
 
     $page = "/blog";
     export let data;
@@ -17,7 +16,8 @@
     {#if posts.length > 0}
         {#each posts as {title, name, date}}
             <div>
-                <h2><Link href={'/blog/' + name}>{title}</Link></h2>
+                <h2><a class="text-lg text-grey-600 hover:text-black dark:text-grey-200 dark:hover:text-white"
+                       href={'/blog/' + name}>{title}</a></h2>
                 <p class="text-sm text-grey font-mono">{date}</p>
             </div>
         {/each}

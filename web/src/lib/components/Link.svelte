@@ -9,21 +9,33 @@
 <style>
     a {
         @apply
-            text-xl lg:text-2xl
-            tracking-wider
-            hover:font-bold
+        text-lg
     }
 
-    a::before {
-        display: block;
-        content: attr(data-text);
-        font-weight: bold;
-        height: 0;
-        overflow: hidden;
-        visibility: hidden;
+    span {
+        @apply
+        px-2 py-1
+        text-grey-600
+        hover:text-black
+    }
+
+    :global(.dark span) {
+        @apply
+        text-grey-200
+        hover:text-white
+    }
+
+    .active-link {
+        @apply
+        text-black bg-grey-100 rounded-md
+    }
+
+    :global(.dark .active-link) {
+        @apply
+        text-white bg-grey-800
     }
 </style>
 
-<a class="text-black dark:text-white" class:font-bold={$page === href} href={href} target={target} data-text={text? text.textContent : ""}>
-    <span bind:this={text}><slot/></span>
+<a class="text-black dark:text-white" href={href} target={target}>
+    <span bind:this={text} class:active-link={$page === href}><slot/></span>
 </a>

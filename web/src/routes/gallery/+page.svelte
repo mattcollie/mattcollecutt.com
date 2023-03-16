@@ -14,15 +14,16 @@
 
 <h1>Gallery</h1>
 
-<div class="flex flex-col lg:flex-row gap-4 pt-14">
+<div class="flex flex-col lg:flex-row gap-4 pt-6">
     {#if galleryOrder.length > 0}
         {#each galleryOrder as key}
             <Link href={'/gallery/'+key.replaceAll(' ', '_')}>
                 <div class="relative flex flex-col gap-2">
                     <div class="relative photo-container m-auto">
-                        <img rel="prefetch" src={galleries[key].photos[0].default} alt={galleries[key].photos[0].default} />
+                        <img rel="prefetch" src={galleries[key].photos[0].default}
+                             alt={galleries[key].photos[0].default}/>
                     </div>
-                    <p class="text-md text-black dark:text-white text-center">{key}</p>
+                    <p class="text-md text-grey-600 hover:text-black dark:text-grey-200 dark:hover:text-white">{key}</p>
                 </div>
             </Link>
         {/each}
