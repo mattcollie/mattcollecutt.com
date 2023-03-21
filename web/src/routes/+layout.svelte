@@ -24,7 +24,6 @@
                 <Link href="/">home</Link>
                 <Link href="/about">about</Link>
                 <Link href="/blog">blog</Link>
-                <Link href="/gallery">gallery</Link>
                 <Link href="/photography">photography</Link>
             </nav>
         {/if}
