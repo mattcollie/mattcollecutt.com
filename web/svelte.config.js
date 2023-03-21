@@ -10,7 +10,7 @@ const config = {
 			assets: 'build',
 			fallback: 'index.html'
 		}),
-		prerender: {entries: ['/blog/[slug]', '/', '/about', '/blog']},
+		prerender: {entries: ['/blog/[slug]', '/', '/about', '/blog', '/photography']},
 		inlineStyleThreshold: 1024
 	},
 	extensions: ['.svelte', '.md'],
