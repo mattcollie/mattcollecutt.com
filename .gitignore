@@ -134,9 +134,9 @@ dmypy.json
 
 .DS_Store
 node_modules
-/web/build
-/web/.svelte-kit
-/web/package
+/web_old/build
+/web_old/.svelte-kit
+/web_old/package
 .env.*
 !.env.example
 vite.config.js.timestamp-*
