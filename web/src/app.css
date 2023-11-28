@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,19 +13,27 @@ html, body {
 
 h1 {
     @apply
-        text-3xl lg:text-5xl
-        font-serif
+    text-3xl lg:text-5xl
+    font-serif lowercase
     ;
 }
 
 h2 {
     @apply
-        text-2xl lg:text-3xl
-        font-serif
+    text-2xl lg:text-3xl
+    font-serif lowercase
+}
+
+h1, h2, h3, h4, h5, h6 {
+    @apply text-white
 }
 
 p {
     @apply
-        text-lg lg:text-2xl
         font-serif
+}
+
+button {
+    @apply
+    bg-transparent
 }

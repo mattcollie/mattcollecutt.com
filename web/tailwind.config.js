@@ -1,13 +1,13 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  darkMode: 'class',
+export default {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
     extend: {
       fontFamily: {
         serif: [
+          "Inter",
           ...defaultTheme.fontFamily.serif
         ],
         mono: [
@@ -17,10 +17,15 @@ module.exports = {
       }
     },
     colors: {
-      black: '#282828',
-      grey: '#767676',
-      white: '#F8F8F8'
+      white: '#F8F8F8',
+      black: '#111111',
+      primary: '#111111',
+      secondary: '#1B1B1B',
+      stroke: '#222222',
+      'stroke-light': '#444444',
+      grey: '#999',
+      transparent: '#FFFFFFFF',
     }
   },
-  plugins: [],
-}
+  plugins: []
+};
