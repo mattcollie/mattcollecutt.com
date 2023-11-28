@@ -23,6 +23,7 @@ export default {
       secondary: '#1B1B1B',
       stroke: '#222222',
       'stroke-light': '#444444',
+      grey: '#999',
       transparent: '#FFFFFFFF',
     }
   },

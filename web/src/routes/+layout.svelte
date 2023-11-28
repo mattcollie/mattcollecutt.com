@@ -87,7 +87,7 @@
             </Link>
         </Navigation>
     </Sidebar>
-    <div class="h-full w-full flex flex-col">
+    <div class="h-full w-full flex flex-col text-grey">
         <slot/>
     </div>
 </div>
