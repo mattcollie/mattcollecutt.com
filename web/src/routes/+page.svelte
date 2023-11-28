@@ -22,7 +22,7 @@
 <div class="mx-auto w-full py-12 max-w-prose">
     <article class="flex flex-col gap-5 text-sm font-light leading-6 tracking-wide max-w-prose">
         <p>
-            Hi, I’m Matt! I'm a software developer, <a href="/photos">amateur photographer</a>,
+            Hi, I’m Matt! I'm a software developer, <a href="/photos">photographer</a>,
             <a href="/writing">writer</a>. Currently I'm working at
             <a href="http://www.mustard.co.nz/" target="_blank">mustard technology</a>, a small development company
             based in New Zealand.
