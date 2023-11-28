@@ -2,5 +2,3 @@
     <title>Writings</title>
     <meta name="description" content="Writings" />
 </svelte:head>
-
-Writing
