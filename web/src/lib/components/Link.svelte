@@ -4,11 +4,9 @@
     export let href = "/";
     export let external = false;
     export let target;
-
-    $: isCurrentLink = $page.url.pathname === href;
 </script>
 
-<a href={href} target={target} class="flex flex-row items-center gap-3 w-full h-fit px-2 py-1.5 rounded-lg hover:bg-stroke-light justify-between" class:!bg-stroke-light={isCurrentLink}>
+<a href={href} target={target} class="flex flex-row items-center gap-3 w-full h-fit px-2 py-1.5 rounded-lg hover:bg-stroke-light justify-between" class:!bg-stroke-light={$page.url.pathname === href}>
     <div class="flex flex-row items-center gap-3">
         <slot name="icon"/>
         <span class="text-xs font-semibold"><slot/></span>
