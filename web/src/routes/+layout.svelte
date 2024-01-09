@@ -32,6 +32,11 @@
     }
 </style>
 
+<svelte:head>
+    <script src="/scripts/htmx.min.js"></script>
+</svelte:head>
+
+
 
 <div class="relative h-screen flex flex-row">
     <Sidebar bind:show={show}>
@@ -111,6 +116,9 @@
             </Link>
         </Navigation>
         <Navigation title="Socials">
+            <div hx-get="http://127.0.0.1:5000/socials" hx-trigger="load">
+
+            </div>
             <Link href={githubURL} external={true} target="_blank">
                 <div slot="icon" >
                     <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
