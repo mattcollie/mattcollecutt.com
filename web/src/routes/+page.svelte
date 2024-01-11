@@ -34,8 +34,9 @@
         </p>
 
         <p>
-            In my spare time I've been working on a few projects like <a href="https://mattcollecutt.co.nz">this</a>
-            website, <a href="https://trivino.xyz" target="_blank">TriVino</a> and
+            In my spare time I've been working on a few projects like
+            <a href="https://mattcollecutt.co.nz" target="_self">this</a> website,
+            <a href="https://trivino.xyz" target="_blank">TriVino</a> and
             <a href="https://nookly.co.nz" target="_blank">Nookly</a>
         </p>
     </article>
