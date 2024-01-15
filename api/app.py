@@ -12,9 +12,7 @@ async def hello():
 
 @app.route("/socials")
 async def socials():
-    import time
-    time.sleep(5)
-    socials = [
+    social_links = [
         dict(
             name="Github",
             url="https://github.com/mattcollie",
@@ -38,4 +36,4 @@ async def socials():
         ),
     ]
 
-    return await render_template("components/links/social.html", socials=socials)
+    return await render_template("components/links/social.html", socials=social_links)
