@@ -12,6 +12,8 @@ async def hello():
 
 @app.route("/socials")
 async def socials():
+    import time
+    time.sleep(5)
     socials = [
         dict(
             name="Github",

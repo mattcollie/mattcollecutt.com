@@ -1,7 +1,6 @@
 <script>
     import "/src/app.css";
 
-    import {onMount} from "svelte";
     import Sidebar from "$lib/components/Sidebar.svelte";
     import Banner from "$lib/components/Banner.svelte";
     import Navigation from "$lib/components/Navigation.svelte";
@@ -15,10 +14,6 @@
     const nooklyURL = import.meta.env.VITE_NOOKLY_URL;
 
     let show;
-    let loading = true;
-    onMount(() => {
-        loading = false;
-    });
 </script>
 
 <style>
