@@ -1,5 +1,10 @@
+import json
+
+import requests
 from quart import Quart, render_template
 from quart_cors import cors
+
+from config import config
 
 app = Quart(__name__)
 app = cors(app, allow_origin="*")
@@ -37,3 +42,16 @@ async def socials():
     ]
 
     return await render_template("components/links/social.html", socials=social_links)
+
+
+@app.route("/instagram/media")
+async def instagram_media():
+    media = get_instagram_media()
+    return await render_template("components/media/image.html", media=media)
+
+
+def get_instagram_media():
+    media_url = f"https://graph.instagram.com/{config['instagram']['user_id']}/media?fields=caption,id,media_type,media_url,timestamp&access_token={config['instagram']['access_token']}"
+    response = requests.get(media_url)
+    data = json.loads(response.text)
+    return data

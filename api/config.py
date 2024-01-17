@@ -1,6 +1,6 @@
 import toml
 
-config: dict = toml.load("config.toml")
+config: dict = toml.load("api/config.toml")
 
 
 if __name__ == '__main__':
