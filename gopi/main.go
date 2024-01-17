@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/a-h/templ"
 	"net/http"
+
+	"github.com/a-h/templ"
 )
 
 type SocialLink struct {
