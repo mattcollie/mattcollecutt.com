@@ -114,6 +114,7 @@ templ layout(title string) {
     		</div>
 
             <script src="/static/scripts/htmx.min.js" async/>
+            <script src="/static/scripts/lazysizes.min.js" async></script>
     	</body>
     </html>
 }
@@ -123,7 +124,7 @@ templ sidebar() {
         { children... }
     </nav>
 
-    <button class="burger" @click="show = !show" x-bind:aria-expanded="{show.toString()}" aria-haspopup="true" aria-label="Nav toggle">
+    <button class="burger" @click="show = !show" x-bind:aria-expanded="show.toString()" aria-haspopup="true" aria-label="Nav toggle">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
             <line x1="3" y1="12" x2="21" y2="12"></line>
             <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -157,7 +158,7 @@ templ linkTemplate(href string, target string, external bool) {
             { children... }
         </div>
         if external {
-            <img height="9px" width="10px" src="/static/images/arrow-angle.svg" alt="Arrow angle"/>
+            <img class="lazyload" height="9px" width="10px" data-src="/static/images/arrow-angle.svg" alt="Arrow angle"/>
         }
     </a>
 }
@@ -165,7 +166,7 @@ templ linkTemplate(href string, target string, external bool) {
 templ socials(links []SocialLink) {
     for _, link := range links {
         @linkTemplate(link.url, "_blank", true) {
-            <img height="12px" width="12px" src={ link.svg } alt={ link.name + " icon" }/>
+            <img class="lazyload" height="12px" width="12px" data-src={ link.svg } alt={ link.name + " icon" }/>
             <span class="text-xs font-semibold">{ link.name }</span>
         }
     }
