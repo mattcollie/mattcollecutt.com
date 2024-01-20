@@ -24,6 +24,7 @@ func main() {
 	http.Handle("/photos", templ.Handler(page("Photos", socialLinks)))
 	http.Handle("/writing", templ.Handler(page("Writing", socialLinks)))
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static/"))))
+	http.Handle("/robots.txt", http.FileServer(http.Dir("./static/")))
 
 	fmt.Println("Listening on :3000")
 	http.ListenAndServe("127.0.0.1:3000", nil)
