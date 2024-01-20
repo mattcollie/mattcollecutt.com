@@ -39,9 +39,9 @@ button {
 nav {
     @apply absolute -translate-x-full z-30 flex h-full max-h-screen min-h-screen
     w-3/4 flex-none transform flex-col overflow-y-auto border-r
-    bg-white pb-10 transition duration-300 ease-in-out
+    pb-10 transition duration-300 ease-in-out
     sm:w-1/2 sm:pb-0 md:w-56 lg:relative
-    lg:z-auto lg:w-56 lg:translate-x-0 2xl:w-72 2xl:w-80
+    lg:z-auto lg:w-56 lg:translate-x-0 2xl:w-80
     border-r-stroke bg-secondary;
 }
 
