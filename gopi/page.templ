@@ -7,7 +7,7 @@ templ page(title string, socialLinks []SocialLink) {
             @sidebar() {
                 @banner(true) {
                     <div class="w-full h-full flex flex-row gap-4 items-center pl-6">
-                        <button class="!bg-transparent" x-show="show" @click="show = !show" x-bind:aria-expanded="show.toString()" aria-haspopup="true" aria-label="Nav toggle">
+                        <button x-show="show" @click="show = !show" x-bind:aria-expanded="show.toString()" aria-haspopup="true" aria-label="Nav toggle">
                             <svg width="12" height="12" viewBox="0 0 20 18" fill="white" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M2 1L18 17" stroke="white" stroke-width="2" stroke-linecap="round"/>
                                 <path d="M2 17L18 1" stroke="white" stroke-width="2" stroke-linecap="round"/>

@@ -32,8 +32,7 @@ p {
 }
 
 button {
-    @apply
-    bg-transparent
+    background-color: transparent;
 }
 
 nav {
