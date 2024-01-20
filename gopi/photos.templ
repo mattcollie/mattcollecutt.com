@@ -1,0 +1,46 @@
+package main
+
+type MediaItem struct {
+    Id string `json:"id"`
+    Caption string `json:"caption"`
+    MediaType string `json:"media_type"`
+    MediaUrl string `json:"media_url"`
+    Timestamp string `json:"timestamp"`
+}
+
+type MediaResponse struct {
+    MediaItems []MediaItem `json:"data"`
+}
+
+templ PhotoPage(socialLinks []SocialLink) {
+    @page("Photos", socialLinks) {
+        @banner(true) {}
+        <div class="py-12 px-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto max-w-6xl"
+                 hx-get="/instagram/media"
+                 hx-trigger="intersect once"
+                 hx-swap="beforeend">
+                <div class="aspect-ratio-box">
+                    <div class="aspect-ratio-content box bg-gray-300"></div>
+                </div>
+                <div class="aspect-ratio-box">
+                    <div class="aspect-ratio-content box bg-gray-300"></div>
+                </div>
+                <div class="aspect-ratio-box">
+                    <div class="aspect-ratio-content box bg-gray-300"></div>
+                </div>
+                <div class="aspect-ratio-box">
+                    <div class="aspect-ratio-content box bg-gray-300"></div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+templ Photos(mediaItems []MediaItem) {
+    for _, media := range mediaItems {
+        <div class="aspect-ratio-box">
+            <img src={ media.MediaUrl } alt={ media.Caption } class="aspect-ratio-content object-cover" />
+        </div>
+    }
+}
