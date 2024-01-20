@@ -21,6 +21,8 @@ func main() {
 	}
 	homeComponent := HomePage(socialLinks)
 	http.Handle("/", templ.Handler(homeComponent))
+	http.Handle("/photos", templ.Handler(page("Photos", socialLinks)))
+	http.Handle("/writing", templ.Handler(page("Writing", socialLinks)))
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static/"))))
 
 	fmt.Println("Listening on :3000")
