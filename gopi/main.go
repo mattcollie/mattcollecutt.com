@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"net/http"
-
 	"github.com/a-h/templ"
+	"log"
+	"net/http"
 )
 
 type SocialLink struct {
@@ -14,6 +14,8 @@ type SocialLink struct {
 }
 
 func main() {
+	readConfig()
+
 	socialLinks := []SocialLink{
 		{name: "Github", url: "https://github.com/mattcollie", svg: "/static/images/github.svg"},
 		{name: "Linkedin", url: "https://www.linkedin.com/in/matt-collecutt", svg: "/static/images/linkedin.svg"},
@@ -26,6 +28,10 @@ func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static/"))))
 	http.Handle("/robots.txt", http.FileServer(http.Dir("./static/")))
 
-	fmt.Println("Listening on :3000")
-	http.ListenAndServe("127.0.0.1:3000", nil)
+	addr := cfg.Server.Host + ":" + cfg.Server.Port
+	fmt.Println("Listening on " + addr)
+	err := http.ListenAndServe(addr, nil)
+	if err != nil {
+		log.Fatalf("Fatal error failed to start server: %s \\n", err)
+	}
 }
