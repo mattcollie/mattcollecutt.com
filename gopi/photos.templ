@@ -19,7 +19,7 @@ templ PhotoPage(socialLinks []SocialLink) {
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto max-w-6xl"
                  hx-get="/instagram/media"
                  hx-trigger="intersect once"
-                 hx-swap="beforeend">
+                 hx-swap="innerHTML">
                 <div class="aspect-ratio-box">
                     <div class="aspect-ratio-content box bg-gray-300"></div>
                 </div>
