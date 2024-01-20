@@ -165,7 +165,7 @@ templ linkTemplate(href string, target string, external bool) {
 templ socials(links []SocialLink) {
     for _, link := range links {
         @linkTemplate(link.url, "_blank", true) {
-            <img src={ link.svg } alt={ link.name } />
+            <img src={ link.svg } alt={ link.name + " icon" }/>
             <span class="text-xs font-semibold">{ link.name }</span>
         }
     }
