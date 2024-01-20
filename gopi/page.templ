@@ -100,8 +100,6 @@ templ layout(title string) {
     		<meta name="og:url" property="og:url" content="https://mattcollecutt.com" />
     		<link rel="icon" href="/static/favicon.ico" />
     		<meta name="viewport" content="width=device-width" />
-
-            <script src="/static/scripts/htmx.min.js" />
             <link rel="stylesheet" href="/static/output.css"/>
 
             <title>{ title }</title>
@@ -112,6 +110,8 @@ templ layout(title string) {
                     { children... }
                 </div>
     		</div>
+
+            <script src="/static/scripts/htmx.min.js" async/>
     	</body>
     </html>
 }
