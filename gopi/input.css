@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* { padding: 0; margin: 0; }
+html, body {
+    min-height: 100% !important;
+    height: 100%;
+}
+
+h1 {
+    @apply
+    text-3xl lg:text-5xl
+    font-serif lowercase
+    ;
+}
+
+h2 {
+    @apply
+    text-2xl lg:text-3xl
+    font-serif lowercase
+}
+
+h1, h2, h3, h4, h5, h6 {
+    @apply text-white
+}
+
+p {
+    @apply
+    font-serif
+}
+
+button {
+    @apply
+    bg-transparent
+}
+
+nav {
+    @apply absolute -translate-x-full z-30 flex h-full max-h-screen min-h-screen
+    w-3/4 flex-none transform flex-col overflow-y-auto border-r
+    bg-white pb-10 transition duration-300 ease-in-out
+    sm:w-1/2 sm:pb-0 md:w-56 lg:relative
+    lg:z-auto lg:w-56 lg:translate-x-0 2xl:w-72 2xl:w-80
+    border-r-stroke bg-secondary;
+}
+
+.burger {
+    @apply absolute p-2 my-2 mx-4
+    rounded-md bg-black
+    flex items-center justify-center
+    cursor-pointer
+    lg:hidden
+    hover:bg-stroke;
+}
+
+
+.hp-a {
+    @apply
+    text-[#60a5fa]
+    hover:underline
+    ;
+}

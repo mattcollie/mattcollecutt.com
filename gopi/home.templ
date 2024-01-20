@@ -1,0 +1,31 @@
+package main
+
+templ HomePage(socialLinks []SocialLink) {
+    @page("Matt Collecutt", socialLinks) {
+        @banner(true) {}
+
+        <div class="mx-auto w-full py-12 max-w-prose">
+            <article class="flex flex-col gap-5 text-sm font-light leading-6 tracking-wide max-w-prose">
+                <p>
+                    Hi, I’m Matt! I'm a software developer, <a class="hp-a" href="/photos">photographer</a>,
+                    <a class="hp-a" href="/writing">writer</a>. Currently I'm working at
+                    <a class="hp-a" href="http://www.mustard.co.nz/" target="_blank">mustard technology</a>, a small development company
+                    based in New Zealand.
+                </p>
+
+                <p>
+                    Before Mustard, I worked at <a class="hp-a" href="https://www.theaccessgroup.com/">Ezitracker</a>, where I started my
+                    software development journey learning the ropes as an intern.
+                </p>
+
+                <p>
+                    In my spare time I've been working on a few projects like
+                    <a class="hp-a" href="https://mattcollecutt.co.nz" target="_self">this</a> website,
+                    <a class="hp-a" href="https://trivino.xyz" target="_blank">TriVino</a> and
+                    <a class="hp-a" href="https://nookly.co.nz" target="_blank">Nookly</a>
+                </p>
+            </article>
+        </div>
+
+    }
+}
