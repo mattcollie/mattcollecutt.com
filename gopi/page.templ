@@ -75,7 +75,7 @@ templ page(title string, socialLinks []SocialLink) {
                     @socials(socialLinks)
                 }
             }
-            <div class="h-full w-full flex flex-col text-gray-200">
+            <div class="h-full w-full flex flex-col text-gray-200 lg:ml-56">
                 { children... }
             </div>
         </div>
@@ -120,7 +120,7 @@ templ layout(title string) {
 }
 
 templ sidebar() {
-    <nav x-bind:class="{ 'relative !translate-x-0' : show }">
+    <nav class="!fixed" x-bind:class="{ 'relative !translate-x-0' : show }">
         { children... }
     </nav>
 
