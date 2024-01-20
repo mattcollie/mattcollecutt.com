@@ -57,7 +57,8 @@ nav {
 
 .hp-a {
     @apply
-    text-[#60a5fa]
+        italic
+    text-[#3b82f6]
     hover:underline
     ;
 }
