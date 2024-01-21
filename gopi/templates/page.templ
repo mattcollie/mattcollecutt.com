@@ -1,7 +1,9 @@
-package main
+package templates
+
+import "gopi/models"
 
 
-templ page(title string, socialLinks []SocialLink) {
+templ DefaultPage(title string, socialLinks []models.SocialLink) {
     @layout(title) {
         <div class="relative w-screen h-screen flex flex-row" x-data="{ show: false }">
             @sidebar() {
@@ -167,11 +169,11 @@ templ linkTemplate(href string, target string, external bool) {
     </a>
 }
 
-templ socials(links []SocialLink) {
+templ socials(links []models.SocialLink) {
     for _, link := range links {
-        @linkTemplate(link.url, "_blank", true) {
-            <img class="lazyload" height="12px" width="12px" data-src={ link.svg } alt={ link.name + " icon" }/>
-            <span class="text-xs font-semibold">{ link.name }</span>
+        @linkTemplate(link.URL, "_blank", true) {
+            <img class="lazyload" height="12px" width="12px" data-src={ link.SVG } alt={ link.Name + " icon" }/>
+            <span class="text-xs font-semibold">{ link.Name }</span>
         }
     }
 }
