@@ -1,9 +1,6 @@
 package templates
 
-import "gopi/models"
-
-
-templ DefaultPage(title string, socialLinks []models.SocialLink) {
+templ DefaultPage(title string) {
     @layout(title) {
         <div class="relative w-screen h-screen flex flex-row" x-data="{ show: false }">
             @sidebar() {
@@ -74,7 +71,18 @@ templ DefaultPage(title string, socialLinks []models.SocialLink) {
                 }
 
                 @navigation("Socials") {
-                    @socials(socialLinks)
+                    @linkTemplate("https://github.com/mattcollie", "_blank", true) {
+                        <img class="lazyload" height="12px" width="12px" data-src="/static/images/github.svg" alt="Github icon"/>
+                        <span class="text-xs font-semibold">Github</span>
+                    }
+                    @linkTemplate("https://www.linkedin.com/in/matt-collecutt", "_blank", true) {
+                        <img class="lazyload" height="12px" width="12px" data-src="/static/images/linkedin.svg" alt="Linkedin icon"/>
+                        <span class="text-xs font-semibold">Linkedin</span>
+                    }
+                    @linkTemplate("https://www.instagram.com/matthewcollecutt", "_blank", true) {
+                        <img class="lazyload" height="12px" width="12px" data-src="/static/images/instagram.svg" alt="Instagram icon"/>
+                        <span class="text-xs font-semibold">Instagram</span>
+                    }
                 }
             }
             <div class="h-full w-full flex flex-col text-gray-200 lg:ml-56">
@@ -167,13 +175,4 @@ templ linkTemplate(href string, target string, external bool) {
             <img class="lazyload" height="9px" width="10px" data-src="/static/images/arrow-angle.svg" alt="Arrow angle"/>
         }
     </a>
-}
-
-templ socials(links []models.SocialLink) {
-    for _, link := range links {
-        @linkTemplate(link.URL, "_blank", true) {
-            <img class="lazyload" height="12px" width="12px" data-src={ link.SVG } alt={ link.Name + " icon" }/>
-            <span class="text-xs font-semibold">{ link.Name }</span>
-        }
-    }
 }

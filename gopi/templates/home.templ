@@ -1,9 +1,7 @@
 package templates
 
-import "gopi/models"
-
-templ HomePage(socialLinks []models.SocialLink) {
-    @DefaultPage("Matt Collecutt", socialLinks) {
+templ HomePage() {
+    @DefaultPage("Matt Collecutt") {
         @banner(true) {}
 
         <div class="mx-auto w-full py-12 px-3 max-w-prose">
