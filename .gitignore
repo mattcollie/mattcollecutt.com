@@ -166,3 +166,5 @@ vite.config.ts.timestamp-*
 
 # Go workspace file
 go.work
+
+config.toml

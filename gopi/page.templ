@@ -75,7 +75,7 @@ templ page(title string, socialLinks []SocialLink) {
                     @socials(socialLinks)
                 }
             }
-            <div class="h-full w-full flex flex-col text-gray-200">
+            <div class="h-full w-full flex flex-col text-gray-200 lg:ml-56">
                 { children... }
             </div>
         </div>
@@ -102,6 +102,7 @@ templ layout(title string) {
 
     		<link rel="icon" href="/static/favicon.ico" />
             <link rel="stylesheet" href="/static/output.css"/>
+            <script src="/static/scripts/htmx.min.js"/>
             <script defer src="/static/scripts/alpinejs.3.13.3.min.js"></script>
 
             <title>{ title }</title>
@@ -113,14 +114,13 @@ templ layout(title string) {
                 </div>
     		</div>
 
-            <script src="/static/scripts/htmx.min.js" async/>
             <script src="/static/scripts/lazysizes.min.js" async></script>
     	</body>
     </html>
 }
 
 templ sidebar() {
-    <nav x-bind:class="{ 'relative !translate-x-0' : show }">
+    <nav class="!fixed" x-bind:class="{ 'relative !translate-x-0' : show }">
         { children... }
     </nav>
 
@@ -135,11 +135,11 @@ templ sidebar() {
 
 templ banner(border bool) {
     if border {
-        <div class="w-full !h-[50px] border-b-[1px] border-b-stroke">
+        <div class="w-full !min-h-[50px] border-b-[1px] border-b-stroke">
             { children... }
         </div>
     } else {
-        <div class="w-full !h-[50px]">
+        <div class="w-full !min-h-[50px]">
             { children... }
         </div>
     }

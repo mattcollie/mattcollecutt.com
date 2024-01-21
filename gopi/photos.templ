@@ -1,0 +1,83 @@
+package main
+
+import (
+    "fmt"
+)
+
+type MediaItemBasic struct {
+    Id string `json:"id"`
+    MediaUrl string `json:"media_url"`
+}
+
+type MediaChildren struct {
+    MediaItems []MediaItemBasic `json:"data"`
+}
+
+type MediaItem struct {
+    Id string `json:"id"`
+    Caption string `json:"caption"`
+    MediaType string `json:"media_type"`
+    MediaUrl string `json:"media_url"`
+    Timestamp string `json:"timestamp"`
+    Children *MediaChildren `json:"children"`
+}
+
+type PagingCursor struct {
+    Before string `json:"before"`
+    After string `json:"after"`
+}
+
+type Paging struct {
+    Cursors PagingCursor `json:"cursors"`
+    Next string `json:"next"`
+}
+
+type MediaResponse struct {
+    MediaItems []MediaItem `json:"data"`
+    Paging Paging `json:"paging"`
+}
+
+templ PhotoPage(socialLinks []SocialLink, media MediaResponse) {
+    @page("Photos", socialLinks) {
+        @banner(true) {}
+        <div class="py-12 px-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto max-w-6xl">
+                @Photos(media)
+            </div>
+        </div>
+    }
+}
+
+templ Photos(media MediaResponse) {
+    for i, item := range media.MediaItems {
+        if item.Children != nil {
+            for y, child := range item.Children.MediaItems {
+                if i == len(media.MediaItems)-1 && y == len(item.Children.MediaItems)-1 {
+                    <div class="aspect-ratio-box"
+                            hx-get={ fmt.Sprintf("/media/after/%s", media.Paging.Cursors.After) }
+                            hx-trigger="revealed"
+                            hx-swap="afterend">
+                        <img src={child.MediaUrl} alt={item.Caption} class="aspect-ratio-content object-cover" />
+                    </div>
+                } else {
+                    <div class="aspect-ratio-box">
+                        <img src={child.MediaUrl} alt={item.Caption} class="aspect-ratio-content object-cover" />
+                    </div>
+                }
+            }
+        } else {
+            if i == len(media.MediaItems)-1 {
+                <div class="aspect-ratio-box"
+                        hx-get={ fmt.Sprintf("/media/after/%s", media.Paging.Cursors.After) }
+                        hx-trigger="revealed"
+                        hx-swap="afterend">
+                    <img src={item.MediaUrl} alt={item.Caption} class="aspect-ratio-content object-cover" />
+                </div>
+            } else {
+                <div class="aspect-ratio-box">
+                    <img src={item.MediaUrl} alt={item.Caption} class="aspect-ratio-content object-cover" />
+                </div>
+            }
+        }
+    }
+}
