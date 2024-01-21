@@ -1,44 +1,12 @@
-package main
+package templates
 
 import (
     "fmt"
+    "gopi/models"
 )
 
-type MediaItemBasic struct {
-    Id string `json:"id"`
-    MediaUrl string `json:"media_url"`
-}
-
-type MediaChildren struct {
-    MediaItems []MediaItemBasic `json:"data"`
-}
-
-type MediaItem struct {
-    Id string `json:"id"`
-    Caption string `json:"caption"`
-    MediaType string `json:"media_type"`
-    MediaUrl string `json:"media_url"`
-    Timestamp string `json:"timestamp"`
-    Children *MediaChildren `json:"children"`
-}
-
-type PagingCursor struct {
-    Before string `json:"before"`
-    After string `json:"after"`
-}
-
-type Paging struct {
-    Cursors PagingCursor `json:"cursors"`
-    Next string `json:"next"`
-}
-
-type MediaResponse struct {
-    MediaItems []MediaItem `json:"data"`
-    Paging Paging `json:"paging"`
-}
-
-templ PhotoPage(socialLinks []SocialLink, media MediaResponse) {
-    @page("Photos", socialLinks) {
+templ PhotoPage(media models.MediaResponse) {
+    @DefaultPage("Photos") {
         @banner(true) {}
         <div class="py-12 px-3">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto max-w-6xl">
@@ -48,7 +16,7 @@ templ PhotoPage(socialLinks []SocialLink, media MediaResponse) {
     }
 }
 
-templ Photos(media MediaResponse) {
+templ Photos(media models.MediaResponse) {
     for i, item := range media.MediaItems {
         if item.Children != nil {
             for y, child := range item.Children.MediaItems {

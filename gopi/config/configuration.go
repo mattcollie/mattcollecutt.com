@@ -1,4 +1,4 @@
-package main
+package config
 
 import (
 	"github.com/ilyakaznacheev/cleanenv"
@@ -16,10 +16,10 @@ type Config struct {
 	} `toml:"instagram"`
 }
 
-var cfg Config
+var Cfg Config
 
-func readConfig() {
-	err := cleanenv.ReadConfig("config.toml", &cfg)
+func ReadConfig() {
+	err := cleanenv.ReadConfig("config.toml", &Cfg)
 	if err != nil {
 		log.Fatalf("Fatal error config file: %s \\n", err)
 	}

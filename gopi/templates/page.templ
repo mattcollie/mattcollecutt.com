@@ -1,7 +1,6 @@
-package main
+package templates
 
-
-templ page(title string, socialLinks []SocialLink) {
+templ DefaultPage(title string) {
     @layout(title) {
         <div class="relative w-screen h-screen flex flex-row" x-data="{ show: false }">
             @sidebar() {
@@ -29,12 +28,6 @@ templ page(title string, socialLinks []SocialLink) {
                             <path d="M6.89375 2.7875L8.47188 2H14V5H10.4125C9.72813 4.52812 8.89688 4.25 8 4.25C7.10313 4.25 6.275 4.52812 5.5875 5H2V3H6C6.30937 3 6.61563 2.92812 6.89375 2.7875ZM0 3V12C0 13.1031 0.896875 14 2 14H14C15.1031 14 16 13.1031 16 12V2C16 0.896875 15.1031 0 14 0H8.47188C8.1625 0 7.85625 0.071875 7.57812 0.2125L6 1H5V0.5C5 0.225 4.775 0 4.5 0H2.5C2.225 0 2 0.225 2 0.5V1C0.896875 1 0 1.89688 0 3ZM5.25 8.5C5.25 7.77065 5.53973 7.07118 6.05546 6.55546C6.57118 6.03973 7.27065 5.75 8 5.75C8.72935 5.75 9.42882 6.03973 9.94454 6.55546C10.4603 7.07118 10.75 7.77065 10.75 8.5C10.75 9.22935 10.4603 9.92882 9.94454 10.4445C9.42882 10.9603 8.72935 11.25 8 11.25C7.27065 11.25 6.57118 10.9603 6.05546 10.4445C5.53973 9.92882 5.25 9.22935 5.25 8.5Z" fill="white"/>
                         </svg>
                         <span class="text-xs font-semibold text-white">Photos</span>
-                    }
-                    @linkTemplate("/writing", "_self", false) {
-                        <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M11.5125 0.571875L9.7719 2.31562L13.6844 6.22813L15.425 4.4875C16.1094 3.80313 16.1094 2.69688 15.425 2.0125L13.9875 0.571875C13.3032 -0.1125 12.1969 -0.1125 11.5125 0.571875ZM9.00003 2.95625L8.71253 3.04375L4.2094 4.39375C3.58753 4.58125 3.09378 5.05625 2.88753 5.675L0.11878 13.9312C2.99215e-05 14.2844 0.0875299 14.6781 0.346905 14.9438L5.1469 10.1469C5.05315 9.95 5.00003 9.73125 5.00003 9.5C5.00003 8.67188 5.67191 8 6.50003 8C7.32816 8 8.00003 8.67188 8.00003 9.5C8.00003 10.3281 7.32816 11 6.50003 11C6.26878 11 6.05003 10.9469 5.85316 10.8531L1.05315 15.6531C1.3219 15.9125 1.71253 16.0031 2.06565 15.8813L10.325 13.1125C10.9407 12.9063 11.4188 12.4125 11.6063 11.7906L12.9563 7.2875L13.0438 7L9.00003 2.95625Z" fill="white"/>
-                        </svg>
-                        <span class="text-xs font-semibold text-white">Writing</span>
                     }
                 }
 
@@ -72,7 +65,18 @@ templ page(title string, socialLinks []SocialLink) {
                 }
 
                 @navigation("Socials") {
-                    @socials(socialLinks)
+                    @linkTemplate("https://github.com/mattcollie", "_blank", true) {
+                        <img class="lazyload" height="12px" width="12px" data-src="/static/images/github.svg" alt="Github icon"/>
+                        <span class="text-xs font-semibold">Github</span>
+                    }
+                    @linkTemplate("https://www.linkedin.com/in/matt-collecutt", "_blank", true) {
+                        <img class="lazyload" height="12px" width="12px" data-src="/static/images/linkedin.svg" alt="Linkedin icon"/>
+                        <span class="text-xs font-semibold">Linkedin</span>
+                    }
+                    @linkTemplate("https://www.instagram.com/matthewcollecutt", "_blank", true) {
+                        <img class="lazyload" height="12px" width="12px" data-src="/static/images/instagram.svg" alt="Instagram icon"/>
+                        <span class="text-xs font-semibold">Instagram</span>
+                    }
                 }
             }
             <div class="h-full w-full flex flex-col text-gray-200 lg:ml-56">
@@ -165,13 +169,4 @@ templ linkTemplate(href string, target string, external bool) {
             <img class="lazyload" height="9px" width="10px" data-src="/static/images/arrow-angle.svg" alt="Arrow angle"/>
         }
     </a>
-}
-
-templ socials(links []SocialLink) {
-    for _, link := range links {
-        @linkTemplate(link.url, "_blank", true) {
-            <img class="lazyload" height="12px" width="12px" data-src={ link.svg } alt={ link.name + " icon" }/>
-            <span class="text-xs font-semibold">{ link.name }</span>
-        }
-    }
 }
