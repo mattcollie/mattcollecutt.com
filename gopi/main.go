@@ -16,11 +16,11 @@ func main() {
 	app.Get("/media", handlers.MediaHandler)
 	app.Get("/media/after/:after", handlers.MediaAfterHandler)
 	app.Get("/photos", handlers.PhotoHandler)
-	app.Get("/writing", handlers.WritingHandler)
 	app.Get("/robots.txt", func(c *fiber.Ctx) error {
 		return c.SendFile("./static/robots.txt")
 	})
 	app.Static("/static", "./static")
+	app.Use(handlers.NotFoundHandler)
 
 	addr := config.Cfg.Server.Host + ":" + config.Cfg.Server.Port
 	log.Println("Listening on " + addr)
