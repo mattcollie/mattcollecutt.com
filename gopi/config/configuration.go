@@ -14,6 +14,9 @@ type Config struct {
 		UserId      string `toml:"userid"`
 		AccessToken string `toml:"access_token"`
 	} `toml:"instagram"`
+	Metrics struct {
+		GTM string `toml:"gtm" env:"GTM" env-default:""`
+	} `toml:"metrics"`
 }
 
 var Cfg Config

@@ -1,5 +1,7 @@
 package templates
 
+import "gopi/config"
+
 templ DefaultPage(title string) {
     @layout(title) {
         <div class="relative w-screen h-screen flex flex-row" x-data="{ show: false }">
@@ -90,6 +92,12 @@ templ layout(title string) {
     <!doctype html>
     <html lang="en">
     	<head>
+    	    <!-- Google tag (gtag.js) -->
+            <script async src={ "https://www.googletagmanager.com/gtag/js?id=" + config.Cfg.Metrics.GTM}></script>
+
+            @templ.Raw("<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '" + config.Cfg.Metrics.GTM+ "');</script>")
+
+
     		<meta charset="UTF-8" />
     		<meta http-equiv="cache-control" content="no-cache" />
     		<meta http-equiv="pragma" content="no-cache" />
@@ -119,6 +127,10 @@ templ layout(title string) {
     		</div>
 
             <script src="/static/scripts/lazysizes.min.js" async></script>
+            <!-- GTM Noscript Code Goes Here -->
+            <noscript><iframe src={ "https://www.googletagmanager.com/ns.html?id=" + config.Cfg.Metrics.GTM }
+            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+            <!-- End GTM Noscript Code -->
     	</body>
     </html>
 }
