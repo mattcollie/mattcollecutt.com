@@ -4,13 +4,19 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"gopi/config"
 	"gopi/handlers"
+	"gopi/services"
 	"log"
 )
 
 func main() {
 	config.ReadConfig()
+	services.Init()
 
 	app := fiber.New()
+
+	// New routes for Keycloak integration
+	app.Get("/login", services.GetLoginURL)
+	app.Get("/callback", services.HandleLoginCallback)
 
 	app.Get("/", handlers.RootHandler)
 	app.Get("/media", handlers.MediaHandler)
