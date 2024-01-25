@@ -42,6 +42,33 @@ func GetLoginURL(c *fiber.Ctx) error {
 	return c.Redirect(loginURL, fiber.StatusTemporaryRedirect)
 }
 
+func InvalidateJWTCookies(c *fiber.Ctx) error {
+	c.Cookie(&fiber.Cookie{
+		Name:     "jwt",
+		Value:    "",
+		Expires:  time.Unix(0, 0),
+		HTTPOnly: true,
+		Secure:   true,
+		SameSite: "Strict",
+	})
+	c.Cookie(&fiber.Cookie{
+		Name:     "refresh_jwt",
+		Value:    "",
+		Expires:  time.Unix(0, 0),
+		HTTPOnly: true,
+		Secure:   true,
+		SameSite: "Strict",
+	})
+
+	return c.SendString(`
+		<button
+			hx-get="/login"
+			hx-boost="true"
+			class="bg-neutral-750 rounded h-[30px] w-full text-xs font-semibold text-neutral-300 hover:text-neutral-50 active:bg-neutral-800">
+			Sign in
+		</button>`)
+}
+
 func HandleLoginCallback(c *fiber.Ctx) error {
 	code := c.Query("code")
 	tokenOptions := gocloak.TokenOptions{

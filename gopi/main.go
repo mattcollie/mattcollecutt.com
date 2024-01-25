@@ -4,6 +4,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"gopi/config"
 	"gopi/handlers"
+	"gopi/middleware"
 	"gopi/services"
 	"log"
 )
@@ -14,8 +15,11 @@ func main() {
 
 	app := fiber.New()
 
+	app.Use(middleware.AuthMiddleware)
+
 	// New routes for Keycloak integration
 	app.Get("/login", services.GetLoginURL)
+	app.Get("/logout", services.InvalidateJWTCookies)
 	app.Get("/callback", services.HandleLoginCallback)
 	app.Get("/auth/refresh", services.RefreshToken)
 
