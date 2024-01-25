@@ -80,6 +80,17 @@ templ DefaultPage(title string) {
                         <span class="text-xs font-semibold">Instagram</span>
                     }
                 }
+
+                <div class="flex-1"></div>
+
+                <div class="w-full !min-h-[50px] border-t-[1px] p-2 border-t-neutral-800">
+                    <button
+                        hx-get="/login"
+                        hx-boost="true"
+                        class="bg-neutral-750 rounded h-[30px] w-full text-xs font-semibold text-neutral-100">
+                        Sign in
+                    </button>
+                </div>
             }
             <div class="h-full w-full flex flex-col text-gray-200 lg:ml-56">
                 { children... }
@@ -136,7 +147,7 @@ templ layout(title string) {
 }
 
 templ sidebar() {
-    <nav class="!fixed" x-bind:class="{ 'relative !translate-x-0' : show }">
+    <nav class="!fixed flex flex-col space-between" x-bind:class="{ 'relative !translate-x-0' : show }">
         { children... }
     </nav>
 

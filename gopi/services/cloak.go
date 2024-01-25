@@ -33,7 +33,11 @@ func Init() {
 // GetLoginURL generates the Keycloak login URL
 func GetLoginURL(c *fiber.Ctx) error {
 	loginURL := fmt.Sprintf("%s/realms/%s/protocol/openid-connect/auth?client_id=%s&redirect_uri=%s&response_type=code&scope=openid&kc_idp_hint=github", keycloakURL, realm, clientID, redirectURI)
-	log.Printf("Generated login URL: %s\n", loginURL)
+
+	if c.Get("HX-Request") == "true" {
+		c.Set("HX-Redirect", loginURL)
+		return c.SendStatus(fiber.StatusOK)
+	}
 
 	return c.Redirect(loginURL, fiber.StatusTemporaryRedirect)
 }
