@@ -14,6 +14,13 @@ type Config struct {
 		UserId      string `toml:"userid"`
 		AccessToken string `toml:"access_token"`
 	} `toml:"instagram"`
+	Authentication struct {
+		KeycloakURL  string `toml:"keycloakURL"`
+		Realm        string `toml:"realm"`
+		ClientID     string `toml:"clientID"`
+		ClientSecret string `toml:"clientSecret"`
+		RedirectURI  string `toml:"redirectURI"`
+	} `toml:"authentication"`
 	Metrics struct {
 		GTM string `toml:"gtm" env:"GTM" env-default:""`
 	} `toml:"metrics"`
