@@ -184,7 +184,7 @@ templ linkTemplate(href string, target string, external bool) {
         href={ templ.URL(href)}
         target={target}
         x-bind:class={ "{ '!bg-stroke-light': window.location.pathname === '" + href + "' }"  }
-        class="flex flex-row items-center gap-3 w-full h-fit px-2 py-1.5 rounded-lg hover:bg-stroke-light justify-between">
+        class="flex flex-row items-center gap-3 w-full h-fit px-2 py-1.5 rounded hover:bg-stroke-light justify-between">
         <div class="flex flex-row items-center gap-3">
             { children... }
         </div>
