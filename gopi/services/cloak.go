@@ -58,7 +58,7 @@ func HandleLoginCallback(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusInternalServerError).SendString("Error exchanging code for token: " + err.Error())
 	}
 
-	_, _, err = client.DecodeAccessToken(context.Background(), token.AccessToken, realm)
+	err = ValidateAccessToken(token.AccessToken)
 	if err != nil {
 		log.Printf("Error decoding access token: %v\n", err)
 		return c.Status(fiber.StatusUnauthorized).SendString("Error decoding access token: " + err.Error())
@@ -82,25 +82,21 @@ func HandleLoginCallback(c *fiber.Ctx) error {
 		SameSite: "Strict",
 	})
 
-	// Redirect the user or send a response
 	return c.Redirect("/")
 }
 
 func RefreshToken(c *fiber.Ctx) error {
-	refreshTokenCookie := c.Cookies("refresh_jwt") // Assuming you've stored the refresh token in an HTTP-only cookie
+	refreshTokenCookie := c.Cookies("refresh_jwt")
 
-	// Use the refresh token to get a new access token from Keycloak
 	newToken, err := client.RefreshToken(context.Background(), refreshTokenCookie, clientID, clientSecret, realm)
 	if err != nil {
-		// Handle error, possibly redirect to login
 		return c.Status(fiber.StatusUnauthorized).SendString("Failed to refresh token")
 	}
 
-	// Store the new access token in an HTTP-only cookie
 	c.Cookie(&fiber.Cookie{
 		Name:     "jwt",
 		Value:    newToken.AccessToken,
-		Expires:  time.Now().Add(24 * time.Hour), // Adjust based on your token's actual expiry
+		Expires:  time.Now().Add(24 * time.Hour),
 		HTTPOnly: true,
 		Secure:   true,
 		SameSite: "Strict",
@@ -116,4 +112,10 @@ func RefreshToken(c *fiber.Ctx) error {
 	})
 
 	return c.SendStatus(fiber.StatusOK)
+}
+
+func ValidateAccessToken(accessToken string) error {
+	ctx := context.Background()
+	_, _, err := client.DecodeAccessToken(ctx, accessToken, realm)
+	return err
 }
