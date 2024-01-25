@@ -17,6 +17,7 @@ func main() {
 	// New routes for Keycloak integration
 	app.Get("/login", services.GetLoginURL)
 	app.Get("/callback", services.HandleLoginCallback)
+	app.Get("/auth/refresh", services.RefreshToken)
 
 	app.Get("/", handlers.RootHandler)
 	app.Get("/media", handlers.MediaHandler)

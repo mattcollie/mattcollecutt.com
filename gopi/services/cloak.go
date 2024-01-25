@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/Nerzal/gocloak/v13"
 	"log"
+	"time"
 
 	"github.com/gofiber/fiber/v2"
 	"gopi/config"
@@ -58,5 +59,62 @@ func HandleLoginCallback(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusInternalServerError).SendString("Error exchanging code for token: " + err.Error())
 	}
 
-	return c.JSON(token)
+	_, _, err = client.DecodeAccessToken(context.Background(), token.AccessToken, realm)
+	if err != nil {
+		log.Printf("Error decoding access token: %v\n", err)
+		return c.Status(fiber.StatusUnauthorized).SendString("Error decoding access token: " + err.Error())
+	}
+
+	c.Cookie(&fiber.Cookie{
+		Name:     "jwt",
+		Value:    token.AccessToken,
+		HTTPOnly: true,
+		Secure:   true,
+		SameSite: "Strict",
+		Expires:  time.Now().Add(24 * time.Hour),
+	})
+
+	c.Cookie(&fiber.Cookie{
+		Name:     "refresh_jwt",
+		Value:    token.RefreshToken,
+		Expires:  time.Now().Add(24 * 7 * time.Hour),
+		HTTPOnly: true,
+		Secure:   true,
+		SameSite: "Strict",
+	})
+
+	// Redirect the user or send a response
+	return c.Redirect("/")
+}
+
+func RefreshToken(c *fiber.Ctx) error {
+	refreshTokenCookie := c.Cookies("refresh_jwt") // Assuming you've stored the refresh token in an HTTP-only cookie
+
+	// Use the refresh token to get a new access token from Keycloak
+	newToken, err := client.RefreshToken(context.Background(), refreshTokenCookie, clientID, clientSecret, realm)
+	if err != nil {
+		// Handle error, possibly redirect to login
+		return c.Status(fiber.StatusUnauthorized).SendString("Failed to refresh token")
+	}
+
+	// Store the new access token in an HTTP-only cookie
+	c.Cookie(&fiber.Cookie{
+		Name:     "jwt",
+		Value:    newToken.AccessToken,
+		Expires:  time.Now().Add(24 * time.Hour), // Adjust based on your token's actual expiry
+		HTTPOnly: true,
+		Secure:   true,
+		SameSite: "Strict",
+	})
+
+	c.Cookie(&fiber.Cookie{
+		Name:     "refresh_jwt",
+		Value:    newToken.RefreshToken,
+		Expires:  time.Now().Add(24 * 7 * time.Hour),
+		HTTPOnly: true,
+		Secure:   true,
+		SameSite: "Strict",
+	})
+
+	return c.SendStatus(fiber.StatusOK)
 }
