@@ -31,7 +31,6 @@ func Init() {
 	client = gocloak.NewClient(keycloakURL)
 }
 
-// GetLoginURL generates the Keycloak login URL
 func GetLoginURL(c *fiber.Ctx) error {
 	loginURL := fmt.Sprintf("%s/realms/%s/protocol/openid-connect/auth?client_id=%s&redirect_uri=%s&response_type=code&scope=openid&kc_idp_hint=github", keycloakURL, realm, clientID, redirectURI)
 
