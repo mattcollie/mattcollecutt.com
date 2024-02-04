@@ -1,4 +1,4 @@
-package models
+package model
 
 type MediaItemBasic struct {
 	Id       string `json:"id"`

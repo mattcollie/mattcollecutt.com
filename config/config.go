@@ -28,7 +28,7 @@ type Config struct {
 
 var Cfg Config
 
-func ReadConfig() {
+func Read() {
 	err := cleanenv.ReadConfig("config.toml", &Cfg)
 	if err != nil {
 		log.Fatalf("Fatal error config file: %s \\n", err)

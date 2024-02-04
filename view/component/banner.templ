@@ -1,0 +1,13 @@
+package component
+
+templ Banner(border bool) {
+    if border {
+        <div class="w-full !min-h-[50px] border-b-[1px] border-b-stroke">
+            { children... }
+        </div>
+    } else {
+        <div class="w-full !min-h-[50px]">
+            { children... }
+        </div>
+    }
+}
