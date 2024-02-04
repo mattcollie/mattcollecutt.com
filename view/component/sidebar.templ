@@ -1,0 +1,105 @@
+package component
+
+func isAuthenticated(c context.Context) bool {
+    ok, err := c.Value("isAuthenticated").(bool)
+    if !err {
+        return false
+    }
+    return ok
+}
+
+templ Sidebar() {
+    <nav class="!fixed flex flex-col space-between" x-bind:class="{ 'relative !translate-x-0' : show }">
+        @Banner(true) {
+            <div class="w-full h-full flex flex-row gap-4 items-center pl-6">
+                <button x-show="show" @click="show = !show" x-bind:aria-expanded="show.toString()" aria-haspopup="true" aria-label="Nav toggle">
+                    <svg width="12" height="12" viewBox="0 0 20 18" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 1L18 17" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M2 17L18 1" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <span class="text-xs font-semibold">Matt Collecutt</span>
+            </div>
+        }
+
+        @LinkGroup("") {
+            @Link("/", "_self", false) {
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.9944 7.98438C15.9944 8.54688 15.5778 8.9875 15.1056 8.9875H14.2167L14.2361 13.9937C14.2361 14.0781 14.2306 14.1625 14.2222 14.2469V14.75C14.2222 15.4406 13.725 16 13.1111 16H12.6667C12.6361 16 12.6056 16 12.575 15.9969C12.5361 16 12.4972 16 12.4583 16H11.5556H10.8889C10.275 16 9.77778 15.4406 9.77778 14.75V14V12C9.77778 11.4469 9.38056 11 8.88889 11H7.11111C6.61944 11 6.22222 11.4469 6.22222 12V14V14.75C6.22222 15.4406 5.725 16 5.11111 16H4.44444H3.55833C3.51667 16 3.475 15.9969 3.43333 15.9937C3.4 15.9969 3.36667 16 3.33333 16H2.88889C2.275 16 1.77778 15.4406 1.77778 14.75V11.25C1.77778 11.2219 1.77778 11.1906 1.78056 11.1625V8.9875H0.888889C0.388889 8.9875 0 8.55 0 7.98438C0 7.70312 0.0833333 7.45312 0.277778 7.23438L7.4 0.25C7.59444 0.03125 7.81667 0 8.01111 0C8.20556 0 8.42778 0.0625 8.59444 0.21875L15.6889 7.23438C15.9111 7.45312 16.0222 7.70312 15.9944 7.98438Z" fill="white"/>
+                </svg>
+                <span class="text-xs font-semibold text-white">Home</span>
+            }
+            @Link("/photos", "_self", false) {
+                <svg width="12" height="10" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.89375 2.7875L8.47188 2H14V5H10.4125C9.72813 4.52812 8.89688 4.25 8 4.25C7.10313 4.25 6.275 4.52812 5.5875 5H2V3H6C6.30937 3 6.61563 2.92812 6.89375 2.7875ZM0 3V12C0 13.1031 0.896875 14 2 14H14C15.1031 14 16 13.1031 16 12V2C16 0.896875 15.1031 0 14 0H8.47188C8.1625 0 7.85625 0.071875 7.57812 0.2125L6 1H5V0.5C5 0.225 4.775 0 4.5 0H2.5C2.225 0 2 0.225 2 0.5V1C0.896875 1 0 1.89688 0 3ZM5.25 8.5C5.25 7.77065 5.53973 7.07118 6.05546 6.55546C6.57118 6.03973 7.27065 5.75 8 5.75C8.72935 5.75 9.42882 6.03973 9.94454 6.55546C10.4603 7.07118 10.75 7.77065 10.75 8.5C10.75 9.22935 10.4603 9.92882 9.94454 10.4445C9.42882 10.9603 8.72935 11.25 8 11.25C7.27065 11.25 6.57118 10.9603 6.05546 10.4445C5.53973 9.92882 5.25 9.22935 5.25 8.5Z" fill="white"/>
+                </svg>
+                <span class="text-xs font-semibold text-white">Photos</span>
+            }
+        }
+
+        @LinkGroup("Projects") {
+            @Link("https://trivino.xyz", "_blank", true) {
+                <svg width="10" height="19" viewBox="0 0 50 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M41.6256 2H8.37441C8.37441 2 -13.9662 54.6172 25 54.6172C63.9662 54.6172 41.6256 2 41.6256 2Z" stroke="white" stroke-width="4"/>
+                    <line x1="26.0808" y1="56.7478" x2="26.0808" y2="85.911" stroke="white" stroke-width="4" stroke-linecap="square"/>
+                    <path d="M23.3128 87.6973L19.1564 89.3947M23.3128 87.6973V86.9139M23.3128 87.6973V88.546M19.1564 89.3947H18.7667M19.1564 89.3947H20.4553M23.3128 86.9139V86C18.6368 89.3947 15.7793 89.3947 15 89.3947H18.7667M23.3128 86.9139L18.7667 89.3947M23.3128 88.546V89.3947H20.4553M23.3128 88.546L20.4553 89.3947" stroke="white" stroke-width="2"/>
+                    <path d="M29 87.6973L33.1564 89.3947M29 87.6973V86.9139M29 87.6973V88.546M33.1564 89.3947H33.546M33.1564 89.3947H31.8575M29 86.9139V86C33.6759 89.3947 36.5334 89.3947 37.3127 89.3947H33.546M29 86.9139L33.546 89.3947M29 88.546V89.3947H31.8575M29 88.546L31.8575 89.3947" stroke="white" stroke-width="2"/>
+                    <rect x="7.45532" y="87.911" width="35.3293" height="4" rx="1" fill="white"/>
+                    <path d="M7.39599 33.1162C8.99456 43.2376 17.0198 49 26.0278 49C35.0358 49 43.788 39.9751 43.3996 34.0788C43.0113 28.1826 42.5539 26.6183 42.5539 26.6183C33.251 30.2282 21.9304 20 16.3365 20C9.57071 20.361 5.70455 22.4066 7.39599 33.1162Z" fill="#843737"/>
+                    <path d="M7.39599 33.1162C8.99456 43.2376 17.0198 49 26.0278 49C35.0358 49 43.788 39.9751 43.3996 34.0788C43.0113 28.1826 42.5539 26.6183 42.5539 26.6183C33.251 30.2282 21.9304 20 16.3365 20C9.57071 20.361 5.70455 22.4066 7.39599 33.1162Z" fill="#843737"/>
+                    <path d="M7.39599 33.1162C8.99456 43.2376 17.0198 49 26.0278 49C35.0358 49 43.788 39.9751 43.3996 34.0788C43.0113 28.1826 42.5539 26.6183 42.5539 26.6183C33.251 30.2282 21.9304 20 16.3365 20C9.57071 20.361 5.70455 22.4066 7.39599 33.1162Z" fill="#843737"/>
+                    <path d="M7.39599 33.1162C8.99456 43.2376 17.0198 49 26.0278 49C35.0358 49 43.788 39.9751 43.3996 34.0788C43.0113 28.1826 42.5539 26.6183 42.5539 26.6183C33.251 30.2282 21.9304 20 16.3365 20C9.57071 20.361 5.70455 22.4066 7.39599 33.1162Z" fill="#843737"/>
+                    <path d="M43.9741 33.5975C43.9741 43.8434 34.497 49 25.489 49C16.481 49 7.72883 43.5851 7.24555 34.1992C6.76228 24.8133 7.24555 26.7386 7.24555 26.7386C13.7697 36.9668 29.2304 19.3983 35.3049 20C42.0707 20.361 43.9741 22.0456 43.9741 33.5975Z" fill="#A93E3E"/>
+                    <path d="M43.9741 33.5975C43.9741 43.8434 34.497 49 25.489 49C16.481 49 7.72883 43.5851 7.24555 34.1992C6.76228 24.8133 7.24555 26.7386 7.24555 26.7386C13.7697 36.9668 29.2304 19.3983 35.3049 20C42.0707 20.361 43.9741 22.0456 43.9741 33.5975Z" fill="#A93E3E"/>
+                    <path d="M43.9741 33.5975C43.9741 43.8434 34.497 49 25.489 49C16.481 49 7.72883 43.5851 7.24555 34.1992C6.76228 24.8133 7.24555 26.7386 7.24555 26.7386C13.7697 36.9668 29.2304 19.3983 35.3049 20C42.0707 20.361 43.9741 22.0456 43.9741 33.5975Z" fill="#A93E3E"/>
+                    <path d="M43.9741 33.5975C43.9741 43.8434 34.497 49 25.489 49C16.481 49 7.72883 43.5851 7.24555 34.1992C6.76228 24.8133 7.24555 26.7386 7.24555 26.7386C13.7697 36.9668 29.2304 19.3983 35.3049 20C42.0707 20.361 43.9741 22.0456 43.9741 33.5975Z" fill="#A93E3E"/>
+                </svg>
+                <span class="text-xs font-semibold text-white">TriVino</span>
+            }
+            @Link("https://nookly.co.nz", "_blank", true) {
+                <svg width="11.9" height="12" viewBox="0 0 150 159" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M74.7104 43.1081C66.9884 43.1081 60.6178 45.1906 55.5984 49.3556C50.5791 53.3124 46.9112 58.6228 44.5946 65.2868C42.278 71.7426 41.1197 79.0314 41.1197 87.1532V138.44C41.1197 149.795 31.9147 159 20.5598 159C9.20496 159 0 149.795 0 138.44V81.8428C0 66.8487 2.7027 53.2082 8.10811 40.9214C13.7066 28.4263 22.0077 18.5344 33.0116 11.2456C44.0154 3.74853 57.9151 0 74.7104 0C91.5058 0 105.405 3.74853 116.409 11.2456C127.606 18.5344 136.004 28.3222 141.602 40.609C147.201 52.8959 150 66.6405 150 81.8428V138.44C150 149.795 140.795 159 129.44 159C118.085 159 108.88 149.795 108.88 138.44V87.1532C108.88 79.2397 107.625 71.9509 105.116 65.2868C102.606 58.6228 98.8417 53.3124 93.8224 49.3556C88.9961 45.1906 82.6255 43.1081 74.7104 43.1081Z" fill="url(#paint0_linear_320_1429)"/>
+                    <defs>
+                        <linearGradient id="paint0_linear_320_1429" x1="271.631" y1="-23.2191" x2="271.631" y2="149.634" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#FF411A"/>
+                            <stop offset="1" stop-color="#FF6C4D"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span class="text-xs font-semibold text-white">Nookly</span>
+            }
+        }
+
+        @LinkGroup("Socials") {
+            @Link("https://github.com/mattcollie", "_blank", true) {
+                <img class="lazyload" height="12px" width="12px" data-src="/static/images/github.svg" alt="Github icon"/>
+                <span class="text-xs font-semibold">Github</span>
+            }
+            @Link("https://www.linkedin.com/in/matt-collecutt", "_blank", true) {
+                <img class="lazyload" height="12px" width="12px" data-src="/static/images/linkedin.svg" alt="Linkedin icon"/>
+                <span class="text-xs font-semibold">Linkedin</span>
+            }
+            @Link("https://www.instagram.com/matthewcollecutt", "_blank", true) {
+                <img class="lazyload" height="12px" width="12px" data-src="/static/images/instagram.svg" alt="Instagram icon"/>
+                <span class="text-xs font-semibold">Instagram</span>
+            }
+        }
+
+        <div class="flex-1"></div>
+        <div class="w-full !min-h-[50px] border-t-[1px] p-2 border-t-neutral-800">
+            if isAuthenticated(ctx) {
+                @LogoutButton()
+            } else {
+                @LoginButton()
+            }
+        </div>
+    </nav>
+
+    <button class="burger" @click="show = !show" x-bind:aria-expanded="show.toString()" aria-haspopup="true" aria-label="Nav toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+    </button>
+}

@@ -1,13 +1,15 @@
-package templates
+package photo
 
 import (
     "fmt"
-    "gopi/models"
+    "github.com/mattcollie/mattcollecutt.com/view/layout"
+    "github.com/mattcollie/mattcollecutt.com/view/component"
+    "github.com/mattcollie/mattcollecutt.com/model"
 )
 
-templ PhotoPage(media models.MediaResponse) {
-    @DefaultPage("Photos") {
-        @banner(true) {}
+templ Show(media model.MediaResponse) {
+    @layout.Base("Photos") {
+        @component.Banner(true) {}
         <div class="py-12 px-3">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto max-w-6xl">
                 @Photos(media)
@@ -16,7 +18,7 @@ templ PhotoPage(media models.MediaResponse) {
     }
 }
 
-templ Photos(media models.MediaResponse) {
+templ Photos(media model.MediaResponse) {
     for i, item := range media.MediaItems {
         if item.Children != nil {
             for y, child := range item.Children.MediaItems {

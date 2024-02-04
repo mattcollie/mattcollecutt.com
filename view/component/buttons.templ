@@ -1,0 +1,19 @@
+package component
+
+templ LogoutButton() {
+    <button
+        hx-get="/logout"
+        hx-boost="true"
+        class="bg-neutral-750 rounded h-[30px] w-full text-xs font-semibold text-neutral-300 hover:text-neutral-50 active:bg-neutral-800">
+        Sign out
+    </button>
+}
+
+templ LoginButton() {
+    <button
+        hx-get="/login"
+        hx-boost="true"
+        class="bg-neutral-750 rounded h-[30px] w-full text-xs font-semibold text-neutral-300 hover:text-neutral-50 active:bg-neutral-800">
+        Sign in
+    </button>
+}

@@ -1,0 +1,55 @@
+package layout
+
+import "github.com/mattcollie/mattcollecutt.com/config"
+import "github.com/mattcollie/mattcollecutt.com/view/component"
+
+templ Base(title string) {
+    <!doctype html>
+        <html lang="en">
+        	<head>
+        	    <!-- Google tag (gtag.js) -->
+                <script async src={ "https://www.googletagmanager.com/gtag/js?id=" + config.Cfg.Metrics.GTM}></script>
+                @templ.Raw("<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '" + config.Cfg.Metrics.GTM+ "');</script>")
+
+
+        		<meta charset="UTF-8" />
+        		<meta http-equiv="cache-control" content="no-cache" />
+        		<meta http-equiv="pragma" content="no-cache" />
+        		<meta name="keywords" content="matt collecutt, matt, collecutt, portfolio, developer, web developer, matthew collecutt" />
+        		<meta name="description" content="Matt Collecutt's website" />
+        		<meta name="author" content="Matt Collecutt" />
+        		<meta name="copyright" content="&copy;" />
+        		<meta name="robot" content="index, follow" />
+        		<meta name="og:title" property="og:title" content="Matt Collecutt" />
+        		<meta name="og:description" property="og:description" content="Matt Collecutt's personal software developer website" />
+        		<meta name="og:image" property="og:image" content="/static/images/me.jpg" />
+        		<meta name="og:url" property="og:url" content="https://mattcollecutt.com" />
+        		<meta name="viewport" content="width=device-width" />
+
+        		<link rel="icon" href="/static/favicon.ico" />
+                <link rel="stylesheet" href="/static/output.css"/>
+                <script src="/static/scripts/htmx.min.js"/>
+                <script defer src="/static/scripts/alpinejs.3.13.3.min.js"></script>
+
+                <title>{ title }</title>
+        	</head>
+        	<body class="min-h-full bg-black text-white">
+        		<div class="min-h-full font-serif">
+                    <div class="relative h-screen flex flex-row">
+                        <div class="relative w-screen h-screen flex flex-row" x-data="{ show: false }">
+                            @component.Sidebar()
+                            <div class="h-full w-full flex flex-col text-gray-200 lg:ml-56 lg:ml-80">
+                                { children... }
+                            </div>
+                        </div>
+                    </div>
+        		</div>
+
+                <script src="/static/scripts/lazysizes.min.js" async></script>
+                <!-- GTM Noscript Code Goes Here -->
+                <noscript><iframe src={ "https://www.googletagmanager.com/ns.html?id=" + config.Cfg.Metrics.GTM }
+                height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+                <!-- End GTM Noscript Code -->
+        	</body>
+        </html>
+}
