@@ -6,6 +6,7 @@ import (
 	"github.com/mattcollie/mattcollecutt.com/handler"
 	"github.com/mattcollie/mattcollecutt.com/middleware"
 	"github.com/mattcollie/mattcollecutt.com/service"
+	"log"
 )
 
 func main() {
@@ -32,5 +33,9 @@ func main() {
 
 	app.Static("/static", "./static")
 
-	app.Start("localhost:3000")
+	addr := config.Cfg.Server.Host + ":" + config.Cfg.Server.Port
+	log.Println("Listening on " + addr)
+	if err := app.Start(addr); err != nil {
+		log.Fatalf("Fatal error failed to start server: %s\n", err)
+	}
 }
