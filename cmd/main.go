@@ -6,6 +6,7 @@ import (
 	"github.com/mattcollie/mattcollecutt.com/handler"
 	"github.com/mattcollie/mattcollecutt.com/middleware"
 	"github.com/mattcollie/mattcollecutt.com/service"
+	"log"
 )
 
 func main() {
@@ -13,6 +14,8 @@ func main() {
 	service.StartCloak()
 
 	app := echo.New()
+
+	app.Static("/static", config.Cfg.Server.StaticPath)
 
 	app.Use(middleware.WithAuthentication)
 
@@ -30,7 +33,9 @@ func main() {
 	app.GET("/media", photoHandler.HandlePhotoMedia)
 	app.GET("/media/after/:after", photoHandler.HandlePhotoMediaAfter)
 
-	app.Static("/static", "./static")
-
-	app.Start("localhost:3000")
+	addr := config.Cfg.Server.Host + ":" + config.Cfg.Server.Port
+	log.Println("Listening on " + addr)
+	if err := app.Start(addr); err != nil {
+		log.Fatalf("Fatal error failed to start server: %s\n", err)
+	}
 }

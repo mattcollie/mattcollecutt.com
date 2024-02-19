@@ -12,7 +12,7 @@ templ Show(media model.MediaResponse) {
         @component.Banner(true) {}
         <div class="py-12 px-3">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto max-w-6xl">
-                @Photos(media)
+                <div hx-get="/media" hx-trigger="load" hx-swap="outerHTML"></div>
             </div>
         </div>
     }

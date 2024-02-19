@@ -7,8 +7,9 @@ import (
 
 type Config struct {
 	Server struct {
-		Host string `toml:"host" env:"HOST" env-default:"127.0.0.1"`
-		Port string `toml:"port" env:"PORT" env-default:"3000"`
+		Host       string `toml:"host" env:"HOST" env-default:"127.0.0.1"`
+		Port       string `toml:"port" env:"PORT" env-default:"3000"`
+		StaticPath string `toml:"static" env:"STATIC" env-default:"./static"`
 	} `toml:"server"`
 	Instagram struct {
 		UserId      string `toml:"userid"`

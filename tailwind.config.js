@@ -1,5 +1,3 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./**/*.{html,js,templ}"],
@@ -7,12 +5,10 @@ module.exports = {
     extend: {
       fontFamily: {
         serif: [
-          "Inter",
-          ...defaultTheme.fontFamily.serif
+          "Inter"
         ],
         mono: [
-          "consolas",
-          ...defaultTheme.fontFamily.mono
+          "consolas"
         ]
       }
     },
