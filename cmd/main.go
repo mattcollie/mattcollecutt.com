@@ -15,6 +15,8 @@ func main() {
 
 	app := echo.New()
 
+	app.Static("/static", config.Cfg.Server.StaticPath)
+
 	app.Use(middleware.WithAuthentication)
 
 	authHandler := handler.AuthHandler{}
@@ -30,8 +32,6 @@ func main() {
 	app.GET("/photos", photoHandler.HandlePhotoShow)
 	app.GET("/media", photoHandler.HandlePhotoMedia)
 	app.GET("/media/after/:after", photoHandler.HandlePhotoMediaAfter)
-
-	app.Static("/static", config.Cfg.Server.StaticPath)
 
 	addr := config.Cfg.Server.Host + ":" + config.Cfg.Server.Port
 	log.Println("Listening on " + addr)
