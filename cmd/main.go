@@ -31,7 +31,7 @@ func main() {
 	app.GET("/media", photoHandler.HandlePhotoMedia)
 	app.GET("/media/after/:after", photoHandler.HandlePhotoMediaAfter)
 
-	app.Static("/static", "./static")
+	app.Static("/static", config.Cfg.Server.StaticPath)
 
 	addr := config.Cfg.Server.Host + ":" + config.Cfg.Server.Port
 	log.Println("Listening on " + addr)
