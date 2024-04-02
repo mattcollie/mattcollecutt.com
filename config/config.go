@@ -12,8 +12,10 @@ type Config struct {
 		StaticPath string `toml:"static" env:"STATIC" env-default:"./static"`
 	} `toml:"server"`
 	Instagram struct {
-		UserId      string `toml:"userid"`
-		AccessToken string `toml:"access_token"`
+		UserId       string `toml:"userid"`
+		ClientID     string `toml:"client_id"`
+		ClientSecret string `toml:"client_secret"`
+		AccessToken  string `toml:"access_token"`
 	} `toml:"instagram"`
 	Authentication struct {
 		KeycloakURL  string `toml:"keycloakURL"`
