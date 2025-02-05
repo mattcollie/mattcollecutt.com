@@ -77,4 +77,5 @@ COPY --from=ghcr.io/tarampampam/curl:8.6.0 /bin/curl /bin/curl
 
 EXPOSE 8080
 
+HEALTHCHECK --interval=10s --timeout=4s --retries=3 CMD curl -f http://0.0.0.0:8080/api/health || exit 1
 ENTRYPOINT [ "/bin/server", "-docker", "-static=/bin/static"]
