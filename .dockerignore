@@ -1,0 +1,17 @@
+node_modules
+/.devcontainer
+/.github
+/.vscode
+/.svelte-kit
+/build
+/package
+.env
+.env.*
+!.env.example
+README.md
+main
+main.exe
+.git
+*.log
+npm-debug.log*
+yarn-error.log*
