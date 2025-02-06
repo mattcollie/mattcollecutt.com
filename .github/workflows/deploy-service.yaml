@@ -94,15 +94,18 @@ jobs:
           cache-to: type=gha,mode=max,scope=buildkit-${{ matrix.platform }}
 
       - name: Export digest
+        id: export-digest
         run: |
           mkdir -p /tmp/digests
           digest="${{ steps.build-and-push-docker-image.outputs.digest }}"
-          touch "/tmp/digests/${digest#sha256:}"
+          # Use a filename that includes the platform.  This makes the files unique.
+          filename="/tmp/digests/digest-${{ matrix.platform }}.txt"
+          echo "$digest" > "$filename"  # Store the digest *in* the file.
 
       - name: Upload digest
         uses: actions/upload-artifact@v4
         with:
-          name: digests
+          name: digests-${{ matrix.platform }}
           path: /tmp/digests/*
           if-no-files-found: error
           retention-days: 11
