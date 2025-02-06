@@ -121,10 +121,11 @@ jobs:
           digest="${{ steps.build-and-push-docker-image.outputs.digest }}"
           image_ref="${{ steps.docker-image-name.outputs.value }}@$digest"
           
+          # Correctly construct the tags argument
+          tags_arg=$(echo "${{ steps.docker-metadata.outputs.tags }}" | tr '\n' ' ' | sed 's/[[:space:]]\+/ -t /g')
+          
           # Construct the full command.
-          command="docker buildx imagetools create \
-            $(echo '${{ steps.docker-metadata.outputs.tags }}' | tr '\n' ' ' | sed 's/ /, -t /g') \
-             $image_ref"
+          command="docker buildx imagetools create $tags_arg $image_ref"
           
           echo "Running command: $command"
           $command
