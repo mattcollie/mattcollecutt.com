@@ -87,7 +87,6 @@ jobs:
         env:
           REPOSITORY: ${{ github.repository }}
         run: echo "value=${DOCKER_REGISTRY}/${REPOSITORY,,}" >> $GITHUB_OUTPUT
-
       - name: Docker metadata
         id: docker-metadata
         uses: docker/metadata-action@v5
@@ -110,11 +109,10 @@ jobs:
           context: .
           push: true
           platforms: ${{ matrix.platform }}
-          outputs: type=registry,name=${{ steps.docker-image-name.outputs.value }},push-by-digest=true
-          cache-from: type=gha,scope=buildkit-${{ matrix.platform }}
-          cache-to: type=gha,mode=max,scope=buildkit-${{ matrix.platform }}
           tags: ${{ steps.docker-metadata.outputs.tags }}
           labels: ${{ steps.docker-metadata.outputs.labels }}
+          cache-from: type=gha,scope=buildkit-${{ matrix.platform }}
+          cache-to: type=gha,mode=max,scope=buildkit-${{ matrix.platform }}
 
       - name: Create manifest list (and get digest)
         id: manifest-create
@@ -122,12 +120,12 @@ jobs:
           safe_platform=$(echo "${{ matrix.platform }}" | tr '/' '-')
           digest="${{ steps.build-and-push-docker-image.outputs.digest }}"
           image_ref="${{ steps.docker-image-name.outputs.value }}@$digest"
-
-          # Construct the full command.  No need for separate variables.
+          
+          # Construct the full command.
           command="docker buildx imagetools create \
-            $(echo '${{ steps.docker-metadata.outputs.tags }}' | tr '\n' ' ' | sed 's/ /, -t /g') -t ${{ steps.docker-image-name.outputs.value }} \
+            $(echo '${{ steps.docker-metadata.outputs.tags }}' | tr '\n' ' ' | sed 's/ /, -t /g') \
              $image_ref"
-
+          
           echo "Running command: $command"
           $command
           echo "image=${{ steps.docker-metadata.outputs.tags }}" >> "$GITHUB_OUTPUT" #Output for use
