@@ -96,11 +96,10 @@ jobs:
       - name: Export digest
         id: export-digest
         run: |
-          mkdir -p /tmp/digests
+          mkdir -p /tmp/digests/${{ matrix.platform }}  # Create the full directory structure
           digest="${{ steps.build-and-push-docker-image.outputs.digest }}"
-          # Use a filename that includes the platform.  This makes the files unique.
-          filename="/tmp/digests/digest-${{ matrix.platform }}.txt"
-          echo "$digest" > "$filename"  # Store the digest *in* the file.
+          filename="/tmp/digests/${{ matrix.platform }}/digest.txt"  # Simpler filename
+          echo "$digest" > "$filename"
 
       - name: Upload digest
         uses: actions/upload-artifact@v4
