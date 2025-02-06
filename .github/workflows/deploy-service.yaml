@@ -96,15 +96,16 @@ jobs:
       - name: Export digest
         id: export-digest
         run: |
-          mkdir -p /tmp/digests/${{ matrix.platform }}  # Create the full directory structure
+          safe_platform=$(echo "${{ matrix.platform }}" | tr '/' '-')
+          mkdir -p "/tmp/digests/$safe_platform"
           digest="${{ steps.build-and-push-docker-image.outputs.digest }}"
-          filename="/tmp/digests/${{ matrix.platform }}/digest.txt"  # Simpler filename
+          filename="/tmp/digests/$safe_platform/digest.txt"
           echo "$digest" > "$filename"
 
       - name: Upload digest
         uses: actions/upload-artifact@v4
         with:
-          name: digests-${{ matrix.platform }}
+          name: digests-$(echo "${{ matrix.platform }}" | tr '/' '-')
           path: /tmp/digests/*
           if-no-files-found: error
           retention-days: 11
