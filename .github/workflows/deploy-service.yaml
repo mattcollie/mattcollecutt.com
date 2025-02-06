@@ -58,6 +58,12 @@ jobs:
           - linux/amd64
           - linux/arm64
     steps:
+      - name: Set Platform safe name
+        id: platform-safe
+        env:
+          PLATFORM: ${{ matrix.platform }}
+        run: echo "value=$(echo "${PLATFORM}" | tr '/' '-')" >> $GITHUB_OUTPUT
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -96,16 +102,15 @@ jobs:
       - name: Export digest
         id: export-digest
         run: |
-          safe_platform=$(echo "${{ matrix.platform }}" | tr '/' '-')
-          mkdir -p "/tmp/digests/$safe_platform"
+          mkdir -p "/tmp/digests/${{ steps.platform-safe.outputs.value }}"
           digest="${{ steps.build-and-push-docker-image.outputs.digest }}"
-          filename="/tmp/digests/$safe_platform/digest.txt"
+          filename="/tmp/digests/${{ steps.platform-safe.outputs.value }}/digest.txt"
           echo "$digest" > "$filename"
 
       - name: Upload digest
         uses: actions/upload-artifact@v4
         with:
-          name: digests-$(echo "${{ matrix.platform }}" | tr '/' '-')
+          name: digests-${{ steps.platform-safe.outputs.value }}
           path: /tmp/digests/*
           if-no-files-found: error
           retention-days: 11
