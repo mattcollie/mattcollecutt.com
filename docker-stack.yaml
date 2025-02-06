@@ -1,0 +1,39 @@
+services:
+
+  web:
+    image: ghcr.io/mattcollie/mattcollecutt.com:${GIT_COMMIT_HASH:-latest}
+    secrets:
+      - ghcr_token
+    deploy:
+      replicas: 2
+      update_config:
+        order: start-first
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.web-http-mattcollecutt-com-${ENV}.rule=Host(`${WEB_HOST}`)
+        - traefik.http.routers.web-http-mattcollecutt-com-${ENV}.entrypoints=http
+        - traefik.http.routers.web-http-mattcollecutt-com-${ENV}.middlewares=https-redirect
+        - traefik.http.routers.web-https-mattcollecutt-com-${ENV}.rule=Host(`${WEB_HOST}`)
+        - traefik.http.routers.web-https-mattcollecutt-com-${ENV}.entrypoints=https
+
+        - traefik.http.routers.web-https-mattcollecutt-com-${ENV}.tls=true
+        - traefik.http.routers.web-https-mattcollecutt-com-${ENV}.tls.certresolver=le
+        - traefik.docker.network=traefik-public
+        - traefik.constraint-label=traefik-public
+        - traefik.http.services.web-https-mattcollecutt-com-${ENV}.loadbalancer.server.port=8080
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://0.0.0.0:8080/api/health" ]
+      interval: 10s
+      timeout: 4s
+      retries: 3
+      start_period: 30s
+    networks:
+      - traefik-public
+
+networks:
+  traefik-public:
+    external: true
+
+secrets:
+  ghcr_token:
+    external: true
