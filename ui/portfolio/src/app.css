@@ -2,12 +2,12 @@
 
 @theme {
 	--color-black: #111111;
-	--color-white: #F8F8F8;
-	--color-primary: #111111;
-	--color-secondary: #1B1B1B;
-	--color-stroke: #222222;
-	--color-stroke-light: #444444;
-	--color-grey: #999999;
+	--color-white: #F7F6F2;
+	--color-primary: #F7F6F2;
+	--color-secondary: #FFFFFF;
+	--color-stroke: #E5E5E5;
+	--color-stroke-light: #D4D4D4;
+	--color-grey: #6B7280;
 
 	--color-neutral-50: #fafafa;
 	--color-neutral-100: #f5f5f5;
@@ -26,15 +26,15 @@
 	--font-mono: 'Consolas', monospace;
 
 	/* shadcn overrides */
-	--color-background: #111111;
-	--color-foreground: #F8F8F8;
-	--color-muted: #1B1B1B;
-	--color-muted-foreground: #999999;
-	--color-border: #222222;
-	--color-input: #222222;
-	--color-ring: #444444;
-	--color-accent: #1B1B1B;
-	--color-accent-foreground: #F8F8F8;
+	--color-background: #F7F6F2;
+	--color-foreground: #111111;
+	--color-muted: #F5F5F5;
+	--color-muted-foreground: #6B7280;
+	--color-border: #E5E5E5;
+	--color-input: #E5E5E5;
+	--color-ring: #2563EB;
+	--color-accent: #F5F5F5;
+	--color-accent-foreground: #111111;
 }
 
 @layer base {
@@ -42,12 +42,12 @@
 	body {
 		min-height: 100% !important;
 		height: 100%;
+		scroll-behavior: smooth;
 	}
 }
 
 @utility hp-a {
-	font-style: italic;
-	color: #3b82f6;
+	color: #2563EB;
 	&:hover {
 		text-decoration: underline;
 	}
