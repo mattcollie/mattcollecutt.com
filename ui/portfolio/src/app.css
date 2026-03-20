@@ -1,0 +1,54 @@
+@import 'tailwindcss';
+
+@theme {
+	--color-black: #111111;
+	--color-white: #F8F8F8;
+	--color-primary: #111111;
+	--color-secondary: #1B1B1B;
+	--color-stroke: #222222;
+	--color-stroke-light: #444444;
+	--color-grey: #999999;
+
+	--color-neutral-50: #fafafa;
+	--color-neutral-100: #f5f5f5;
+	--color-neutral-200: #e5e5e5;
+	--color-neutral-300: #d4d4d4;
+	--color-neutral-400: #a3a3a3;
+	--color-neutral-500: #737373;
+	--color-neutral-600: #525252;
+	--color-neutral-700: #404040;
+	--color-neutral-750: #323232;
+	--color-neutral-800: #262626;
+	--color-neutral-900: #171717;
+	--color-neutral-950: #0a0a0a;
+
+	--font-sans: 'Inter', sans-serif;
+	--font-mono: 'Consolas', monospace;
+
+	/* shadcn overrides */
+	--color-background: #111111;
+	--color-foreground: #F8F8F8;
+	--color-muted: #1B1B1B;
+	--color-muted-foreground: #999999;
+	--color-border: #222222;
+	--color-input: #222222;
+	--color-ring: #444444;
+	--color-accent: #1B1B1B;
+	--color-accent-foreground: #F8F8F8;
+}
+
+@layer base {
+	html,
+	body {
+		min-height: 100% !important;
+		height: 100%;
+	}
+}
+
+@utility hp-a {
+	font-style: italic;
+	color: #3b82f6;
+	&:hover {
+		text-decoration: underline;
+	}
+}

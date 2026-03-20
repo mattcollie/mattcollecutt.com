@@ -4,47 +4,41 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Personal portfolio website built with Go (Gin), Templ templates, Tailwind CSS, Alpine.js, and HTMX. Deployed via Docker Swarm with Traefik reverse proxy.
+Personal portfolio website built with SvelteKit 5, Tailwind CSS v4, and shadcn-svelte. Deployed via Cloudflare Pages.
 
 ## Development Commands
 
 ```bash
-# Run locally (generates templ, then starts server)
-make run
+# Run dev server
+cd ui/portfolio && npm run dev
 
-# Watch Tailwind CSS changes
-npm run watch
+# Build for production
+cd ui/portfolio && npm run build
 
-# Generate templ templates manually
-templ generate
-
-# Run Go server directly
-go run main.go -host localhost -port 8080 -static ./static
-
-# Docker build
-docker build -t mattcollecutt.com:latest .
+# Preview production build
+cd ui/portfolio && npm run preview
 ```
-
-The `-docker` flag binds to `0.0.0.0:8080` instead of `localhost:8080`.
 
 ## Architecture
 
-- **main.go** — Gin server setup, routing, graceful shutdown. Routes: `/` (HTML), `/api/health`, `/api/ping`, `/static/*`
-- **handler/** — HTTP handlers. `renderer.go` adapts Templ components to Gin's HTML renderer interface. `root.go` handles the main page
-- **view/** — Templ templates organized as `layout/` (base HTML shell), `component/` (reusable UI pieces), `root/` (page content)
-- **model/** — Data structures (media types for API responses)
-- **static/** — Compiled CSS, JS libraries (Alpine.js, HTMX, lazysizes), images, favicon
-- **input.css** — Tailwind source with custom animations/styles; compiles to `static/output.css`
+All source code lives under `ui/portfolio/`.
+
+- **src/routes/** — SvelteKit file-based routing. `+page.svelte` (home), `+layout.svelte` (root layout with sidebar), `api/health/` and `api/ping/` (JSON endpoints)
+- **src/lib/components/** — Reusable Svelte components: `Sidebar.svelte`, `SidebarLink.svelte`, `SidebarLinkGroup.svelte`, `Banner.svelte`
+- **src/lib/components/ui/** — shadcn-svelte primitives (`button`, `sheet`)
+- **src/lib/utils.ts** — `cn()` helper for Tailwind class merging
+- **src/app.css** — Tailwind v4 theme config with custom color palette and shadcn CSS variable overrides
+- **src/app.html** — HTML shell with meta tags, Google Fonts, PostHog analytics
+- **static/** — Favicon, SVG icons, robots.txt
 
 ## Key Patterns
 
-- Templ generates `*_templ.go` files (gitignored) — always run `templ generate` after editing `.templ` files
-- Multi-stage Dockerfile: fetch deps → generate templ → compile Go → build Tailwind → package in distroless
-- Tailwind v3 with `input.css` as entry point
+- SvelteKit 5 with Svelte runes (`$state`, `$derived`, `$props`, `$bindable`)
+- Tailwind CSS v4 with `@theme` directive for custom tokens
+- `adapter-cloudflare` for Cloudflare Pages deployment
+- Mobile navigation uses Sheet component (slide-out drawer), desktop uses fixed sidebar
 
 ## Deployment
 
-- CI/CD via `.github/workflows/deploy-service.yaml`
-- Branch mapping: `dev` → dev, `master` → staging, release tag → prod
-- Multi-platform builds (amd64 + arm64) pushed to GHCR
-- Docker Swarm stack (`docker-stack.yaml`) with Traefik labels for routing and TLS
+- Deployed via Cloudflare Pages (connected to repo, auto-deploys on push)
+- Build command: `npm run build` with root directory `ui/portfolio`
