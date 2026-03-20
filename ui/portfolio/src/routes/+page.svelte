@@ -72,22 +72,16 @@
 <section class="py-16 md:py-20">
 	<div class="max-w-3xl mx-auto px-6">
 		<h2 class="text-2xl font-semibold text-black mb-6">Side Projects</h2>
-		<ul class="space-y-3 text-grey">
-			<li>
-				<a class="inline-flex items-center gap-2 hover:text-black transition-colors" href="https://trivino.xyz" target="_blank" rel="noopener noreferrer">
-					<img src="/images/trivino.svg" alt="" class="w-4 h-4 shrink-0" />
-					<span class="hp-a font-medium">TriVino</span>
-				</a>
-				— Wine trivia game
-			</li>
-			<li>
-				<a class="inline-flex items-center gap-2 hover:text-black transition-colors" href="https://nookly.co.nz" target="_blank" rel="noopener noreferrer">
-					<img src="/images/nookly.svg" alt="" class="w-4 h-4 shrink-0" />
-					<span class="hp-a font-medium">Nookly</span>
-				</a>
-				— Local services platform
-			</li>
-		</ul>
+		<div class="flex items-center gap-6">
+			<a class="inline-flex items-center gap-2 hover:text-black transition-colors text-grey" href="https://trivino.xyz" target="_blank" rel="noopener noreferrer">
+				<img src="/images/trivino.svg" alt="" class="w-4 h-4 shrink-0" />
+				<span class="hp-a font-medium">TriVino</span>
+			</a>
+			<a class="inline-flex items-center gap-2 hover:text-black transition-colors text-grey" href="https://nookly.co.nz" target="_blank" rel="noopener noreferrer">
+				<img src="/images/nookly.svg" alt="" class="w-4 h-4 shrink-0" />
+				<span class="hp-a font-medium">Nookly</span>
+			</a>
+		</div>
 	</div>
 </section>
 
