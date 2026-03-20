@@ -32,7 +32,7 @@
 	--color-muted-foreground: #6B7280;
 	--color-border: #E5E5E5;
 	--color-input: #E5E5E5;
-	--color-ring: #2563EB;
+	--color-ring: #8B7355;
 	--color-accent: #F5F5F5;
 	--color-accent-foreground: #111111;
 }
@@ -47,7 +47,7 @@
 }
 
 @utility hp-a {
-	color: #2563EB;
+	color: #8B7355;
 	&:hover {
 		text-decoration: underline;
 	}

@@ -18,19 +18,19 @@
 		<div class="relative pl-6 border-l-2 border-stroke space-y-10">
 			<!-- Mustard Technology -->
 			<div class="relative">
-				<div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-[#2563EB] border-2 border-secondary"></div>
+				<div class="absolute -left-[33px] top-1.5 w-4 h-4 rounded-full bg-[#8B7355] border-2 border-primary"></div>
 				<div class="flex items-baseline justify-between gap-4">
 					<h3 class="text-lg font-medium text-black">
 						<a class="hp-a" href="https://www.mustard.co.nz/" target="_blank" rel="noopener noreferrer">Mustard Technology</a>
 					</h3>
 					<span class="text-sm text-grey shrink-0">Jun 2018 — Present</span>
 				</div>
-				<p class="text-sm text-grey mt-0.5">Software Developer</p>
-				<p class="mt-2 text-grey">Building custom software solutions for clients across New Zealand at a small development company in Hamilton.</p>
+				<p class="text-sm text-grey mt-0.5">Developer</p>
+				<p class="mt-2 text-grey">Custom software solutions shaped to fit your business.</p>
 			</div>
 			<!-- Taniwha AI -->
 			<div class="relative">
-				<div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-[#2563EB] border-2 border-secondary"></div>
+				<div class="absolute -left-[33px] top-1.5 w-4 h-4 rounded-full bg-[#8B7355] border-2 border-primary"></div>
 				<div class="flex items-baseline justify-between gap-4">
 					<h3 class="text-lg font-medium text-black">
 						<a class="hp-a" href="https://taniwha.ai" target="_blank" rel="noopener noreferrer">Taniwha AI</a>
@@ -38,11 +38,11 @@
 					<span class="text-sm text-grey shrink-0">2026 — Present</span>
 				</div>
 				<p class="text-sm text-grey mt-0.5">Developer</p>
-				<p class="mt-2 text-grey">An AI venture born out of Mustard Technology, currently in early stages.</p>
+				<p class="mt-2 text-grey">A cognitive engine giving AI agents real beliefs, memory, trust, and identity.</p>
 			</div>
 			<!-- Ezitracker ANZ -->
 			<div class="relative">
-				<div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-stroke-light border-2 border-secondary"></div>
+				<div class="absolute -left-[33px] top-1.5 w-4 h-4 rounded-full bg-[#C4B5A0] border-2 border-primary"></div>
 				<div class="flex items-baseline justify-between gap-4">
 					<h3 class="text-lg font-medium text-black">
 						<a class="hp-a" href="https://www.theaccessgroup.com/" target="_blank" rel="noopener noreferrer">Ezitracker ANZ</a>
@@ -54,7 +54,7 @@
 			</div>
 			<!-- Panztel / Ezitracker -->
 			<div class="relative">
-				<div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-stroke-light border-2 border-secondary"></div>
+				<div class="absolute -left-[33px] top-1.5 w-4 h-4 rounded-full bg-[#C4B5A0] border-2 border-primary"></div>
 				<div class="flex items-baseline justify-between gap-4">
 					<h3 class="text-lg font-medium text-black">
 						<a class="hp-a" href="https://www.theaccessgroup.com/" target="_blank" rel="noopener noreferrer">Panztel (now Ezitracker)</a>
