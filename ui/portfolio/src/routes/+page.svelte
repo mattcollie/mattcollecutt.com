@@ -3,7 +3,7 @@
 	<div class="max-w-3xl mx-auto px-6">
 		<h1 class="text-5xl md:text-6xl font-bold tracking-tight text-black" style="font-family: 'Playfair Display', serif">Matt Collecutt</h1>
 		<p class="mt-6 text-lg text-grey leading-relaxed max-w-xl">
-			Software developer with 11 years of experience across fintech, transport, retail, and AI.
+			Software developer with 11 years of experience across fintech, retail, and AI.
 			Based in New Zealand, currently building at
 			<a class="hp-a" href="https://www.mustard.co.nz/" target="_blank" rel="noopener noreferrer">Mustard Technology</a>
 			and <a class="hp-a" href="https://taniwha.ai" target="_blank" rel="noopener noreferrer">Taniwha AI</a>.
