@@ -19,7 +19,7 @@
 				<a href="https://www.linkedin.com/in/mattcollecutt/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
 					<img src="/images/linkedin.svg" alt="LinkedIn" class="w-5 h-5 opacity-60 hover:opacity-100 transition-opacity" />
 				</a>
-				<a href="https://www.instagram.com/mattcollecutt/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+				<a href="https://www.instagram.com/matthewcollecutt/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
 					<img src="/images/instagram.svg" alt="Instagram" class="w-5 h-5 opacity-60 hover:opacity-100 transition-opacity" />
 				</a>
 			</div>

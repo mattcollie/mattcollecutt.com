@@ -98,7 +98,7 @@
 		<div class="flex items-center gap-4">
 			<a class="hover:text-black transition-colors" href="https://github.com/mattcollie" target="_blank" rel="noopener noreferrer">GitHub</a>
 			<a class="hover:text-black transition-colors" href="https://www.linkedin.com/in/mattcollecutt/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-			<a class="hover:text-black transition-colors" href="https://www.instagram.com/mattcollecutt/" target="_blank" rel="noopener noreferrer">Instagram</a>
+			<a class="hover:text-black transition-colors" href="https://www.instagram.com/matthewcollecutt/" target="_blank" rel="noopener noreferrer">Instagram</a>
 		</div>
 	</div>
 </footer>
