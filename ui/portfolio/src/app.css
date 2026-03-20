@@ -2,8 +2,8 @@
 
 @theme {
 	--color-black: #111111;
-	--color-white: #F7F6F2;
-	--color-primary: #F7F6F2;
+	--color-white: #F2F0EA;
+	--color-primary: #F2F0EA;
 	--color-secondary: #FFFFFF;
 	--color-stroke: #E5E5E5;
 	--color-stroke-light: #D4D4D4;
@@ -26,7 +26,7 @@
 	--font-mono: 'Consolas', monospace;
 
 	/* shadcn overrides */
-	--color-background: #F7F6F2;
+	--color-background: #F2F0EA;
 	--color-foreground: #111111;
 	--color-muted: #F5F5F5;
 	--color-muted-foreground: #6B7280;

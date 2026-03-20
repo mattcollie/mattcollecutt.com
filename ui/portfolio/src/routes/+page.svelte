@@ -2,25 +2,12 @@
 <section class="py-20 md:py-32">
 	<div class="max-w-3xl mx-auto px-6">
 		<h1 class="text-5xl md:text-6xl font-bold tracking-tight text-black" style="font-family: 'Playfair Display', serif">Matt Collecutt</h1>
-		<p class="mt-4 text-xl text-grey">Software Developer</p>
-		<p class="mt-2 text-grey">Building software at Mustard Technology in New Zealand.</p>
-	</div>
-</section>
-
-<!-- About -->
-<section class="py-16 md:py-20">
-	<div class="max-w-3xl mx-auto px-6">
-		<h2 class="text-2xl font-semibold text-black mb-6">About</h2>
-		<div class="space-y-4 text-grey leading-relaxed">
-			<p>
-				Hi, I'm Matt — a software developer based in New Zealand. I enjoy building practical tools
-				and working across the full stack, from backend services to polished front-end experiences.
-			</p>
-			<p>
-				<!-- TODO: Add more detail about your interests, background, or what drives you -->
-				Outside of work, I spend my time on side projects and photography.
-			</p>
-		</div>
+		<p class="mt-6 text-lg text-grey leading-relaxed max-w-xl">
+			Software developer with 11 years of experience across fintech, transport, retail, and AI.
+			Based in New Zealand, currently building at
+			<a class="hp-a" href="https://www.mustard.co.nz/" target="_blank" rel="noopener noreferrer">Mustard Technology</a>
+			and <a class="hp-a" href="https://taniwha.ai" target="_blank" rel="noopener noreferrer">Taniwha AI</a>.
+		</p>
 	</div>
 </section>
 
@@ -85,18 +72,20 @@
 <section class="py-16 md:py-20">
 	<div class="max-w-3xl mx-auto px-6">
 		<h2 class="text-2xl font-semibold text-black mb-6">Side Projects</h2>
-		<ul class="space-y-4 text-grey">
+		<ul class="space-y-3 text-grey">
 			<li>
-				<a class="flex items-center gap-3 group" href="https://trivino.xyz" target="_blank" rel="noopener noreferrer">
-					<img src="/images/trivino.svg" alt="TriVino" class="w-5 h-5 shrink-0" />
-					<span><span class="hp-a font-medium">TriVino</span> — A wine trivia game to test and expand your wine knowledge.</span>
+				<a class="inline-flex items-center gap-2 hover:text-black transition-colors" href="https://trivino.xyz" target="_blank" rel="noopener noreferrer">
+					<img src="/images/trivino.svg" alt="" class="w-4 h-4 shrink-0" />
+					<span class="hp-a font-medium">TriVino</span>
 				</a>
+				— Wine trivia game
 			</li>
 			<li>
-				<a class="flex items-center gap-3 group" href="https://nookly.co.nz" target="_blank" rel="noopener noreferrer">
-					<img src="/images/nookly.svg" alt="Nookly" class="w-5 h-5 shrink-0" />
-					<span><span class="hp-a font-medium">Nookly</span> — A concept for connecting New Zealanders with local service providers.</span>
+				<a class="inline-flex items-center gap-2 hover:text-black transition-colors" href="https://nookly.co.nz" target="_blank" rel="noopener noreferrer">
+					<img src="/images/nookly.svg" alt="" class="w-4 h-4 shrink-0" />
+					<span class="hp-a font-medium">Nookly</span>
 				</a>
+				— Local services platform
 			</li>
 		</ul>
 	</div>
