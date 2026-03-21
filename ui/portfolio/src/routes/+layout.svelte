@@ -5,7 +5,7 @@
 </script>
 
 <svelte:head>
-	<title>Matt Collecutt</title>
+	<title>Matt Collecutt — Software Developer</title>
 </svelte:head>
 
 <div class="min-h-full bg-primary text-foreground font-sans">
