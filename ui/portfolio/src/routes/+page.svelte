@@ -81,6 +81,10 @@
 				<img src="/images/nookly.svg" alt="" class="w-4 h-4 shrink-0" />
 				<span class="hp-a font-medium">Nookly</span>
 			</a>
+			<a class="inline-flex items-center gap-2 hover:text-black transition-colors text-grey" href="https://brewlog.co.nz" target="_blank" rel="noopener noreferrer">
+				<img src="/images/brewlog.png" alt="" class="w-4 h-4 shrink-0" />
+				<span class="hp-a font-medium">Brewlog</span>
+			</a>
 		</div>
 	</div>
 </section>
