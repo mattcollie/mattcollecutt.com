@@ -1,7 +1,7 @@
 <!-- Hero -->
 <section class="py-20 md:py-32">
 	<div class="max-w-3xl mx-auto px-6">
-		<h1 class="text-5xl md:text-6xl font-bold tracking-tight text-black" style="font-family: 'Playfair Display', serif">Matt Collecutt</h1>
+		<h1 class="text-6xl md:text-7xl font-medium tracking-tighter text-black">Matt Collecutt</h1>
 		<p class="mt-6 text-lg text-grey leading-relaxed max-w-xl">
 			Software developer with 11 years of experience across fintech, retail, and AI.
 			Based in New Zealand, currently building at
