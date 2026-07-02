@@ -1,123 +1,99 @@
-<!-- Hero -->
-<section class="hero-spotlight py-20 md:py-32">
-	<div class="max-w-3xl mx-auto px-6">
-		<p class="section-label mb-6">Software Developer — New Zealand</p>
-		<h1 class="text-6xl md:text-7xl font-medium tracking-tighter text-ink">Matt Collecutt</h1>
-		<p class="mt-6 text-lg text-grey leading-relaxed max-w-xl">
-			Software developer with 11 years of experience across fintech, retail, and AI.
-			Based in New Zealand, currently building at
-			<a class="hp-a" href="https://www.mustard.co.nz/" target="_blank" rel="noopener noreferrer">Mustard Technology</a>
-			and <a class="hp-a" href="https://taniwha.ai" target="_blank" rel="noopener noreferrer">Taniwha AI</a>.
-		</p>
-	</div>
-</section>
+<!-- Masthead: Jost skeleton for now — swaps for the hand-traced version when it's ready -->
+<h1 class="font-sans font-medium text-[42px] leading-[1.1] tracking-[-0.01em] mb-5">Matt Collecutt</h1>
+<p class="max-w-[54ch]">
+	Software developer with 11 years across fintech, retail, and AI.
+	Currently building at
+	<a class="doc-a" href="https://www.mustard.co.nz/" target="_blank" rel="noopener noreferrer">Mustard Technology</a>
+	and <a class="doc-a" href="https://taniwha.ai" target="_blank" rel="noopener noreferrer">Taniwha AI</a>.
+</p>
 
-<!-- Experience -->
-<section class="py-16 md:py-20">
-	<div class="max-w-3xl mx-auto px-6">
-		<p class="section-label mb-2">01</p>
-		<h2 class="text-2xl font-semibold text-ink mb-8">Experience</h2>
-		<div class="relative pl-6 border-l border-stroke space-y-10">
-			<!-- Mustard Technology -->
-			<div class="relative">
-				<div class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-gold border-2 border-primary shadow-[0_0_14px_rgba(201,168,124,0.45)]"></div>
-				<div class="flex items-baseline justify-between gap-4">
-					<h3 class="text-lg font-medium text-ink">
-						<a class="hp-a" href="https://www.mustard.co.nz/" target="_blank" rel="noopener noreferrer">Mustard Technology</a>
-					</h3>
-					<span class="text-sm text-grey font-mono shrink-0">Jun 2018 — Present</span>
-				</div>
-				<p class="text-sm text-grey mt-0.5">Developer</p>
-				<p class="mt-2 text-grey">Custom software solutions shaped to fit your business.</p>
+<h2 class="doc-h2 mt-[60px] mb-4"><span class="n">1.</span>Experience</h2>
+<div class="border-t border-rule">
+	<div class="flex justify-between gap-4 py-3.5 border-b border-rule">
+		<div class="min-w-0">
+			<div>
+				<a class="doc-a font-medium no-underline hover:underline" href="https://www.mustard.co.nz/" target="_blank" rel="noopener noreferrer">Mustard Technology</a>
+				<span class="text-grey text-[15px]">— Developer</span>
 			</div>
-			<!-- Taniwha AI -->
-			<div class="relative">
-				<div class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-gold border-2 border-primary shadow-[0_0_14px_rgba(201,168,124,0.45)]"></div>
-				<div class="flex items-baseline justify-between gap-4">
-					<h3 class="text-lg font-medium text-ink">
-						<a class="hp-a" href="https://taniwha.ai" target="_blank" rel="noopener noreferrer">Taniwha AI</a>
-					</h3>
-					<span class="text-sm text-grey font-mono shrink-0">2026 — Present</span>
-				</div>
-				<p class="text-sm text-grey mt-0.5">Developer</p>
-				<p class="mt-2 text-grey">A cognitive engine giving AI agents real beliefs, memory, trust, and identity.</p>
-			</div>
-			<!-- Ezitracker ANZ -->
-			<div class="relative">
-				<div class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-bronze border-2 border-primary"></div>
-				<div class="flex items-baseline justify-between gap-4">
-					<h3 class="text-lg font-medium text-ink">
-						<a class="hp-a" href="https://www.theaccessgroup.com/" target="_blank" rel="noopener noreferrer">Ezitracker ANZ</a>
-					</h3>
-					<span class="text-sm text-grey font-mono shrink-0">Nov 2017 — May 2018</span>
-				</div>
-				<p class="text-sm text-grey mt-0.5">Junior Developer</p>
-				<p class="mt-2 text-grey">Stepped up into a junior role, building on the foundations from my apprenticeship.</p>
-			</div>
-			<!-- Panztel / Ezitracker -->
-			<div class="relative">
-				<div class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-bronze border-2 border-primary"></div>
-				<div class="flex items-baseline justify-between gap-4">
-					<h3 class="text-lg font-medium text-ink">
-						<a class="hp-a" href="https://www.theaccessgroup.com/" target="_blank" rel="noopener noreferrer">Panztel (now Ezitracker)</a>
-					</h3>
-					<span class="text-sm text-grey font-mono shrink-0">Jan 2015 — Nov 2017</span>
-				</div>
-				<p class="text-sm text-grey mt-0.5">Apprentice Developer</p>
-				<p class="mt-2 text-grey">Started my software development journey as an apprentice, learning the fundamentals of building production software.</p>
-			</div>
+			<div class="text-[15.5px] mt-0.5 placeholder-note">(two sentences, in your words: what you build there, for whom, with what)</div>
 		</div>
+		<div class="font-mono text-xs text-grey whitespace-nowrap pt-[5px]">2018 — now</div>
 	</div>
-</section>
+	<div class="flex justify-between gap-4 py-3.5 border-b border-rule">
+		<div class="min-w-0">
+			<div>
+				<a class="doc-a font-medium no-underline hover:underline" href="https://taniwha.ai" target="_blank" rel="noopener noreferrer">Taniwha AI</a>
+				<span class="text-grey text-[15px]">— Developer</span>
+			</div>
+			<div class="text-[15.5px] mt-0.5">A cognitive engine giving AI agents real beliefs, memory, trust, and identity.</div>
+		</div>
+		<div class="font-mono text-xs text-grey whitespace-nowrap pt-[5px]">2026 — now</div>
+	</div>
+	<div class="flex justify-between gap-4 py-3.5 border-b border-rule">
+		<div class="min-w-0">
+			<span class="font-medium">Ezitracker ANZ</span>
+			<span class="text-grey text-[15px]">— Junior Developer</span>
+		</div>
+		<div class="font-mono text-xs text-grey whitespace-nowrap pt-[5px]">2017 — 2018</div>
+	</div>
+	<div class="flex justify-between gap-4 py-3.5 border-b border-rule">
+		<div class="min-w-0">
+			<span class="font-medium">Panztel</span>
+			<span class="text-grey text-[15px]">— Apprentice Developer</span>
+		</div>
+		<div class="font-mono text-xs text-grey whitespace-nowrap pt-[5px]">2015 — 2017</div>
+	</div>
+</div>
 
-<!-- Side Projects -->
-<section class="py-16 md:py-20">
-	<div class="max-w-3xl mx-auto px-6">
-		<p class="section-label mb-2">02</p>
-		<h2 class="text-2xl font-semibold text-ink mb-6">Side Projects</h2>
-		<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-			<a
-				class="group rounded-lg border border-stroke bg-secondary p-5 transition-colors hover:border-gold/50"
-				href="https://trivino.xyz"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				<span class="inline-flex items-center justify-center w-9 h-9 rounded-md bg-white/90 mb-4"><img src="/images/trivino.svg" alt="" class="w-5 h-5" /></span>
-				<p class="font-medium text-ink group-hover:text-gold transition-colors">TriVino</p>
-				<p class="mt-1 text-xs font-mono text-grey">trivino.xyz</p>
-			</a>
-			<a
-				class="group rounded-lg border border-stroke bg-secondary p-5 transition-colors hover:border-gold/50"
-				href="https://nookly.co.nz"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				<span class="inline-flex items-center justify-center w-9 h-9 rounded-md bg-white/90 mb-4"><img src="/images/nookly.svg" alt="" class="w-5 h-5" /></span>
-				<p class="font-medium text-ink group-hover:text-gold transition-colors">Nookly</p>
-				<p class="mt-1 text-xs font-mono text-grey">nookly.co.nz</p>
-			</a>
-			<a
-				class="group rounded-lg border border-stroke bg-secondary p-5 transition-colors hover:border-gold/50"
-				href="https://brewlog.co.nz"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				<span class="inline-flex items-center justify-center w-9 h-9 rounded-md bg-white/90 mb-4"><img src="/images/brewlog.png" alt="" class="w-5 h-5" /></span>
-				<p class="font-medium text-ink group-hover:text-gold transition-colors">Brewlog</p>
-				<p class="mt-1 text-xs font-mono text-grey">brewlog.co.nz</p>
-			</a>
-		</div>
-	</div>
-</section>
+<h2 class="doc-h2 mt-[60px] mb-4"><span class="n">2.</span>Side projects</h2>
+<ul class="list-none p-0 m-0">
+	<li class="py-1.5 flex gap-2.5 items-baseline flex-wrap">
+		<a class="doc-a" href="https://trivino.xyz" target="_blank" rel="noopener noreferrer">TriVino</a>
+		<span class="font-mono text-xs text-grey">trivino.xyz</span>
+		<span class="placeholder-note text-[15.5px]">— one sentence in your words</span>
+	</li>
+	<li class="py-1.5 flex gap-2.5 items-baseline flex-wrap">
+		<a class="doc-a" href="https://nookly.co.nz" target="_blank" rel="noopener noreferrer">Nookly</a>
+		<span class="font-mono text-xs text-grey">nookly.co.nz</span>
+		<span class="placeholder-note text-[15.5px]">— one sentence in your words</span>
+	</li>
+	<li class="py-1.5 flex gap-2.5 items-baseline flex-wrap">
+		<a class="doc-a" href="https://brewlog.co.nz" target="_blank" rel="noopener noreferrer">Brewlog</a>
+		<span class="font-mono text-xs text-grey">brewlog.co.nz</span>
+		<span class="placeholder-note text-[15.5px]">— one sentence in your words</span>
+	</li>
+</ul>
 
-<!-- Footer -->
-<footer class="py-12 border-t border-stroke">
-	<div class="max-w-3xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-grey">
-		<p>&copy; {new Date().getFullYear()} Matt Collecutt</p>
-		<div class="flex items-center gap-4">
-			<a class="hover:text-gold transition-colors" href="https://github.com/mattcollie" target="_blank" rel="noopener noreferrer">GitHub</a>
-			<a class="hover:text-gold transition-colors" href="https://www.linkedin.com/in/mattcollecutt/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-			<a class="hover:text-gold transition-colors" href="https://www.instagram.com/matthewcollecutt/" target="_blank" rel="noopener noreferrer">Instagram</a>
-		</div>
-	</div>
+<h2 class="doc-h2 mt-[60px] mb-4"><span class="n">3.</span>Notes</h2>
+<ul class="list-none p-0 m-0">
+	<li class="py-1.5">
+		<span class="font-mono text-xs text-grey mr-3.5">····-··</span>
+		<span class="placeholder-note">How I actually use AI to build software (example title — nothing written yet)</span>
+	</li>
+	<li class="py-1.5">
+		<span class="font-mono text-xs text-grey mr-3.5">····-··</span>
+		<span class="placeholder-note">First vintage: winemaking notes from the shed (example title)</span>
+	</li>
+</ul>
+
+<h2 class="doc-h2 mt-[60px] mb-4"><span class="n">4.</span>Off the clock</h2>
+<p>
+	Photography, winemaking, brewing. Most of the projects above exist because of
+	one of these — I like building software around things made by hand.
+</p>
+
+<h2 class="doc-h2 mt-[60px] mb-4"><span class="n">5.</span>Elsewhere</h2>
+<p class="font-mono text-[13px]">
+	<a class="doc-a" href="https://github.com/mattcollie" target="_blank" rel="noopener noreferrer">github</a>
+	·
+	<a class="doc-a" href="https://www.linkedin.com/in/mattcollecutt/" target="_blank" rel="noopener noreferrer">linkedin</a>
+	·
+	<a class="doc-a" href="https://www.instagram.com/matthewcollecutt/" target="_blank" rel="noopener noreferrer">instagram</a>
+	·
+	<a class="doc-a" href="mailto:matt@mustard.co.nz">matt@mustard.co.nz</a>
+</p>
+
+<footer class="mt-[72px] border-t border-rule pt-4 flex justify-between font-mono text-xs text-grey">
+	<span>&copy; {new Date().getFullYear()} Matt Collecutt</span>
+	<span>set in Jost &amp; Newsreader · green from a sign in Paeroa</span>
 </footer>
