@@ -38,6 +38,25 @@ All source code lives under `ui/portfolio/`.
 - Theme: OS preference by default; `theme` key in localStorage overrides (`light`/`dark`); `?theme=` URL param forces a theme for previews
 - Italic grey `placeholder-note` spans mark copy the owner still needs to write in his own words
 
+## Voice — mannerisms to quash
+
+This site must not read as AI-assembled. Banned vocabulary (all of it 2024–26
+AI/template portfolio furniture): mono-uppercase letterspaced labels, kicker
+lines of crafts separated by interpuncts, marquee strips, oversized outlined
+section numerals, glow effects, tilted "stamp" elements, caption-poetry
+("your photograph — 01"), clever section names ("Making", "Off the clock"),
+fragment taglines ("Software by day — everything else by hand"), and
+aestheticizing real stories into branding (the Paeroa green is a color choice,
+not a design motif to repeat).
+
+Positive direction (see Bret Victor's reference pages, danluu.com, gwern.net):
+content-first accretion. Prose in the owner's voice, links inside sentences,
+headings only where content demands them, photos inline where they mean
+something. Design decisions are limited to: readable measure, green links,
+theme system, the (eventually hand-traced) name. When in doubt, less design
+and more writing. Never write the owner's copy for him — mark gaps with
+`placeholder-note` instead.
+
 ## Key Patterns
 
 - SvelteKit 5 with Svelte runes (`$state`, `$derived`, `$props`, `$bindable`)
