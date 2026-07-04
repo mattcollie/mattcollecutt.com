@@ -2,15 +2,16 @@
 	import '../app.css';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
-	import { PUBLIC_POSTHOG_KEY, PUBLIC_POSTHOG_HOST } from '$env/static/public';
+	import * as publicEnv from '$env/static/public';
 
 	let { children } = $props();
 
 	onMount(() => {
-		if (browser && PUBLIC_POSTHOG_KEY) {
+		// namespace import: a missing var is undefined (analytics off), not a build failure
+		if (browser && publicEnv.PUBLIC_POSTHOG_KEY) {
 			import('posthog-js').then(({ default: posthog }) => {
-				posthog.init(PUBLIC_POSTHOG_KEY, {
-					api_host: PUBLIC_POSTHOG_HOST,
+				posthog.init(publicEnv.PUBLIC_POSTHOG_KEY, {
+					api_host: publicEnv.PUBLIC_POSTHOG_HOST,
 					person_profiles: 'always'
 				});
 			});
