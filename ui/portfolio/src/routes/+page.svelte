@@ -139,8 +139,9 @@
 
 <div class="relative min-h-screen">
 	<canvas bind:this={canvas} class="absolute inset-0 w-full h-full" aria-hidden="true"></canvas>
+	<div class="absolute inset-y-0 left-0 w-[74%] sm:w-[62%] hero-scrim pointer-events-none" aria-hidden="true"></div>
 
-	<div class="relative flex justify-between px-6 sm:px-10 py-4 font-mono text-[11px] text-grey">
+	<div class="relative flex justify-between px-6 sm:px-10 py-4 font-mono text-[11px] text-grey top-scrim">
 		<span>mattcollecutt.com</span>
 		<ThemeToggle />
 	</div>
@@ -158,7 +159,7 @@
 		</p>
 	</div>
 
-	<div class="absolute right-4 bottom-3.5 max-w-[46ch] text-right font-mono text-[10.5px] leading-[1.7] text-grey">
+	<div class="absolute right-0 bottom-0 max-w-[52ch] text-right font-mono text-[10.5px] leading-[1.7] text-grey cap-scrim pr-4 pb-3.5 pl-14 pt-10">
 		<span>{captions[mapKey]}</span><br />
 		<button type="button" class="map-btn" aria-pressed={mapKey === 'teAroha'} onclick={() => selectMap('teAroha')}>te aroha</button>
 		·
@@ -203,7 +204,7 @@
 		<a class="doc-a" href="https://github.com/mattcollie" target="_blank" rel="noopener noreferrer">github</a> ·
 		<a class="doc-a" href="https://www.linkedin.com/in/mattcollecutt/" target="_blank" rel="noopener noreferrer">linkedin</a> ·
 		<a class="doc-a" href="https://www.instagram.com/matthewcollecutt/" target="_blank" rel="noopener noreferrer">instagram</a> ·
-		<a class="doc-a" href="mailto:matt@mustard.co.nz">email</a>
+		<a class="doc-a" href="mailto:me@mattcollecutt.com">email</a>
 	</span>
 	<span class="placeholder-note">(about page coming)</span>
 </footer>
