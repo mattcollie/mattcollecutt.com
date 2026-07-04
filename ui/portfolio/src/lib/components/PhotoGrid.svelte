@@ -32,26 +32,46 @@
 
 <svelte:window onkeydown={onKey} />
 
-<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-	{#each photos as photo, i}
-		<figure class="m-0 {photo.size === 'wide' ? 'sm:col-span-2' : ''}">
-			<button
-				type="button"
-				class="block w-full cursor-zoom-in focus-visible:outline-2 focus-visible:outline-accent"
-				onclick={() => show(i)}
-				aria-label="View larger: {photo.caption}"
-			>
-				<img
-					src={photo.src}
-					alt={photo.alt}
-					decoding="async"
-					class="rounded-[3px] w-full h-60 sm:h-80 object-cover"
-				/>
-			</button>
-			<figcaption class="font-mono text-[11px] text-grey mt-2">{photo.caption}</figcaption>
-		</figure>
-	{/each}
-</div>
+<!-- The mosaic (mixed spans, cropped tiles) needs mass; below three photos,
+     show every frame uncropped side by side. -->
+{#if photos.length < 3}
+	<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+		{#each photos as photo, i}
+			<figure class="m-0">
+				<button
+					type="button"
+					class="block w-full cursor-zoom-in focus-visible:outline-2 focus-visible:outline-accent"
+					onclick={() => show(i)}
+					aria-label="View larger: {photo.caption}"
+				>
+					<img src={photo.src} alt={photo.alt} decoding="async" class="rounded-[3px] w-full h-auto" />
+				</button>
+				<figcaption class="font-mono text-[11px] text-grey mt-2">{photo.caption}</figcaption>
+			</figure>
+		{/each}
+	</div>
+{:else}
+	<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+		{#each photos as photo, i}
+			<figure class="m-0 {photo.size === 'wide' ? 'sm:col-span-2' : ''}">
+				<button
+					type="button"
+					class="block w-full cursor-zoom-in focus-visible:outline-2 focus-visible:outline-accent"
+					onclick={() => show(i)}
+					aria-label="View larger: {photo.caption}"
+				>
+					<img
+						src={photo.src}
+						alt={photo.alt}
+						decoding="async"
+						class="rounded-[3px] w-full h-60 sm:h-80 object-cover"
+					/>
+				</button>
+				<figcaption class="font-mono text-[11px] text-grey mt-2">{photo.caption}</figcaption>
+			</figure>
+		{/each}
+	</div>
+{/if}
 
 <dialog
 	bind:this={dialogEl}
