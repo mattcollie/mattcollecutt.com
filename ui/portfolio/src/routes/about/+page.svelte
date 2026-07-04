@@ -14,11 +14,10 @@
 	</h1>
 
 	<p class="text-[19px] max-w-[60ch] mb-2">
-		I'm a software developer. The longer answer is harder to distil — the work at
-		Mustard encompasses a lot of things, payments and finance mostly. What I love is
-		fighting fires quickly and calmly, and designing and building systems. Taniwha is
-		younger — there we're looking at what AI might mean next, starting with cognitive
-		agents and building worlds around them.
+		I'm a software developer. At Mustard that means a bit of everything — payments
+		and finance, mostly. What I love is being the calm one when something's on fire —
+		that, and designing and building systems. At Taniwha we're looking at what AI
+		might mean next, starting with cognitive agents and building worlds around them.
 	</p>
 
 	<h2 class="font-sans font-medium text-[19px] mt-[60px] mb-4">The record, for the curious</h2>
