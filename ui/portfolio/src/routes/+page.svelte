@@ -19,8 +19,24 @@
 	let start: number | null = null;
 	let reduced = false;
 
-	function mapColor() {
-		return getComputedStyle(document.documentElement).getPropertyValue('--map').trim();
+	const INDEX_EVERY = 200; // heavier "index" contours, like the printed Topo50 sheets
+
+	function cssVar(name: string) {
+		return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+	}
+
+	/** Pick a stable label spot on the longest line of a level: point + tangent angle. */
+	function labelSpot(lines: number[][][]) {
+		let longest = lines[0];
+		for (const ln of lines) if (ln.length > longest.length) longest = ln;
+		if (!longest || longest.length < 8) return null;
+		const i = Math.floor(longest.length * 0.35);
+		const a = longest[Math.max(0, i - 2)];
+		const b = longest[Math.min(longest.length - 1, i + 2)];
+		let angle = Math.atan2(b[1] - a[1], b[0] - a[0]);
+		if (angle > Math.PI / 2) angle -= Math.PI; // keep numbers upright
+		if (angle < -Math.PI / 2) angle += Math.PI;
+		return { x: longest[i][0], y: longest[i][1], angle };
 	}
 
 	function draw(ts: number, instant = false) {
@@ -37,15 +53,18 @@
 		const s = Math.max(W / data.w, H / data.h);
 		const ox = (W - data.w * s) / 2;
 		const oy = (H - data.h * s) / 2;
-		ctx.lineWidth = 1 * dpr;
-		const rgb = mapColor();
+		const rgb = cssVar('--map');
+		const paper = cssVar('--paper');
 		const n = data.levels.length;
 		for (let i = 0; i < n; i++) {
 			// each elevation fades in during its slice of the reveal
 			const lt = Math.max(0, Math.min((t * n - i) / 1.6, 1));
 			if (lt <= 0) continue;
-			ctx.strokeStyle = `rgba(${rgb},${(0.34 - i * 0.006) * lt})`;
-			for (const ln of data.levels[i].lines) {
+			const level = data.levels[i];
+			const isIndex = level.lv % INDEX_EVERY === 0;
+			ctx.lineWidth = (isIndex ? 1.7 : 1) * dpr;
+			ctx.strokeStyle = `rgba(${rgb},${(isIndex ? 0.52 : 0.3 - i * 0.004) * lt})`;
+			for (const ln of level.lines) {
 				ctx.beginPath();
 				for (let k = 0; k < ln.length; k++) {
 					const x = ox + ln[k][0] * s;
@@ -54,6 +73,26 @@
 					else ctx.lineTo(x, y);
 				}
 				ctx.stroke();
+			}
+			// inline elevation label on each index contour, printed-map style
+			if (isIndex && level.lines.length) {
+				const spot = labelSpot(level.lines);
+				if (spot) {
+					ctx.save();
+					ctx.translate(ox + spot.x * s, oy + spot.y * s);
+					ctx.rotate(spot.angle);
+					ctx.font = `${10 * dpr}px 'IBM Plex Mono', monospace`;
+					ctx.textAlign = 'center';
+					ctx.textBaseline = 'middle';
+					ctx.lineWidth = 5 * dpr; // paper halo breaks the line under the number
+					ctx.strokeStyle = paper;
+					ctx.globalAlpha = lt;
+					ctx.strokeText(String(level.lv), 0, 0);
+					ctx.fillStyle = `rgba(${rgb},0.85)`;
+					ctx.fillText(String(level.lv), 0, 0);
+					ctx.restore();
+					ctx.globalAlpha = 1;
+				}
 			}
 		}
 		if (t < 1) raf = requestAnimationFrame((ts2) => draw(ts2));
@@ -125,7 +164,7 @@
 		·
 		<button type="button" class="map-btn" aria-pressed={mapKey === 'redHill'} onclick={() => selectMap('redHill')}>red hill</button><br />
 		<span class="opacity-75">
-			contours from the
+			contours every 40&nbsp;m, heavier each 200&nbsp;m, from the
 			<a class="text-grey underline underline-offset-[3px]" href="https://data.linz.govt.nz/layer/50768-nz-contours-topo-150k/" target="_blank" rel="noopener noreferrer">LINZ Data Service</a>
 			(Topo50), CC BY 4.0 · how this map is made — <span class="italic">note coming</span>
 		</span>
