@@ -11,6 +11,16 @@ real places: Te Aroha and the Kaimai Range, [where I grew up — your words],
 and the Hunua Ranges above Papakura, [home ground these days — your words]. The site picks
 one at random each visit.
 
+> RAW MATERIAL — Matt's own words, transcribed July 2026, for the personal
+> sections. Shape, don't replace:
+>
+> On Te Aroha: "We climbed it and typically try to every Christmas as well,
+> but our big kitchen window/lounge looked up at the mountain too."
+>
+> On the Hunuas now: "A view, a place to hike/walk, it does also make us
+> feel not-Auckland — we take a small walk around the corner and we see
+> rolling hills/forests, cows, sheep, birds."
+
 ## The data
 
 [Currently:] The elevation comes from NASA's Shuttle Radar Topography
