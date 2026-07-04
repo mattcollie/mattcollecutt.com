@@ -14,8 +14,11 @@
 	</h1>
 
 	<p class="text-[19px] max-w-[60ch] mb-2">
-		<span class="placeholder-note">(a short paragraph in your words — who you are beyond the
-		front page: the software, the making, whatever you'd tell someone who asked)</span>
+		I'm a software developer. The longer answer is harder to distil — the work at
+		Mustard encompasses a lot of things, payments and finance mostly. What I love is
+		fighting fires quickly and calmly, and designing and building systems. Taniwha is
+		younger — there we're looking at what AI might mean next, starting with cognitive
+		agents and building worlds around them.
 	</p>
 
 	<h2 class="font-sans font-medium text-[19px] mt-[60px] mb-4">The record, for the curious</h2>
@@ -26,7 +29,7 @@
 					<a class="doc-a font-medium no-underline hover:underline" href="https://www.mustard.co.nz/" target="_blank" rel="noopener noreferrer">Mustard Technology</a>
 					<span class="text-grey text-[15px]">— Developer</span>
 				</div>
-				<div class="text-[15.5px] mt-0.5 placeholder-note">(two sentences, in your words: what you build there, for whom)</div>
+				<div class="text-[15.5px] mt-0.5">Payments and finance systems, mostly — it encompasses a lot of things.</div>
 			</div>
 			<div class="font-mono text-xs text-grey whitespace-nowrap pt-[5px]">2018 — now</div>
 		</div>

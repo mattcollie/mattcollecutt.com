@@ -28,9 +28,9 @@ phone note. Claude typesets; Claude never writes the copy (see CLAUDE.md).
 - [x] **/notes route** — built (mdsvex; drafts hidden). The map note sits
       at src/content/notes/how-this-map-is-made.md with draft: true —
       publishing is rewriting it and flipping the flag.
-- [x] **/about page** — scaffolded and linked from the footer: record
-      timeline + site colophon. Still needs Matt's intro paragraph and
-      the two Mustard sentences (marked in grey).
+- [x] **/about page** — done: intro and Mustard line in Matt's words
+      (interviewed July 2026, deliberately broad on client work), record
+      timeline, colophon.
 - [ ] **Merge to master** — site is presentable with placeholders; ship
       whenever. Placeholders are honest, not embarrassing.
 
