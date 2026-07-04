@@ -38,3 +38,6 @@ config.toml
 # RAW photo sources stay local; only web derivatives are committed
 *.RAF
 *.raf
+/*.jpg
+/*.JPG
+/*.jpeg
