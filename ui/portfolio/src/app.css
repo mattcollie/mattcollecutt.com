@@ -1,40 +1,56 @@
 @import 'tailwindcss';
 
-@theme {
-	--color-black: #111111;
-	--color-white: #F2F0EA;
-	--color-primary: #F2F0EA;
-	--color-secondary: #FFFFFF;
-	--color-stroke: #E5E5E5;
-	--color-stroke-light: #D4D4D4;
-	--color-grey: #6B7280;
+/* Theme resolution: OS preference by default, [data-theme] override wins.
+   The override is set before paint by the inline script in app.html. */
+:root {
+	--paper: #f2f0ea;
+	--ink: #1a1916;
+	--grey: #6f6a60;
+	--rule: #ddd8cc;
+	--accent: #1f4a38; /* bottle green, from a sign in Paeroa */
+	--map: 31, 74, 56; /* accent as an r,g,b triple for the canvas contours */
+}
 
-	--color-neutral-50: #fafafa;
-	--color-neutral-100: #f5f5f5;
-	--color-neutral-200: #e5e5e5;
-	--color-neutral-300: #d4d4d4;
-	--color-neutral-400: #a3a3a3;
-	--color-neutral-500: #737373;
-	--color-neutral-600: #525252;
-	--color-neutral-700: #404040;
-	--color-neutral-750: #323232;
-	--color-neutral-800: #262626;
-	--color-neutral-900: #171717;
-	--color-neutral-950: #0a0a0a;
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme='light']) {
+		--paper: #12110e;
+		--ink: #ece7de;
+		--grey: #a39b8f;
+		--rule: #2a2620;
+		--accent: #8fbca5; /* the same green, lifted for dark contrast */
+		--map: 143, 188, 165;
+	}
+}
 
-	--font-sans: 'Inter Tight', 'Inter', sans-serif;
-	--font-mono: 'Consolas', monospace;
+:root[data-theme='dark'] {
+	--paper: #12110e;
+	--ink: #ece7de;
+	--grey: #a39b8f;
+	--rule: #2a2620;
+	--accent: #8fbca5;
+	--map: 143, 188, 165;
+}
+
+@theme inline {
+	--color-paper: var(--paper);
+	--color-ink: var(--ink);
+	--color-grey: var(--grey);
+	--color-rule: var(--rule);
+	--color-accent: var(--accent);
+
+	--font-sans: 'Jost', sans-serif;
+	--font-serif: 'Newsreader', Georgia, serif;
+	--font-mono: 'IBM Plex Mono', 'Consolas', monospace;
 
 	/* shadcn overrides */
-	--color-background: #F2F0EA;
-	--color-foreground: #111111;
-	--color-muted: #F5F5F5;
-	--color-muted-foreground: #6B7280;
-	--color-border: #E5E5E5;
-	--color-input: #E5E5E5;
-	--color-ring: #8B7355;
-	--color-accent: #F5F5F5;
-	--color-accent-foreground: #111111;
+	--color-background: var(--paper);
+	--color-foreground: var(--ink);
+	--color-muted: var(--rule);
+	--color-muted-foreground: var(--grey);
+	--color-border: var(--rule);
+	--color-input: var(--rule);
+	--color-ring: var(--accent);
+	--color-accent-foreground: var(--ink);
 }
 
 @layer base {
@@ -43,27 +59,18 @@
 		min-height: 100% !important;
 		height: 100%;
 		scroll-behavior: smooth;
+		background-color: var(--paper);
 	}
 }
 
-@utility hp-a {
-	color: #8B7355;
-	&:hover {
-		text-decoration: underline;
-	}
+@utility doc-a {
+	color: var(--accent);
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 3px;
 }
 
-@utility grain {
-	position: relative;
-	&::before {
-		content: '';
-		position: fixed;
-		inset: 0;
-		pointer-events: none;
-		z-index: 9999;
-		opacity: 0.4;
-		mix-blend-mode: multiply;
-		background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.12  0 0 0 0 0.10  0 0 0 0 0.08  0 0 0 0.18 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-		background-size: 220px 220px;
-	}
+@utility placeholder-note {
+	color: var(--grey);
+	font-style: italic;
 }

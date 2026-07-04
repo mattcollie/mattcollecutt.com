@@ -1,102 +1,233 @@
-<!-- Hero -->
-<section class="py-20 md:py-32">
-	<div class="max-w-3xl mx-auto px-6">
-		<h1 class="text-6xl md:text-7xl font-medium tracking-tighter text-black">Matt Collecutt</h1>
-		<p class="mt-6 text-lg text-grey leading-relaxed max-w-xl">
-			Software developer with 11 years of experience across fintech, retail, and AI.
-			Based in New Zealand, currently building at
-			<a class="hp-a" href="https://www.mustard.co.nz/" target="_blank" rel="noopener noreferrer">Mustard Technology</a>
-			and <a class="hp-a" href="https://taniwha.ai" target="_blank" rel="noopener noreferrer">Taniwha AI</a>.
+<script lang="ts">
+	import { onMount } from 'svelte';
+	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
+	import PhotoGrid from '$lib/components/PhotoGrid.svelte';
+	import { notes } from '$lib/notes';
+
+	type MapKey = 'teAroha' | 'hunuas';
+	type ContourMap = { w: number; h: number; levels: { lv: number; lines: number[][][] }[] };
+
+	const captions: Record<MapKey, string> = {
+		teAroha: 'Te Aroha & the Kaimai Range — the mountain I grew up under.',
+		hunuas: 'Papakura & the Hunua Ranges — home ground these days.'
+	};
+
+	let mapKey = $state<MapKey>('teAroha');
+	let maps: Record<MapKey, ContourMap> | null = null;
+	let canvas: HTMLCanvasElement;
+
+	const REVEAL_MS = 3200; // plains first, summit last
+	let raf = 0;
+	let start: number | null = null;
+	let reduced = false;
+
+	const INDEX_EVERY = 200; // heavier "index" contours, like the printed Topo50 sheets
+
+	function cssVar(name: string) {
+		return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+	}
+
+	/** Pick a stable label spot on the longest line of a level: point + tangent angle. */
+	function labelSpot(lines: number[][][]) {
+		let longest = lines[0];
+		for (const ln of lines) if (ln.length > longest.length) longest = ln;
+		if (!longest || longest.length < 8) return null;
+		const i = Math.floor(longest.length * 0.35);
+		const a = longest[Math.max(0, i - 2)];
+		const b = longest[Math.min(longest.length - 1, i + 2)];
+		let angle = Math.atan2(b[1] - a[1], b[0] - a[0]);
+		if (angle > Math.PI / 2) angle -= Math.PI; // keep numbers upright
+		if (angle < -Math.PI / 2) angle += Math.PI;
+		return { x: longest[i][0], y: longest[i][1], angle };
+	}
+
+	function draw(ts: number, instant = false) {
+		if (!maps) return;
+		const data = maps[mapKey];
+		if (start === null) start = ts;
+		const t = instant || reduced ? 1 : Math.min((ts - start) / REVEAL_MS, 1);
+		const ctx = canvas.getContext('2d');
+		if (!ctx) return;
+		const dpr = devicePixelRatio || 1;
+		const { width: W, height: H } = canvas;
+		ctx.clearRect(0, 0, W, H);
+		// cover-fit the map frame into the hero
+		const s = Math.max(W / data.w, H / data.h);
+		const ox = (W - data.w * s) / 2;
+		const oy = (H - data.h * s) / 2;
+		const rgb = cssVar('--map');
+		const paper = cssVar('--paper');
+		const n = data.levels.length;
+		for (let i = 0; i < n; i++) {
+			// each elevation fades in during its slice of the reveal
+			const lt = Math.max(0, Math.min((t * n - i) / 1.6, 1));
+			if (lt <= 0) continue;
+			const level = data.levels[i];
+			const isIndex = level.lv % INDEX_EVERY === 0;
+			ctx.lineWidth = (isIndex ? 1.7 : 1) * dpr;
+			ctx.strokeStyle = `rgba(${rgb},${(isIndex ? 0.52 : 0.3 - i * 0.004) * lt})`;
+			for (const ln of level.lines) {
+				ctx.beginPath();
+				for (let k = 0; k < ln.length; k++) {
+					const x = ox + ln[k][0] * s;
+					const y = oy + ln[k][1] * s;
+					if (k === 0) ctx.moveTo(x, y);
+					else ctx.lineTo(x, y);
+				}
+				ctx.stroke();
+			}
+			// inline elevation label on each index contour, printed-map style
+			if (isIndex && level.lines.length) {
+				const spot = labelSpot(level.lines);
+				if (spot) {
+					ctx.save();
+					ctx.translate(ox + spot.x * s, oy + spot.y * s);
+					ctx.rotate(spot.angle);
+					ctx.font = `${10 * dpr}px 'IBM Plex Mono', monospace`;
+					ctx.textAlign = 'center';
+					ctx.textBaseline = 'middle';
+					ctx.lineWidth = 5 * dpr; // paper halo breaks the line under the number
+					ctx.strokeStyle = paper;
+					ctx.globalAlpha = lt;
+					ctx.strokeText(String(level.lv), 0, 0);
+					ctx.fillStyle = `rgba(${rgb},0.85)`;
+					ctx.fillText(String(level.lv), 0, 0);
+					ctx.restore();
+					ctx.globalAlpha = 1;
+				}
+			}
+		}
+		if (t < 1) raf = requestAnimationFrame((ts2) => draw(ts2));
+	}
+
+	function restart(instant = false) {
+		cancelAnimationFrame(raf);
+		const dpr = devicePixelRatio || 1;
+		canvas.width = canvas.clientWidth * dpr;
+		canvas.height = canvas.clientHeight * dpr;
+		start = null;
+		raf = requestAnimationFrame((ts) => draw(ts, instant));
+	}
+
+	function selectMap(k: MapKey) {
+		mapKey = k;
+		restart();
+	}
+
+	onMount(() => {
+		reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+		const redraw = () => restart(true);
+		const mq = matchMedia('(prefers-color-scheme: dark)');
+		window.addEventListener('themechange', redraw);
+		mq.addEventListener('change', redraw);
+
+		fetch('/map/contours.json')
+			.then((r) => r.json())
+			.then((data) => {
+				maps = data;
+				mapKey = Math.random() < 0.5 ? 'teAroha' : 'hunuas';
+				restart();
+			});
+
+		return () => {
+			cancelAnimationFrame(raf);
+			window.removeEventListener('themechange', redraw);
+			mq.removeEventListener('change', redraw);
+		};
+	});
+</script>
+
+<svelte:window onresize={() => maps && restart(true)} />
+
+<div class="relative min-h-screen">
+	<canvas bind:this={canvas} class="absolute inset-0 w-full h-full" aria-hidden="true"></canvas>
+
+	<div class="relative flex justify-between px-6 sm:px-10 py-4 font-mono text-[11px] text-grey">
+		<span>mattcollecutt.com</span>
+		<ThemeToggle />
+	</div>
+
+	<div class="relative flex flex-col justify-center px-6 sm:px-10 max-w-[760px] min-h-[calc(100vh-120px)]">
+		<h1 class="font-sans font-medium text-[clamp(44px,6.5vw,78px)] tracking-[-0.02em] leading-[1.05] mb-3.5">
+			Matt Collecutt
+		</h1>
+		<p class="text-[21px] max-w-[46ch]">
+			I write software at
+			<a class="doc-a" href="https://www.mustard.co.nz/" target="_blank" rel="noopener noreferrer">Mustard</a>
+			and
+			<a class="doc-a" href="https://taniwha.ai" target="_blank" rel="noopener noreferrer">Taniwha AI</a>.
+			The rest, however: a batch of wine fermenting in the background and
+			the occasional photograph I like the look of.
 		</p>
 	</div>
+
+	<div class="absolute right-4 bottom-3.5 max-w-[46ch] text-right font-mono text-[10.5px] leading-[1.7] text-grey bg-paper/85 backdrop-blur-[2px] border border-rule rounded-[3px] px-3.5 py-2.5">
+		<span>{captions[mapKey]}</span><br />
+		<button type="button" class="map-btn" aria-pressed={mapKey === 'teAroha'} onclick={() => selectMap('teAroha')}>te aroha</button>
+		·
+		<button type="button" class="map-btn" aria-pressed={mapKey === 'hunuas'} onclick={() => selectMap('hunuas')}>the hunuas</button><br />
+		<span class="opacity-75">
+			contours every 40&nbsp;m, heavier each 200&nbsp;m, from the
+			<a class="text-grey underline underline-offset-[3px]" href="https://data.linz.govt.nz/layer/50768-nz-contours-topo-150k/" target="_blank" rel="noopener noreferrer">LINZ Data Service</a>
+			(Topo50), CC BY 4.0
+		</span>
+	</div>
+</div>
+
+<main class="max-w-[880px] mx-auto px-6 sm:px-10 pt-10">
+	{#if notes.length}
+		<h2 class="font-sans font-medium text-[19px] mt-[70px] mb-4">Notes</h2>
+		<div class="border-b border-rule">
+			{#each notes as note}
+				<div class="flex gap-4 items-baseline py-3 border-t border-rule">
+					<span class="font-mono text-xs text-grey shrink-0">{note.date.slice(0, 7)}</span>
+					<a class="text-[21px] text-ink underline decoration-accent decoration-1 underline-offset-4" href="/notes/{note.slug}">{note.title}</a>
+				</div>
+			{/each}
+		</div>
+	{/if}
+
+</main>
+
+<section class="max-w-[1100px] mx-auto px-6 sm:px-10">
+	<h2 class="font-sans font-medium text-[19px] mt-[70px] mb-4">Photographs</h2>
+	<PhotoGrid />
 </section>
 
-<!-- Experience -->
-<section class="py-16 md:py-20">
-	<div class="max-w-3xl mx-auto px-6">
-		<h2 class="text-2xl font-semibold text-black mb-8">Experience</h2>
-		<div class="relative pl-6 border-l-2 border-stroke space-y-10">
-			<!-- Mustard Technology -->
-			<div class="relative">
-				<div class="absolute -left-[33px] top-1.5 w-4 h-4 rounded-full bg-[#8B7355] border-2 border-primary"></div>
-				<div class="flex items-baseline justify-between gap-4">
-					<h3 class="text-lg font-medium text-black">
-						<a class="hp-a" href="https://www.mustard.co.nz/" target="_blank" rel="noopener noreferrer">Mustard Technology</a>
-					</h3>
-					<span class="text-sm text-grey shrink-0">Jun 2018 — Present</span>
-				</div>
-				<p class="text-sm text-grey mt-0.5">Developer</p>
-				<p class="mt-2 text-grey">Custom software solutions shaped to fit your business.</p>
-			</div>
-			<!-- Taniwha AI -->
-			<div class="relative">
-				<div class="absolute -left-[33px] top-1.5 w-4 h-4 rounded-full bg-[#8B7355] border-2 border-primary"></div>
-				<div class="flex items-baseline justify-between gap-4">
-					<h3 class="text-lg font-medium text-black">
-						<a class="hp-a" href="https://taniwha.ai" target="_blank" rel="noopener noreferrer">Taniwha AI</a>
-					</h3>
-					<span class="text-sm text-grey shrink-0">2026 — Present</span>
-				</div>
-				<p class="text-sm text-grey mt-0.5">Developer</p>
-				<p class="mt-2 text-grey">A cognitive engine giving AI agents real beliefs, memory, trust, and identity.</p>
-			</div>
-			<!-- Ezitracker ANZ -->
-			<div class="relative">
-				<div class="absolute -left-[33px] top-1.5 w-4 h-4 rounded-full bg-[#C4B5A0] border-2 border-primary"></div>
-				<div class="flex items-baseline justify-between gap-4">
-					<h3 class="text-lg font-medium text-black">
-						<a class="hp-a" href="https://www.theaccessgroup.com/" target="_blank" rel="noopener noreferrer">Ezitracker ANZ</a>
-					</h3>
-					<span class="text-sm text-grey shrink-0">Nov 2017 — May 2018</span>
-				</div>
-				<p class="text-sm text-grey mt-0.5">Junior Developer</p>
-				<p class="mt-2 text-grey">Stepped up into a junior role, building on the foundations from my apprenticeship.</p>
-			</div>
-			<!-- Panztel / Ezitracker -->
-			<div class="relative">
-				<div class="absolute -left-[33px] top-1.5 w-4 h-4 rounded-full bg-[#C4B5A0] border-2 border-primary"></div>
-				<div class="flex items-baseline justify-between gap-4">
-					<h3 class="text-lg font-medium text-black">
-						<a class="hp-a" href="https://www.theaccessgroup.com/" target="_blank" rel="noopener noreferrer">Panztel (now Ezitracker)</a>
-					</h3>
-					<span class="text-sm text-grey shrink-0">Jan 2015 — Nov 2017</span>
-				</div>
-				<p class="text-sm text-grey mt-0.5">Apprentice Developer</p>
-				<p class="mt-2 text-grey">Started my software development journey as an apprentice, learning the fundamentals of building production software.</p>
-			</div>
-		</div>
-	</div>
-</section>
+<div class="max-w-[880px] mx-auto px-6 sm:px-10">
+	<p class="mt-20 pt-4 border-t border-rule text-[16.5px] text-grey">
+		Small things I've built for myself over the years, mostly older and no longer maintained:
+		<a class="text-grey underline underline-offset-[3px]" href="https://trivino.xyz" target="_blank" rel="noopener noreferrer">TriVino</a> and
+		<a class="text-grey underline underline-offset-[3px]" href="https://brewlog.co.nz" target="_blank" rel="noopener noreferrer">Brewlog</a>.
+	</p>
+</div>
 
-<!-- Side Projects -->
-<section class="py-16 md:py-20">
-	<div class="max-w-3xl mx-auto px-6">
-		<h2 class="text-2xl font-semibold text-black mb-6">Side Projects</h2>
-		<div class="flex items-center gap-6">
-			<a class="inline-flex items-center gap-2 hover:text-black transition-colors text-grey" href="https://trivino.xyz" target="_blank" rel="noopener noreferrer">
-				<img src="/images/trivino.svg" alt="" class="w-4 h-4 shrink-0" />
-				<span class="hp-a font-medium">TriVino</span>
-			</a>
-			<a class="inline-flex items-center gap-2 hover:text-black transition-colors text-grey" href="https://nookly.co.nz" target="_blank" rel="noopener noreferrer">
-				<img src="/images/nookly.svg" alt="" class="w-4 h-4 shrink-0" />
-				<span class="hp-a font-medium">Nookly</span>
-			</a>
-			<a class="inline-flex items-center gap-2 hover:text-black transition-colors text-grey" href="https://brewlog.co.nz" target="_blank" rel="noopener noreferrer">
-				<img src="/images/brewlog.png" alt="" class="w-4 h-4 shrink-0" />
-				<span class="hp-a font-medium">Brewlog</span>
-			</a>
-		</div>
-	</div>
-</section>
-
-<!-- Footer -->
-<footer class="py-12 border-t border-stroke">
-	<div class="max-w-3xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-grey">
-		<p>&copy; {new Date().getFullYear()} Matt Collecutt</p>
-		<div class="flex items-center gap-4">
-			<a class="hover:text-black transition-colors" href="https://github.com/mattcollie" target="_blank" rel="noopener noreferrer">GitHub</a>
-			<a class="hover:text-black transition-colors" href="https://www.linkedin.com/in/mattcollecutt/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-			<a class="hover:text-black transition-colors" href="https://www.instagram.com/matthewcollecutt/" target="_blank" rel="noopener noreferrer">Instagram</a>
-		</div>
-	</div>
+<footer class="max-w-[880px] mx-auto px-6 sm:px-10 pt-12 pb-24 flex justify-between gap-3 flex-wrap font-mono text-[11.5px] text-grey">
+	<span>
+		&copy; {new Date().getFullYear()} Matt Collecutt ·
+		<a class="doc-a" href="https://github.com/mattcollie" target="_blank" rel="noopener noreferrer">github</a> ·
+		<a class="doc-a" href="https://www.linkedin.com/in/mattcollecutt/" target="_blank" rel="noopener noreferrer">linkedin</a> ·
+		<a class="doc-a" href="https://www.instagram.com/matthewcollecutt/" target="_blank" rel="noopener noreferrer">instagram</a> ·
+		<a class="doc-a" href="mailto:me@mattcollecutt.com">email</a>
+	</span>
+	<a class="doc-a" href="/about">about</a>
 </footer>
+
+<style>
+	.map-btn {
+		all: unset;
+		cursor: pointer;
+		font-family: var(--font-mono);
+		font-size: 10.5px;
+		color: var(--grey);
+		text-decoration: underline;
+		text-underline-offset: 3px;
+	}
+	.map-btn[aria-pressed='true'] {
+		color: var(--accent);
+		text-decoration: none;
+	}
+	.map-btn:focus-visible {
+		outline: 2px solid var(--accent);
+	}
+</style>

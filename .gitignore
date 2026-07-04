@@ -35,3 +35,9 @@ go.work
 config.toml
 
 *_templ.go
+# RAW photo sources stay local; only web derivatives are committed
+*.RAF
+*.raf
+/*.jpg
+/*.JPG
+/*.jpeg
