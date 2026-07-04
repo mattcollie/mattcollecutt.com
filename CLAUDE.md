@@ -33,7 +33,7 @@ All source code lives under `ui/portfolio/`.
 
 ## Design system
 
-- The hero map is autobiography, not decoration: real elevation data for Te Aroha (grew up) and Red Hill (lives now), one picked at random per visit, captioned factually. Draw order is plains-first.
+- The hero map is autobiography, not decoration: real elevation data for Te Aroha (childhood) and the Papakura/Hunua country (home ground now — deliberately no finer than town level), one picked at random per visit, captioned factually. Draw order is plains-first.
 - Content-first below the hero: Notes and Photographs are the first-class sections; old side projects stay demoted to one grey sentence
 - Fonts: Jost (masthead/display — to be replaced by a hand-traced SVG version), Newsreader (body), IBM Plex Mono (dates, domains, metadata)
 - One accent color only: bottle green `#1F4A38` (light) / sage `#8FBCA5` (dark) — from the Robertson Accounting sign in Paeroa

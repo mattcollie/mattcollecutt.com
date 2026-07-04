@@ -9,13 +9,13 @@ The map currently holds two frames, both ~30 × 20 km at slippy-tile zoom 12:
 | key       | place                                   | interval | current source |
 |-----------|------------------------------------------|----------|----------------|
 | `teAroha` | Te Aroha & the Kaimai Range              | 40 m     | LINZ Topo50    |
-| `redHill` | Red Hill, Papakura & the Hunua Ranges    | 40 m     | LINZ Topo50    |
+| `hunuas`  | Papakura & the Hunua Ranges             | 40 m     | LINZ Topo50    |
 
 ## Regenerate from SRTM (no key needed)
 
 ```bash
 python3 generate.py --source srtm --lat -37.544 --lon 175.741 --interval 50 --name teAroha
-python3 generate.py --source srtm --lat -37.09  --lon 175.02  --interval 40 --name redHill
+python3 generate.py --source srtm --lat -37.09  --lon 175.02  --interval 40 --name hunuas
 ```
 
 Data: NASA SRTM (~30 m) via the public AWS Terrain Tiles bucket
@@ -30,7 +30,7 @@ Data: NASA SRTM (~30 m) via the public AWS Terrain Tiles bucket
 
 ```bash
 LINZ_API_KEY=xxxx python3 generate.py --source linz --lat -37.544 --lon 175.741 --interval 40 --name teAroha
-LINZ_API_KEY=xxxx python3 generate.py --source linz --lat -37.09  --lon 175.02  --interval 40 --name redHill
+LINZ_API_KEY=xxxx python3 generate.py --source linz --lat -37.09  --lon 175.02  --interval 40 --name hunuas
 ```
 
 This queries **NZ Contours (Topo50)**, layer 50768, over WFS — the actual

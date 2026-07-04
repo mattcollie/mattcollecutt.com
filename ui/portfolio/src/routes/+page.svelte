@@ -2,12 +2,12 @@
 	import { onMount } from 'svelte';
 	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
 
-	type MapKey = 'teAroha' | 'redHill';
+	type MapKey = 'teAroha' | 'hunuas';
 	type ContourMap = { w: number; h: number; levels: { lv: number; lines: number[][][] }[] };
 
 	const captions: Record<MapKey, string> = {
 		teAroha: 'Te Aroha & the Kaimai Range — the mountain I grew up under.',
-		redHill: 'Red Hill & the Hunua Ranges — the hill I live on now.'
+		hunuas: 'Papakura & the Hunua Ranges — home ground these days.'
 	};
 
 	let mapKey = $state<MapKey>('teAroha');
@@ -123,7 +123,7 @@
 			.then((r) => r.json())
 			.then((data) => {
 				maps = data;
-				mapKey = Math.random() < 0.5 ? 'teAroha' : 'redHill';
+				mapKey = Math.random() < 0.5 ? 'teAroha' : 'hunuas';
 				restart();
 			});
 
@@ -162,7 +162,7 @@
 		<span>{captions[mapKey]}</span><br />
 		<button type="button" class="map-btn" aria-pressed={mapKey === 'teAroha'} onclick={() => selectMap('teAroha')}>te aroha</button>
 		·
-		<button type="button" class="map-btn" aria-pressed={mapKey === 'redHill'} onclick={() => selectMap('redHill')}>red hill</button><br />
+		<button type="button" class="map-btn" aria-pressed={mapKey === 'hunuas'} onclick={() => selectMap('hunuas')}>the hunuas</button><br />
 		<span class="opacity-75">
 			contours every 40&nbsp;m, heavier each 200&nbsp;m, from the
 			<a class="text-grey underline underline-offset-[3px]" href="https://data.linz.govt.nz/layer/50768-nz-contours-topo-150k/" target="_blank" rel="noopener noreferrer">LINZ Data Service</a>

@@ -3,12 +3,12 @@
 > DRAFT SKELETON — the facts below are accurate; the voice is not yours yet.
 > Rewrite every sentence you keep, delete what bores you, and add the
 > personal parts only you know (why these two hills, what Te Aroha was like
-> to grow up under, what you can see from Red Hill). The code samples and
+> to grow up under, what the Hunua country is like now). The code samples and
 > numbers can stay as-is.
 
 The lines behind my name on the front page are real contour lines of two
 real places: Te Aroha and the Kaimai Range, [where I grew up — your words],
-and Red Hill in Papakura, [where I live now — your words]. The site picks
+and the Hunua Ranges above Papakura, [home ground these days — your words]. The site picks
 one at random each visit.
 
 ## The data

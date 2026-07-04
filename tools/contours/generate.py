@@ -19,7 +19,7 @@ Examples:
 
   # the two current maps, from SRTM (what the site ships today)
   python3 generate.py --source srtm --lat -37.544 --lon 175.741 --interval 50 --name teAroha
-  python3 generate.py --source srtm --lat -37.09 --lon 175.02 --interval 40 --name redHill
+  python3 generate.py --source srtm --lat -37.09 --lon 175.02 --interval 40 --name hunuas
 
   # the same frames from LINZ Topo50 (20 m native; keep every 2nd/3rd line)
   LINZ_API_KEY=... python3 generate.py --source linz --lat -37.544 --lon 175.741 --interval 40 --name teAroha
