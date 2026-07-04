@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
+	import PhotoGrid from '$lib/components/PhotoGrid.svelte';
 
 	type MapKey = 'teAroha' | 'hunuas';
 	type ContourMap = { w: number; h: number; levels: { lv: number; lines: number[][][] }[] };
@@ -184,34 +185,7 @@
 	</div>
 
 	<h2 class="font-sans font-medium text-[19px] mt-[70px] mb-4">Photographs</h2>
-	<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-		<figure class="m-0">
-			<img
-				src="/photos/pheasant.webp"
-				alt="A cock pheasant seen through a gap in dark bush"
-				width="1600"
-				height="1067"
-				decoding="async"
-				class="rounded-[3px] w-full h-auto"
-			/>
-			<figcaption class="font-mono text-[11px] text-grey mt-2">
-				pheasant, Te Aroha wetlands, September 2023
-			</figcaption>
-		</figure>
-		<figure class="m-0">
-			<img
-				src="/photos/ship.webp"
-				alt="A Maersk container ship on dark water at dusk"
-				width="1600"
-				height="1067"
-				decoding="async"
-				class="rounded-[3px] w-full h-auto"
-			/>
-			<figcaption class="font-mono text-[11px] text-grey mt-2">
-				container ship, Tauranga, March 2025
-			</figcaption>
-		</figure>
-	</div>
+	<PhotoGrid />
 
 	<p class="mt-20 pt-4 border-t border-rule text-[16.5px] text-grey">
 		Small things I've built for myself over the years, mostly older and no longer maintained:
