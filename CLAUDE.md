@@ -23,7 +23,8 @@ cd ui/portfolio && npm run preview
 
 All source code lives under `ui/portfolio/`.
 
-- **src/routes/** — SvelteKit file-based routing. `+page.svelte` (home: full-viewport contour-map hero on canvas, then Notes / Photographs / small-things / footer), `+layout.svelte` (root layout: css import, PostHog init), `api/health/` and `api/ping/` (JSON endpoints)
+- **src/routes/** — SvelteKit file-based routing. `+page.svelte` (home: full-viewport contour-map hero on canvas, then Notes / Photographs / small-things / footer), `notes/[slug]/` (markdown notes via mdsvex), `about/` (the record + colophon), `+layout.svelte` (root layout: css import, PostHog init), `api/health/` and `api/ping/` (JSON endpoints)
+- **src/content/notes/*.md** — notes with YAML frontmatter (title, date, draft). Publishing = set `draft: false`. Drafts render nowhere; `$lib/notes.ts` is the single source for lists and slugs
 - **src/lib/components/** — `ThemeToggle.svelte` (auto/light/dark cycle, persists to localStorage, dispatches `themechange` for the canvas); `ui/` holds unused shadcn primitives
 - **src/lib/utils.ts** — `cn()` helper for Tailwind class merging
 - **src/app.css** — Theme tokens as CSS custom properties (light/dark via `prefers-color-scheme` + `[data-theme]` override) incl. `--map` r,g,b triple for canvas strokes, mapped into Tailwind v4 via `@theme inline`; utilities (`doc-a`, `placeholder-note`)

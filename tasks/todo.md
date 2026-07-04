@@ -25,12 +25,12 @@ phone note. Claude typesets; Claude never writes the copy (see CLAUDE.md).
 
 ## Claude can build without input (say the word)
 
-- [ ] **/notes route** — markdown-based notes with the map note as the
-      first entry (blocked on the note being written).
-- [ ] **/about page** — the record for the curious: the old experience
-      timeline (Mustard 2018–, Taniwha 2026–, Ezitracker, Panztel) plus
-      whatever Matt wants to say; needs two sentences about Mustard in
-      Matt's words to be complete.
+- [x] **/notes route** — built (mdsvex; drafts hidden). The map note sits
+      at src/content/notes/how-this-map-is-made.md with draft: true —
+      publishing is rewriting it and flipping the flag.
+- [x] **/about page** — scaffolded and linked from the footer: record
+      timeline + site colophon. Still needs Matt's intro paragraph and
+      the two Mustard sentences (marked in grey).
 - [ ] **Merge to master** — site is presentable with placeholders; ship
       whenever. Placeholders are honest, not embarrassing.
 
