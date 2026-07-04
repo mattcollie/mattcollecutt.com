@@ -173,7 +173,7 @@
 	</div>
 </div>
 
-<main class="max-w-[760px] mx-auto px-6 sm:px-10 pt-10">
+<main class="max-w-[880px] mx-auto px-6 sm:px-10 pt-10">
 	<h2 class="font-sans font-medium text-[19px] mt-[70px] mb-4">Notes</h2>
 	<div class="flex gap-4 items-baseline py-3 border-t border-rule">
 		<span class="font-mono text-xs text-grey shrink-0">····</span>
@@ -184,18 +184,23 @@
 		<span class="text-[21px] placeholder-note">First vintage: winemaking notes from the shed (example title)</span>
 	</div>
 
+</main>
+
+<section class="max-w-[1100px] mx-auto px-6 sm:px-10">
 	<h2 class="font-sans font-medium text-[19px] mt-[70px] mb-4">Photographs</h2>
 	<PhotoGrid />
+</section>
 
+<div class="max-w-[880px] mx-auto px-6 sm:px-10">
 	<p class="mt-20 pt-4 border-t border-rule text-[16.5px] text-grey">
 		Small things I've built for myself over the years, mostly older and no longer maintained:
 		<a class="text-grey underline underline-offset-[3px]" href="https://trivino.xyz" target="_blank" rel="noopener noreferrer">TriVino</a>,
 		<a class="text-grey underline underline-offset-[3px]" href="https://nookly.co.nz" target="_blank" rel="noopener noreferrer">Nookly</a>,
 		<a class="text-grey underline underline-offset-[3px]" href="https://brewlog.co.nz" target="_blank" rel="noopener noreferrer">Brewlog</a>.
 	</p>
-</main>
+</div>
 
-<footer class="max-w-[760px] mx-auto px-6 sm:px-10 pt-12 pb-24 flex justify-between gap-3 flex-wrap font-mono text-[11.5px] text-grey">
+<footer class="max-w-[880px] mx-auto px-6 sm:px-10 pt-12 pb-24 flex justify-between gap-3 flex-wrap font-mono text-[11.5px] text-grey">
 	<span>
 		&copy; {new Date().getFullYear()} Matt Collecutt ·
 		<a class="doc-a" href="https://github.com/mattcollie" target="_blank" rel="noopener noreferrer">github</a> ·

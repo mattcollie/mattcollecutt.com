@@ -8,8 +8,9 @@ export type Photo = {
 };
 
 // Add new photos here: drop the export in the repo root, ask Claude to
-// process it, append an entry. Order is display order; three 'wide' +
-// six 'std' currently fills the 3-column mosaic with no gaps.
+// process it, append an entry. Order is display order. Layout rule: the
+// 3-column mosaic fills exactly when entries strictly alternate wide, std
+// (each wide+std pair is one row).
 export const photos: Photo[] = [
 	{
 		src: '/photos/pheasant.webp',
@@ -22,7 +23,7 @@ export const photos: Photo[] = [
 		src: '/photos/stream.webp',
 		full: '/photos/stream-full.webp',
 		alt: 'A boulder stream running out of dark misty conifer forest',
-		caption: 'stream, April 2023',
+		caption: 'stream, near Vancouver, April 2023',
 		size: 'std'
 	},
 	{
@@ -44,7 +45,7 @@ export const photos: Photo[] = [
 		full: '/photos/tui-full.webp',
 		alt: 'A tūī looking up through a blur of branches',
 		caption: 'tūī, May 2023',
-		size: 'std'
+		size: 'wide'
 	},
 	{
 		src: '/photos/kaka.webp',
@@ -52,6 +53,13 @@ export const photos: Photo[] = [
 		alt: 'A kākā eating in the top of a pine tree',
 		caption: 'kākā, July 2023',
 		size: 'std'
+	},
+	{
+		src: '/photos/owl.webp',
+		full: '/photos/owl-full.webp',
+		alt: 'A great horned owl staring straight at the camera',
+		caption: 'great horned owl, Capilano, April 2023',
+		size: 'wide'
 	},
 	{
 		src: '/photos/floodlights.webp',

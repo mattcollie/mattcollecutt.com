@@ -64,7 +64,7 @@
 						src={photo.src}
 						alt={photo.alt}
 						decoding="async"
-						class="rounded-[3px] w-full h-60 sm:h-80 object-cover"
+						class="rounded-[3px] w-full h-60 sm:h-80 lg:h-96 object-cover"
 					/>
 				</button>
 				<figcaption class="font-mono text-[11px] text-grey mt-2">{photo.caption}</figcaption>
