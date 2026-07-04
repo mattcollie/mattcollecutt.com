@@ -6,9 +6,7 @@ phone note. Claude typesets; Claude never writes the copy (see CLAUDE.md).
 
 ## The words (in order of impact)
 
-- [ ] **Hero intro** — one or two sentences after "I write software at
-      Mustard and Taniwha AI." What you're making/thinking about lately.
-      ~5 minutes, transforms the whole page.
+- [x] **Hero intro** — done, Matt's words, July 2026.
 - [ ] **The map note** — rewrite `docs/notes/how-this-map-is-made.draft.md`
       in your own voice. Facts/numbers/code in the draft are all accurate
       and can stay; the marked gaps (why these two hills, "why bother")

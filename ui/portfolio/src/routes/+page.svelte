@@ -154,7 +154,8 @@
 			<a class="doc-a" href="https://www.mustard.co.nz/" target="_blank" rel="noopener noreferrer">Mustard</a>
 			and
 			<a class="doc-a" href="https://taniwha.ai" target="_blank" rel="noopener noreferrer">Taniwha AI</a>.
-			<span class="placeholder-note">(a sentence or two of yours — what you're making and thinking about lately)</span>
+			The rest, however: a batch of wine fermenting in the background and
+			the occasional photograph I like the look of.
 		</p>
 	</div>
 
