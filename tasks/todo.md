@@ -12,12 +12,12 @@ phone note. Claude typesets; Claude never writes the copy (see CLAUDE.md).
       and can stay; the marked gaps (why these two hills, "why bother")
       are the parts readers will remember. ~1 evening.
       Publishing it also needs the /notes route (Claude's job, below).
-- [ ] **Photo captions** — where & when, one line each, once photos chosen.
+- [ ] **Photo captions** — dates are in; needs the "where", one word each.
 
 ## The artifacts
 
-- [ ] **Two photographs** for the Photographs section. Any format;
-      Claude handles sizing/optimization.
+- [x] **Two photographs** — live (pheasant 2023, container ship 2025);
+      RAF originals stay local/gitignored, web JPEGs committed.
 - [ ] **Hand-traced masthead** — trace "Matt Collecutt" (Jost 500) in
       Procreate, one pass per stroke, no corrections; export transparent
       PNG. Tracing template can be regenerated on request (the original

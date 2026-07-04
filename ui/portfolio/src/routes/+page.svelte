@@ -184,11 +184,34 @@
 	</div>
 
 	<h2 class="font-sans font-medium text-[19px] mt-[70px] mb-4">Photographs</h2>
-	<div class="grid grid-cols-1 sm:grid-cols-[1.5fr_1fr] gap-3">
-		<div class="rounded-[3px] min-h-[320px] bg-[radial-gradient(130%_100%_at_20%_0%,#2E5D49,#1F4A38_55%,#10241B)]"></div>
-		<div class="rounded-[3px] min-h-[320px] bg-[radial-gradient(120%_110%_at_80%_15%,#526030,#333F1C_55%,#151B0B)]"></div>
+	<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+		<figure class="m-0">
+			<img
+				src="/photos/pheasant.jpg"
+				alt="A cock pheasant seen through a gap in dark bush"
+				width="1600"
+				height="1067"
+				decoding="async"
+				class="rounded-[3px] w-full h-auto"
+			/>
+			<figcaption class="font-mono text-[11px] text-grey mt-2">
+				pheasant, September 2023 <span class="placeholder-note">(where — one word from you)</span>
+			</figcaption>
+		</figure>
+		<figure class="m-0">
+			<img
+				src="/photos/ship.jpg"
+				alt="A Maersk container ship on dark water at dusk"
+				width="1600"
+				height="1067"
+				decoding="async"
+				class="rounded-[3px] w-full h-auto"
+			/>
+			<figcaption class="font-mono text-[11px] text-grey mt-2">
+				container ship, March 2025 <span class="placeholder-note">(where — one word from you)</span>
+			</figcaption>
+		</figure>
 	</div>
-	<p class="font-mono text-[11px] text-grey mt-2 placeholder-note">(two of yours — captions say where and when)</p>
 
 	<p class="mt-20 pt-4 border-t border-rule text-[16.5px] text-grey">
 		Small things I've built for myself over the years, mostly older and no longer maintained:
