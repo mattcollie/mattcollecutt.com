@@ -195,7 +195,7 @@
 				class="rounded-[3px] w-full h-auto"
 			/>
 			<figcaption class="font-mono text-[11px] text-grey mt-2">
-				pheasant, September 2023 <span class="placeholder-note">(where — one word from you)</span>
+				pheasant, Te Aroha wetlands, September 2023
 			</figcaption>
 		</figure>
 		<figure class="m-0">
@@ -208,7 +208,7 @@
 				class="rounded-[3px] w-full h-auto"
 			/>
 			<figcaption class="font-mono text-[11px] text-grey mt-2">
-				container ship, March 2025 <span class="placeholder-note">(where — one word from you)</span>
+				container ship, Tauranga, March 2025
 			</figcaption>
 		</figure>
 	</div>

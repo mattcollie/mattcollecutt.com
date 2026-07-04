@@ -12,7 +12,7 @@ phone note. Claude typesets; Claude never writes the copy (see CLAUDE.md).
       and can stay; the marked gaps (why these two hills, "why bother")
       are the parts readers will remember. ~1 evening.
       Publishing it also needs the /notes route (Claude's job, below).
-- [ ] **Photo captions** — dates are in; needs the "where", one word each.
+- [x] **Photo captions** — done: Te Aroha wetlands / Tauranga.
 
 ## The artifacts
 
