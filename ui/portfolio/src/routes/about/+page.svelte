@@ -15,8 +15,7 @@
 
 	<p class="text-[19px] max-w-[60ch] mb-2">
 		I'm a software developer. At Mustard that means a bit of everything — payments
-		and finance, mostly. What I love is being the calm one when something's on fire —
-		that, and designing and building systems. At Taniwha we're looking at what AI
+		and finance, mostly. What I love is designing and building systems. At Taniwha we're looking at what AI
 		might mean next, starting with cognitive agents and building worlds around them.
 	</p>
 
