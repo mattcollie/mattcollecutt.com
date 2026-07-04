@@ -169,14 +169,14 @@
 		<span class="opacity-75">
 			contours every 40&nbsp;m, heavier each 200&nbsp;m, from the
 			<a class="text-grey underline underline-offset-[3px]" href="https://data.linz.govt.nz/layer/50768-nz-contours-topo-150k/" target="_blank" rel="noopener noreferrer">LINZ Data Service</a>
-			(Topo50), CC BY 4.0 · how this map is made — <span class="italic">note coming</span>
+			(Topo50), CC BY 4.0
 		</span>
 	</div>
 </div>
 
 <main class="max-w-[880px] mx-auto px-6 sm:px-10 pt-10">
-	<h2 class="font-sans font-medium text-[19px] mt-[70px] mb-4">Notes</h2>
 	{#if notes.length}
+		<h2 class="font-sans font-medium text-[19px] mt-[70px] mb-4">Notes</h2>
 		<div class="border-b border-rule">
 			{#each notes as note}
 				<div class="flex gap-4 items-baseline py-3 border-t border-rule">
@@ -184,15 +184,6 @@
 					<a class="text-[21px] text-ink underline decoration-accent decoration-1 underline-offset-4" href="/notes/{note.slug}">{note.title}</a>
 				</div>
 			{/each}
-		</div>
-	{:else}
-		<div class="flex gap-4 items-baseline py-3 border-t border-rule">
-			<span class="font-mono text-xs text-grey shrink-0">····</span>
-			<span class="text-[21px] placeholder-note">How this map is made (draft in progress)</span>
-		</div>
-		<div class="flex gap-4 items-baseline py-3 border-t border-b border-rule">
-			<span class="font-mono text-xs text-grey shrink-0">····</span>
-			<span class="text-[21px] placeholder-note">First vintage: winemaking notes (planned)</span>
 		</div>
 	{/if}
 
