@@ -25,7 +25,7 @@ Examples:
   LINZ_API_KEY=... python3 generate.py --source linz --lat -37.544 --lon 175.741 --interval 40 --name teAroha
 
 Each run writes/updates one named map inside --out (default:
-ui/portfolio/src/lib/data/contours.json), preserving the other maps.
+ui/portfolio/static/map/contours.json), preserving the other maps.
 Output schema per map: {"w":1000, "h":<int>, "levels":[{"lv":m, "lines":[[[x,y],...],...]}]}
 Coordinates are normalized so x spans 0..1000.
 """
@@ -283,7 +283,7 @@ def main():
     ap.add_argument("--lon", type=float, required=True)
     ap.add_argument("--interval", type=int, default=50)
     ap.add_argument("--name", required=True, help="map key in the output JSON, e.g. teAroha")
-    ap.add_argument("--out", default=os.path.join(os.path.dirname(__file__), "../../ui/portfolio/src/lib/data/contours.json"))
+    ap.add_argument("--out", default=os.path.join(os.path.dirname(__file__), "../../ui/portfolio/static/map/contours.json"))
     args = ap.parse_args()
 
     out_path = os.path.abspath(args.out)

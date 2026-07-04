@@ -1,7 +1,7 @@
 # Contour map generator
 
 Generates the contour-line JSON used by the site's hero map
-(`ui/portfolio/src/lib/data/contours.json`). Pure Python 3 stdlib — no
+(`ui/portfolio/static/map/contours.json`). Pure Python 3 stdlib — no
 dependencies to install.
 
 The map currently holds two frames, both ~30 × 20 km at slippy-tile zoom 12:

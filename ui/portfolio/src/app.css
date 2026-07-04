@@ -8,6 +8,7 @@
 	--grey: #6f6a60;
 	--rule: #ddd8cc;
 	--accent: #1f4a38; /* bottle green, from a sign in Paeroa */
+	--map: 31, 74, 56; /* accent as an r,g,b triple for the canvas contours */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,6 +18,7 @@
 		--grey: #a39b8f;
 		--rule: #2a2620;
 		--accent: #8fbca5; /* the same green, lifted for dark contrast */
+		--map: 143, 188, 165;
 	}
 }
 
@@ -26,6 +28,7 @@
 	--grey: #a39b8f;
 	--rule: #2a2620;
 	--accent: #8fbca5;
+	--map: 143, 188, 165;
 }
 
 @theme inline {
@@ -65,20 +68,6 @@
 	text-decoration: underline;
 	text-decoration-thickness: 1px;
 	text-underline-offset: 3px;
-}
-
-/* Numbered document heading, e.g. <h2 class="doc-h2"><span class="n">1.</span>Experience</h2> */
-@utility doc-h2 {
-	font-family: var(--font-serif);
-	font-size: 1.125rem;
-	font-weight: 500;
-	color: var(--ink);
-	& .n {
-		color: var(--accent);
-		font-family: var(--font-mono);
-		font-size: 0.875rem;
-		margin-right: 0.625rem;
-	}
 }
 
 @utility placeholder-note {
