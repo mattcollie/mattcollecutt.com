@@ -1,4 +1,9 @@
-# How the map on this site is made
+---
+title: How the map on this site is made
+date: 2026-07-05
+draft: true
+---
+
 
 > DRAFT SKELETON — the facts below are accurate; the voice is not yours yet.
 > Rewrite every sentence you keep, delete what bores you, and add the

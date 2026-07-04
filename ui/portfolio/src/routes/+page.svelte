@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
 	import PhotoGrid from '$lib/components/PhotoGrid.svelte';
+	import { notes } from '$lib/notes';
 
 	type MapKey = 'teAroha' | 'hunuas';
 	type ContourMap = { w: number; h: number; levels: { lv: number; lines: number[][][] }[] };
@@ -175,14 +176,25 @@
 
 <main class="max-w-[880px] mx-auto px-6 sm:px-10 pt-10">
 	<h2 class="font-sans font-medium text-[19px] mt-[70px] mb-4">Notes</h2>
-	<div class="flex gap-4 items-baseline py-3 border-t border-rule">
-		<span class="font-mono text-xs text-grey shrink-0">····</span>
-		<span class="text-[21px] placeholder-note">How I actually use AI to build software (draft in progress)</span>
-	</div>
-	<div class="flex gap-4 items-baseline py-3 border-t border-b border-rule">
-		<span class="font-mono text-xs text-grey shrink-0">····</span>
-		<span class="text-[21px] placeholder-note">First vintage: winemaking notes from the shed (example title)</span>
-	</div>
+	{#if notes.length}
+		<div class="border-b border-rule">
+			{#each notes as note}
+				<div class="flex gap-4 items-baseline py-3 border-t border-rule">
+					<span class="font-mono text-xs text-grey shrink-0">{note.date.slice(0, 7)}</span>
+					<a class="text-[21px] text-ink underline decoration-accent decoration-1 underline-offset-4" href="/notes/{note.slug}">{note.title}</a>
+				</div>
+			{/each}
+		</div>
+	{:else}
+		<div class="flex gap-4 items-baseline py-3 border-t border-rule">
+			<span class="font-mono text-xs text-grey shrink-0">····</span>
+			<span class="text-[21px] placeholder-note">How this map is made (draft in progress)</span>
+		</div>
+		<div class="flex gap-4 items-baseline py-3 border-t border-b border-rule">
+			<span class="font-mono text-xs text-grey shrink-0">····</span>
+			<span class="text-[21px] placeholder-note">First vintage: winemaking notes (planned)</span>
+		</div>
+	{/if}
 
 </main>
 
@@ -194,8 +206,7 @@
 <div class="max-w-[880px] mx-auto px-6 sm:px-10">
 	<p class="mt-20 pt-4 border-t border-rule text-[16.5px] text-grey">
 		Small things I've built for myself over the years, mostly older and no longer maintained:
-		<a class="text-grey underline underline-offset-[3px]" href="https://trivino.xyz" target="_blank" rel="noopener noreferrer">TriVino</a>,
-		<a class="text-grey underline underline-offset-[3px]" href="https://nookly.co.nz" target="_blank" rel="noopener noreferrer">Nookly</a>,
+		<a class="text-grey underline underline-offset-[3px]" href="https://trivino.xyz" target="_blank" rel="noopener noreferrer">TriVino</a> and
 		<a class="text-grey underline underline-offset-[3px]" href="https://brewlog.co.nz" target="_blank" rel="noopener noreferrer">Brewlog</a>.
 	</p>
 </div>
@@ -208,7 +219,7 @@
 		<a class="doc-a" href="https://www.instagram.com/matthewcollecutt/" target="_blank" rel="noopener noreferrer">instagram</a> ·
 		<a class="doc-a" href="mailto:me@mattcollecutt.com">email</a>
 	</span>
-	<span class="placeholder-note">(about page coming)</span>
+	<a class="doc-a" href="/about">about</a>
 </footer>
 
 <style>
