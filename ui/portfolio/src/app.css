@@ -74,32 +74,3 @@
 	color: var(--grey);
 	font-style: italic;
 }
-
-/* Soft paper wash between the contour canvas and the hero text,
-   so type stays readable without hiding the map. */
-@utility hero-scrim {
-	background: linear-gradient(
-		90deg,
-		var(--paper) 0%,
-		color-mix(in srgb, var(--paper) 78%, transparent) 45%,
-		transparent 80%
-	);
-}
-
-/* Thin wash along the top bar so the site name and theme toggle stay legible. */
-@utility top-scrim {
-	background: linear-gradient(
-		180deg,
-		color-mix(in srgb, var(--paper) 80%, transparent),
-		transparent
-	);
-}
-
-/* Smaller wash behind the map caption in the corner. */
-@utility cap-scrim {
-	background: radial-gradient(
-		ellipse 120% 130% at 100% 100%,
-		color-mix(in srgb, var(--paper) 88%, transparent) 45%,
-		transparent 78%
-	);
-}

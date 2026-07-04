@@ -139,9 +139,8 @@
 
 <div class="relative min-h-screen">
 	<canvas bind:this={canvas} class="absolute inset-0 w-full h-full" aria-hidden="true"></canvas>
-	<div class="absolute inset-y-0 left-0 w-[74%] sm:w-[62%] hero-scrim pointer-events-none" aria-hidden="true"></div>
 
-	<div class="relative flex justify-between px-6 sm:px-10 py-4 font-mono text-[11px] text-grey top-scrim">
+	<div class="relative flex justify-between px-6 sm:px-10 py-4 font-mono text-[11px] text-grey">
 		<span>mattcollecutt.com</span>
 		<ThemeToggle />
 	</div>
@@ -159,7 +158,7 @@
 		</p>
 	</div>
 
-	<div class="absolute right-0 bottom-0 max-w-[52ch] text-right font-mono text-[10.5px] leading-[1.7] text-grey cap-scrim pr-4 pb-3.5 pl-14 pt-10">
+	<div class="absolute right-4 bottom-3.5 max-w-[46ch] text-right font-mono text-[10.5px] leading-[1.7] text-grey bg-paper/85 backdrop-blur-[2px] border border-rule rounded-[3px] px-3.5 py-2.5">
 		<span>{captions[mapKey]}</span><br />
 		<button type="button" class="map-btn" aria-pressed={mapKey === 'teAroha'} onclick={() => selectMap('teAroha')}>te aroha</button>
 		·
