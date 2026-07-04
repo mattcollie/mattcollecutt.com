@@ -187,7 +187,7 @@
 	<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
 		<figure class="m-0">
 			<img
-				src="/photos/pheasant.jpg"
+				src="/photos/pheasant.webp"
 				alt="A cock pheasant seen through a gap in dark bush"
 				width="1600"
 				height="1067"
@@ -200,7 +200,7 @@
 		</figure>
 		<figure class="m-0">
 			<img
-				src="/photos/ship.jpg"
+				src="/photos/ship.webp"
 				alt="A Maersk container ship on dark water at dusk"
 				width="1600"
 				height="1067"
