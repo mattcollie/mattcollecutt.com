@@ -235,7 +235,9 @@ def build_linz(lat, lon, interval):
         f"https://data.linz.govt.nz/services;key={key}/wfs"
         f"?service=WFS&version=2.0.0&request=GetFeature"
         f"&typeNames=data.linz.govt.nz:layer-50768&outputFormat=json"
-        f"&srsName=EPSG:4326&bbox={s_lat},{w_lon},{n_lat},{e_lon},EPSG:4326"
+        # NB: LDS GeoServer treats a plain EPSG:4326 bbox as lon,lat (x,y) order;
+        # lat,lon order silently returns an empty FeatureCollection with HTTP 200.
+        f"&srsName=EPSG:4326&bbox={w_lon},{s_lat},{e_lon},{n_lat},EPSG:4326"
     )
     fc = json.loads(fetch(url))
     # project lon/lat into the same normalized frame as the SRTM path (web mercator)
@@ -244,6 +246,7 @@ def build_linz(lat, lon, interval):
         return math.log(math.tan(math.pi / 4 + r / 2))
     x0, x1 = math.radians(w_lon), math.radians(e_lon)
     y0, y1 = merc_y(n_lat), merc_y(s_lat)
+    MARGIN = 50  # px beyond the 0..1000 frame; WFS returns whole lines, unclipped
     by_level = {}
     for f in fc.get("features", []):
         lv = int(f["properties"].get("elevation", 0))
@@ -259,8 +262,16 @@ def build_linz(lat, lon, interval):
             for lon_, lat_ in pts:
                 nx = (math.radians(lon_) - x0) / (x1 - x0)
                 ny = (merc_y(lat_) - y0) / (y1 - y0)
-                line.append([int(round(nx * 1000)), int(round(ny * 1000 * 2 / 3))])
-            by_level.setdefault(lv, []).append(line)
+                x, y = int(round(nx * 1000)), int(round(ny * 1000 * 2 / 3))
+                if -MARGIN <= x <= 1000 + MARGIN and -MARGIN <= y <= 667 + MARGIN:
+                    line.append([x, y])
+                elif len(line) >= 8:  # left the frame: flush this visible segment
+                    by_level.setdefault(lv, []).append(line)
+                    line = []
+                else:
+                    line = []
+            if len(line) >= 8:
+                by_level.setdefault(lv, []).append(line)
     levels = [{"lv": lv, "lines": by_level[lv]} for lv in sorted(by_level)]
     return {"w": 1000, "h": 667, "levels": levels}
 
@@ -280,7 +291,13 @@ def main():
     if os.path.exists(out_path):
         data = json.load(open(out_path))
     build = build_srtm if args.source == "srtm" else build_linz
-    data[args.name] = build(args.lat, args.lon, args.interval)
+    result = build(args.lat, args.lon, args.interval)
+    if not any(l["lines"] for l in result["levels"]):
+        sys.exit(
+            f"Refusing to write: {args.source} returned no contour lines for "
+            f"'{args.name}' — existing data in {out_path} left untouched."
+        )
+    data[args.name] = result
     data[args.name]["source"] = (
         "NASA SRTM via AWS Terrain Tiles" if args.source == "srtm"
         else "LINZ Data Service, NZ Contours (Topo50), CC BY 4.0"
