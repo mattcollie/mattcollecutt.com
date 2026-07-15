@@ -206,7 +206,7 @@
 	<span>
 		&copy; {new Date().getFullYear()} Matt Collecutt ·
 		<a class="doc-a" href="https://github.com/mattcollie" target="_blank" rel="noopener noreferrer">github</a> ·
-		<a class="doc-a" href="https://www.linkedin.com/in/mattcollecutt/" target="_blank" rel="noopener noreferrer">linkedin</a> ·
+		<a class="doc-a" href="https://www.linkedin.com/in/matt-collecutt/" target="_blank" rel="noopener noreferrer">linkedin</a> ·
 		<a class="doc-a" href="https://www.instagram.com/matthewcollecutt/" target="_blank" rel="noopener noreferrer">instagram</a> ·
 		<a class="doc-a" href="mailto:me@mattcollecutt.com">email</a>
 	</span>

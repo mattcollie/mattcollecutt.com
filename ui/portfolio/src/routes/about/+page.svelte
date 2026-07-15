@@ -50,7 +50,7 @@
 		</div>
 		<div class="flex justify-between gap-4 py-3.5 border-b border-rule">
 			<div class="min-w-0">
-				<span class="font-medium">Panztel</span>
+				<span class="font-medium">Ezitracker ANZ (Panztel)</span>
 				<span class="text-grey text-[15px]">— Apprentice Developer</span>
 			</div>
 			<div class="font-mono text-xs text-grey whitespace-nowrap pt-[5px]">2015 — 2017</div>
